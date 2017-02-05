@@ -91,6 +91,15 @@ public class DoctorDaoImplTest {
 
 	@Test
 	public void testDisplayAllDoctors() {
+	
+		Doctor doctor=new Doctor();
+		doctor.setDoctorId(1);
+		doctor.setDoctorAddress("Gurgaon");
+		doctor.setDoctorName("Dr Batra");
+		doctor.setDoctorPhoneNo(1234567890);
+		doctor.setSpecialization("Hair Specialist");
+		doctor.setTiming("5-6");
+		dd.insertDoctor(doctor);
 		
 		assertNotEquals(null, dd.displayAllDoctors());
 	}
