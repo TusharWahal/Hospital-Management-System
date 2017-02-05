@@ -47,9 +47,7 @@ public class DoctorDaoImplTest {
 		doctor.setSpecialization("Hair Specialist");
 		doctor.setTiming("5-6");
 		dd.insertDoctor(doctor);
-		dd.deleteDoctor(1);
-		
-		assertEquals(null, dd.displayDoctor(1));
+		assertEquals(doctor,dd.deleteDoctor(1));
 	}
 
 	@Test
@@ -77,12 +75,24 @@ public class DoctorDaoImplTest {
 
 	@Test
 	public void testDisplayDoctor() {
-		//fail("Not yet implemented");
+		
+		Doctor doctor=new Doctor();
+		doctor.setDoctorId(1);
+		doctor.setDoctorAddress("Gurgaon");
+		doctor.setDoctorName("Dr Batra");
+		doctor.setDoctorPhoneNo(1234567890);
+		doctor.setSpecialization("Hair Specialist");
+		doctor.setTiming("5-6");
+		dd.insertDoctor(doctor);
+		
+		assertEquals(doctor, dd.displayDoctor(1));
+		
 	}
 
 	@Test
 	public void testDisplayAllDoctors() {
-		//fail("Not yet implemented");
+		
+		assertNotEquals(null, dd.displayAllDoctors());
 	}
 
 }
