@@ -1,39 +1,175 @@
 package dao;
 
+import static helper.ConnectToDb.closeConnection;
+import static helper.ConnectToDb.openConnection;
+
+import java.sql.Connection;
+import java.sql.Date;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.TreeSet;
 
+import bean.Doctor;
 import bean.Person;
 
 public class PersonDaoImpl implements PersonDao {
 
+	private PreparedStatement pstmt=null;
+	private Connection con;
+	private ResultSet rs;
+	
 	@Override
-	public void insertPerson(Person newPerson) {
-		// TODO Auto-generated method stub
+	public void insertPerson(Person newPerson) throws SQLException, ClassNotFoundException {
+
+		con= openConnection();
+		
+		int personId=newPerson.getPersonId();
+		String personType=newPerson.getPersonIdType();
+		String personName=newPerson.getPersonName();
+		Date personDateOfBirh=newPerson.getPersonDateOfBirth();
+		int personAge=newPerson.getPersonAge();
+		String personGender=newPerson.getPersonGender();
+		String personAddress=newPerson.getPersonAddress();
+		int personPhoneNo=newPerson.getPersonPhoneNo();
+		String personPassword=newPerson.getPersonPassword();
+		
+		pstmt=con.prepareStatement("insert into Person (personId,personIdType,personName,personDateOfBirth," +
+				"personAge,personGender,personAddress,personPhoneNo,personPassword) values" + 
+				"(?,?,?,?,?,?,?,?,?)");
+		
+		pstmt.setInt(1,personId);
+		pstmt.setString(2,personType);
+		pstmt.setString(3, personName);
+		pstmt.setDate(4, personDateOfBirh);
+		pstmt.setInt(5, personAge);
+		pstmt.setString(6, personGender);
+		pstmt.setString(7, personAddress);
+		pstmt.setLong(8, personPhoneNo);
+		pstmt.setString(9, personPassword);
+		
+		int rows=pstmt.executeUpdate();
+		
+		if(rows>0)
+		{
+			closeConnection(con);
+			return;
+		}
+		else closeConnection(con);
 		
 	}
 
 	@Override
-	public Person deletePerson(int personId) {
-		// TODO Auto-generated method stub
-		return null;
+	public boolean deletePerson(int personId) throws ClassNotFoundException, SQLException {
+
+		con= openConnection();
+		
+		
+		pstmt=con.prepareStatement("delete from Person where personId = ?");
+		
+		pstmt.setInt(1,personId);
+		
+		int rows=pstmt.executeUpdate();
+		
+		if(rows>0)
+		{
+			closeConnection(con);
+			return true;
+		}
+		else closeConnection(con);
+		return false;
 	}
 
 	@Override
-	public void updatePerson(int personId, Person renewPerson) {
-		// TODO Auto-generated method stub
+	public void updatePerson(int personId, Person renewPerson) throws ClassNotFoundException, SQLException {
+con= openConnection();
+		
+		
+		pstmt=con.prepareStatement("update Person set personIdType=?,personName=?,personDateOfBirth=?," +
+				"personAge=?,personGender=?,personAddress=?,personPhoneNo=?,personPassword=?");
+		
+
+		pstmt.setString(1,renewPerson.getPersonIdType());
+		pstmt.setString(2, renewPerson.getPersonName());
+		pstmt.setDate(3, renewPerson.getPersonDateOfBirth());
+		pstmt.setInt(4, renewPerson.getPersonAge());
+		pstmt.setString(5, renewPerson.getPersonGender());
+		pstmt.setString(6, renewPerson.getPersonAddress());
+		pstmt.setLong(7, renewPerson.getPersonPhoneNo());
+		pstmt.setString(8, renewPerson.getPersonPassword());
+		
+		int rows=pstmt.executeUpdate();
+		
+		if(rows>0)
+		{
+			closeConnection(con);
+			return ;
+		}
+		else closeConnection(con);
+		
 		
 	}
 
 	@Override
-	public Person displayPerson(int personId) {
-		// TODO Auto-generated method stub
-		return null;
+	public Person displayPerson(int personId) throws ClassNotFoundException, SQLException {
+
+		con= openConnection();
+		
+		
+		pstmt=con.prepareStatement("select * from Person where personId = ?");
+		pstmt.setInt(1,personId);
+		
+		rs=pstmt.executeQuery();
+		
+		Person person = new Person();
+		
+		
+		
+			person.setPersonId(rs.getInt("personId"));
+			person.setPersonIdType(rs.getString("personIdType"));
+			person.setPersonName(rs.getString("personName"));
+			person.setPersonDateOfBirth(rs.getDate("personDateOfBirth"));
+			person.setPersonAge(rs.getInt("personAge"));
+			person.setPersonGender(rs.getString("personGender"));
+			person.setPersonAddress(rs.getString("personAddress"));
+			person.setPersonPhoneNo(rs.getInt("personPhoneNo"));
+			person.setPersonPassword(rs.getString("personPassword"));
+		
+		closeConnection(con);
+		return person;
 	}
 
 	@Override
-	public TreeSet<Person> displayAllPersons() {
-		// TODO Auto-generated method stub
-		return null;
+	public TreeSet<Person> displayAllPersons() throws ClassNotFoundException, SQLException {
+
+		con= openConnection();
+		
+		
+		pstmt=con.prepareStatement("select * from Person");
+		
+		
+		rs=pstmt.executeQuery();
+		
+		TreeSet<Person> personList=new TreeSet<Person>();
+		Person person = new Person();
+		
+		while(rs.next())
+		{
+			person.setPersonId(rs.getInt("personId"));
+			person.setPersonIdType(rs.getString("personIdType"));
+			person.setPersonName(rs.getString("personName"));
+			person.setPersonDateOfBirth(rs.getDate("personDateOfBirth"));
+			person.setPersonAge(rs.getInt("personAge"));
+			person.setPersonGender(rs.getString("personGender"));
+			person.setPersonAddress(rs.getString("personAddress"));
+			person.setPersonPhoneNo(rs.getInt("personPhoneNo"));
+			person.setPersonPassword(rs.getString("personPassword"));
+			personList.add(person);
+			
+		}
+		
+		closeConnection(con);
+		return personList;
 	}
 
 }
