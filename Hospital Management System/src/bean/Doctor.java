@@ -6,7 +6,7 @@ public class Doctor {
 	String specialization;
 	String timing;
 	String doctorAddress;
-	int doctorPhoneNo;
+	long doctorPhoneNo;
 	public int getDoctorId() {
 		return doctorId;
 	}
@@ -37,10 +37,57 @@ public class Doctor {
 	public void setDoctorAddress(String doctorAddress) {
 		this.doctorAddress = doctorAddress;
 	}
-	public int getDoctorPhoneNo() {
+	public long getDoctorPhoneNo() {
 		return doctorPhoneNo;
 	}
-	public void setDoctorPhoneNo(int doctorPhoneNo) {
+	public void setDoctorPhoneNo(long doctorPhoneNo) {
 		this.doctorPhoneNo = doctorPhoneNo;
+	}
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((doctorAddress == null) ? 0 : doctorAddress.hashCode());
+		result = prime * result + doctorId;
+		result = prime * result + ((doctorName == null) ? 0 : doctorName.hashCode());
+		result = prime * result + (int) (doctorPhoneNo ^ (doctorPhoneNo >>> 32));
+		result = prime * result + ((specialization == null) ? 0 : specialization.hashCode());
+		result = prime * result + ((timing == null) ? 0 : timing.hashCode());
+		return result;
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Doctor other = (Doctor) obj;
+		if (doctorAddress == null) {
+			if (other.doctorAddress != null)
+				return false;
+		} else if (!doctorAddress.equals(other.doctorAddress))
+			return false;
+		if (doctorId != other.doctorId)
+			return false;
+		if (doctorName == null) {
+			if (other.doctorName != null)
+				return false;
+		} else if (!doctorName.equals(other.doctorName))
+			return false;
+		if (doctorPhoneNo != other.doctorPhoneNo)
+			return false;
+		if (specialization == null) {
+			if (other.specialization != null)
+				return false;
+		} else if (!specialization.equals(other.specialization))
+			return false;
+		if (timing == null) {
+			if (other.timing != null)
+				return false;
+		} else if (!timing.equals(other.timing))
+			return false;
+		return true;
 	}
 }
