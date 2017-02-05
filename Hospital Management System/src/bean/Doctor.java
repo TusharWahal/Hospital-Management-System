@@ -1,6 +1,6 @@
 package bean;
 
-public class Doctor extends Department implements Comparable<Doctor>{
+public class Doctor extends Department {
 	int doctorId;
 	String doctorName;
 	String specialization;
@@ -90,7 +90,6 @@ public class Doctor extends Department implements Comparable<Doctor>{
 			return false;
 		return true;
 	}
-	@Override
 	public int compareTo(Doctor o) {
 		if(this.equals(o))
 		{return 0;

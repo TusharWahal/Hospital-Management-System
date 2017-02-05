@@ -1,6 +1,6 @@
 package bean;
 
-public class Department {
+public class Department implements Comparable<Department> {
 	int departmentId;
 	String departmentName;
 	String departmentLocation;
@@ -66,6 +66,13 @@ public class Department {
 		} else if (!description.equals(other.description))
 			return false;
 		return true;
+	}
+	@Override
+	public int compareTo(Department o) {
+		if(this.equals(o))
+			return 0;
+		else
+			return 1;
 	}
 	
 }

@@ -66,8 +66,11 @@ public class DoctorDaoImpl implements DoctorDao {
 			closeConnection(con);
 			return true;
 		}
-		else closeConnection(con);
-		return false;
+		else 
+		{
+			closeConnection(con);
+			return false;
+		}
 	}
 
 	@Override
@@ -88,7 +91,7 @@ public class DoctorDaoImpl implements DoctorDao {
 		pstmt.setString(4, renewDoctor.getDoctorAddress());
 		pstmt.setLong(5, renewDoctor.getDoctorPhoneNo());
 		pstmt.setInt(6, renewDoctor.getDepartmentId());
-		pstmt.setInt(7, renewDoctor.getDoctorId());
+		pstmt.setInt(7, doctorId);
 		
 		int rows=pstmt.executeUpdate();
 		
