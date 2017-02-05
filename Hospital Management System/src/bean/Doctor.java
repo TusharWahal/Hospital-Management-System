@@ -1,6 +1,6 @@
 package bean;
 
-public class Doctor {
+public class Doctor extends Department implements Comparable<Doctor>{
 	int doctorId;
 	String doctorName;
 	String specialization;
@@ -89,5 +89,13 @@ public class Doctor {
 		} else if (!timing.equals(other.timing))
 			return false;
 		return true;
+	}
+	@Override
+	public int compareTo(Doctor o) {
+		if(this.equals(o))
+		{return 0;
+		}
+		
+		return 1;
 	}
 }

@@ -1,12 +1,16 @@
-package dao;
+package junitTest;
 
 import static org.junit.Assert.*;
+
+import java.sql.SQLException;
+import java.util.TreeSet;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
 import bean.Doctor;
+import dao.DoctorDaoImpl;
 
 public class DoctorDaoImplTest {
 	
@@ -23,7 +27,8 @@ public class DoctorDaoImplTest {
 	}
 
 	@Test
-	public void testInsertDoctor() {
+	public void testInsertDoctor() throws ClassNotFoundException, SQLException {
+		dd.deleteDoctor(1);
 		Doctor doctor=new Doctor();
 		doctor.setDoctorId(1);
 		doctor.setDoctorAddress("Gurgaon");
@@ -31,14 +36,18 @@ public class DoctorDaoImplTest {
 		doctor.setDoctorPhoneNo(1234567890);
 		doctor.setSpecialization("Hair Specialist");
 		doctor.setTiming("5-6");
+		doctor.setDepartmentId(0);
 		dd.insertDoctor(doctor);
 		
 		assertEquals(doctor, dd.displayDoctor(1));
+		
 	}
 	
 
 	@Test
-	public void testDeleteDoctor() {
+	public void testDeleteDoctor() throws ClassNotFoundException, SQLException {
+		
+		dd.deleteDoctor(1);
 		Doctor doctor=new Doctor();
 		doctor.setDoctorId(1);
 		doctor.setDoctorAddress("Gurgaon");
@@ -46,12 +55,15 @@ public class DoctorDaoImplTest {
 		doctor.setDoctorPhoneNo(1234567890);
 		doctor.setSpecialization("Hair Specialist");
 		doctor.setTiming("5-6");
+		doctor.setDepartmentId(0);
 		dd.insertDoctor(doctor);
-		assertEquals(doctor,dd.deleteDoctor(1));
+		assertTrue(dd.deleteDoctor(1));
 	}
 
 	@Test
-	public void testUpdateDoctor() {
+	public void testUpdateDoctor() throws ClassNotFoundException, SQLException {
+		
+		dd.deleteDoctor(1);
 		Doctor doctor=new Doctor();
 		doctor.setDoctorId(1);
 		doctor.setDoctorAddress("Gurgaon");
@@ -59,6 +71,7 @@ public class DoctorDaoImplTest {
 		doctor.setDoctorPhoneNo(1234567890);
 		doctor.setSpecialization("Hair Specialist");
 		doctor.setTiming("5-6");
+		doctor.setDepartmentId(0);
 		dd.insertDoctor(doctor);
 		Doctor newdoctor=new Doctor();
 		newdoctor.setDoctorId(1);
@@ -67,15 +80,18 @@ public class DoctorDaoImplTest {
 		newdoctor.setDoctorPhoneNo(1876543210);
 		newdoctor.setSpecialization("Hair Specialist");
 		newdoctor.setTiming("5-6");
+		newdoctor.setDepartmentId(0);
 		dd.updateDoctor(1,newdoctor);
 		
-		assertEquals(newdoctor, dd.displayDoctor(1));
+		assertEquals(newdoctor.getDoctorAddress(), dd.displayDoctor(1).getDoctorAddress());
+		
 		
 	}
 
 	@Test
-	public void testDisplayDoctor() {
+	public void testDisplayDoctor() throws ClassNotFoundException, SQLException {
 		
+		dd.deleteDoctor(1);
 		Doctor doctor=new Doctor();
 		doctor.setDoctorId(1);
 		doctor.setDoctorAddress("Gurgaon");
@@ -83,15 +99,19 @@ public class DoctorDaoImplTest {
 		doctor.setDoctorPhoneNo(1234567890);
 		doctor.setSpecialization("Hair Specialist");
 		doctor.setTiming("5-6");
+		doctor.setDepartmentId(0);
 		dd.insertDoctor(doctor);
 		
 		assertEquals(doctor, dd.displayDoctor(1));
 		
+		
 	}
 
 	@Test
-	public void testDisplayAllDoctors() {
+	public void testDisplayAllDoctors() throws ClassNotFoundException, SQLException {
 	
+		TreeSet<Doctor> docList=new TreeSet<Doctor>();
+		dd.deleteDoctor(1);
 		Doctor doctor=new Doctor();
 		doctor.setDoctorId(1);
 		doctor.setDoctorAddress("Gurgaon");
@@ -99,9 +119,12 @@ public class DoctorDaoImplTest {
 		doctor.setDoctorPhoneNo(1234567890);
 		doctor.setSpecialization("Hair Specialist");
 		doctor.setTiming("5-6");
+		doctor.setDepartmentId(0);
 		dd.insertDoctor(doctor);
+		docList.add(doctor);
 		
-		assertNotEquals(null, dd.displayAllDoctors());
+		assertEquals(docList, dd.displayAllDoctors());
+		
 	}
 
 }
