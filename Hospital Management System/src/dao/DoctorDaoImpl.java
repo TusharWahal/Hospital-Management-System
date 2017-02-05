@@ -16,7 +16,7 @@ public class DoctorDaoImpl implements DoctorDao {
 	private ResultSet rs;
 
 	@Override
-	public void insertDoctor(Doctor newDoctor) throws ClassNotFoundException, SQLException {
+	public boolean insertDoctor(Doctor newDoctor) throws ClassNotFoundException, SQLException {
 		
 		con= openConnection();
 		
@@ -44,9 +44,13 @@ public class DoctorDaoImpl implements DoctorDao {
 		if(rows>0)
 		{
 			closeConnection(con);
-			return;
+			return true;
 		}
-		else closeConnection(con);
+		else 
+			{
+			closeConnection(con);
+			return false;
+			}
 		
 	}
 
@@ -74,7 +78,7 @@ public class DoctorDaoImpl implements DoctorDao {
 	}
 
 	@Override
-	public void updateDoctor(int doctorId, Doctor renewDoctor) throws ClassNotFoundException, SQLException {
+	public boolean updateDoctor(int doctorId, Doctor renewDoctor) throws ClassNotFoundException, SQLException {
 		
 		con= openConnection();
 		
@@ -98,9 +102,13 @@ public class DoctorDaoImpl implements DoctorDao {
 		if(rows>0)
 		{
 			closeConnection(con);
-			return ;
+			return true;
 		}
-		else closeConnection(con);
+		else 
+			{
+			closeConnection(con);
+			return false;
+			}
 		
 
 		
