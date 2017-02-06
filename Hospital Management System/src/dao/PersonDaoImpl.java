@@ -20,7 +20,7 @@ public class PersonDaoImpl implements PersonDao {
 	private ResultSet rs;
 	
 	@Override
-	public void insertPerson(Person newPerson) throws SQLException, ClassNotFoundException {
+	public boolean insertPerson(Person newPerson) throws SQLException, ClassNotFoundException {
 
 		con= openConnection();
 		
@@ -53,9 +53,10 @@ public class PersonDaoImpl implements PersonDao {
 		if(rows>0)
 		{
 			closeConnection(con);
-			return;
+			return true;
 		}
 		else closeConnection(con);
+		return false;
 		
 	}
 
@@ -81,7 +82,7 @@ public class PersonDaoImpl implements PersonDao {
 	}
 
 	@Override
-	public void updatePerson(int personId, Person renewPerson) throws ClassNotFoundException, SQLException {
+	public boolean updatePerson(int personId, Person renewPerson) throws ClassNotFoundException, SQLException {
 con= openConnection();
 		
 		
@@ -103,9 +104,10 @@ con= openConnection();
 		if(rows>0)
 		{
 			closeConnection(con);
-			return ;
+			return true;
 		}
 		else closeConnection(con);
+		return false;
 		
 		
 	}

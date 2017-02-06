@@ -39,6 +39,7 @@ public class DoctorDaoImplTest {
 		doctor.setDepartmentId(0);
 		assertTrue(dd.insertDoctor(doctor));
 		
+		
 	}
 	
 
