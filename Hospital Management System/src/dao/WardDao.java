@@ -10,4 +10,5 @@ public interface WardDao {
 	public boolean updateWard(int bedNo, Ward renewWard);
 	public Ward displayWard(int bedNo);
 	public TreeSet<Ward> displayAllWards();
+	//test
 }
