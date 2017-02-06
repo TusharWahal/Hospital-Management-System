@@ -2,6 +2,9 @@ package junitTest;
 
 import static org.junit.Assert.*;
 
+import java.sql.SQLException;
+import java.util.TreeSet;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -24,12 +27,12 @@ public class BillDaoImplTest {
 	}
 
 	@Test
-	public void testInsertBill() {
+	public void testInsertBill() throws ClassNotFoundException, SQLException {
 		bd.deleteBill(1);
 	}
 
 	@Test
-	public void testDeleteBill() {
+	public void testDeleteBill() throws ClassNotFoundException, SQLException {
 		 bd.deleteBill(1);
 		 Bill bill=new Bill();
 		 bill.setNumber(1);
@@ -42,18 +45,64 @@ public class BillDaoImplTest {
 	}
 
 	@Test
-	public void testUpdateBill() {
-		fail("Not yet implemented");
+	public void testUpdateBill() throws ClassNotFoundException, SQLException {
+		bd.deleteBill(1);
+		
+		Bill bill=new Bill();
+		 bill.setNumber(1);
+		 bill.setDoctorVisit(1);
+		 bill.setBedCharges(1);
+		 bill.setTests(1);
+		 bill.setMedicines(1);
+		 bd.insertBill(bill);
+		 
+		 Bill newBill=new Bill();
+		 newBill.setNumber(1);
+		 newBill.setDoctorVisit(2);
+		 newBill.setBedCharges(5);
+		 newBill.setTests(1);
+		 newBill.setMedicines(3);
+		 
+		 assertEquals(newBill.getDoctorVisit(), bd.displayBill(1).getDoctorVisit());
+		 
+		 
+		 
+		
 	}
 
 	@Test
-	public void testDisplayBill() {
-		fail("Not yet implemented");
+	public void testDisplayBill() throws ClassNotFoundException, SQLException {
+
+		bd.deleteBill(1);
+		
+		 Bill bill=new Bill();
+		 bill.setNumber(1);
+		 bill.setDoctorVisit(1);
+		 bill.setBedCharges(1);
+		 bill.setTests(1);
+		 bill.setMedicines(1);
+		 bd.insertBill(bill);
+		 
+		 assertEquals(bill, bd.displayBill(1));
 	}
 
 	@Test
-	public void testDisplayAllBills() {
-		fail("Not yet implemented");
+	public void testDisplayAllBills() throws ClassNotFoundException, SQLException {
+		
+		TreeSet<Bill> billList=new TreeSet<Bill>();
+		
+		 bd.deleteBill(1);
+		
+		 Bill bill=new Bill();
+		 bill.setNumber(1);
+		 bill.setDoctorVisit(1);
+		 bill.setBedCharges(1);
+		 bill.setTests(1);
+		 bill.setMedicines(1);
+		 billList.add(bill);
+		 
+		 assertEquals(bill, bd.displayAllBills());
+		
 	}
 
 }
