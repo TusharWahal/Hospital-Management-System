@@ -34,7 +34,7 @@ public class PersonDaoImplTest {
 		
 		pd.deletePerson(1);
 		Person person=new Person();
-		person.setPersonId(1);
+		person.setPersonId("PatindId");
 		person.setPersonIdType("Patient");
 		person.setPersonName("XYZ");
 		person.setPersonDateOfBirth(null);
@@ -53,7 +53,7 @@ public class PersonDaoImplTest {
 		
 		pd.deletePerson(1);
 		Person person=new Person();
-		person.setPersonId(1);
+		person.setPersonId("PatienId");
 		person.setPersonIdType("Patient");
 		person.setPersonName("XYZ");
 		person.setPersonDateOfBirth(null);
@@ -71,7 +71,7 @@ public class PersonDaoImplTest {
 		
 		pd.deletePerson(1);
 		Person person=new Person();
-		person.setPersonId(1);
+		person.setPersonId("PatienId");
 		person.setPersonIdType("Patient");
 		person.setPersonName("XYZ");
 		person.setPersonDateOfBirth(null);
@@ -84,7 +84,7 @@ public class PersonDaoImplTest {
 		
 		
 		Person newPerson=new Person();
-		newPerson.setPersonId(1);
+		newPerson.setPersonId("PatientId");
 		newPerson.setPersonIdType("Patient");
 		newPerson.setPersonName("XYZ");
 		newPerson.setPersonDateOfBirth(null);
@@ -103,7 +103,7 @@ public class PersonDaoImplTest {
 		
 		pd.deletePerson(1);
 		Person person=new Person();
-		person.setPersonId(1);
+		person.setPersonId("PatientID");
 		person.setPersonIdType("Patient");
 		person.setPersonName("XYZ");
 		person.setPersonDateOfBirth(null);
@@ -123,7 +123,7 @@ public class PersonDaoImplTest {
 		TreeSet<Person> personList=new TreeSet<Person>();
 		pd.deletePerson(1);
 		Person person=new Person();
-		person.setPersonId(1);
+		person.setPersonId("PatientId");
 		person.setPersonIdType("Patient");
 		person.setPersonName("XYZ");
 		person.setPersonDateOfBirth(null);

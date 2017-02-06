@@ -24,7 +24,7 @@ public class PersonDaoImpl implements PersonDao {
 
 		con= openConnection();
 		
-		int personId=newPerson.getPersonId();
+		String personId=newPerson.getPersonId();
 		String personType=newPerson.getPersonIdType();
 		String personName=newPerson.getPersonName();
 		Date personDateOfBirh=newPerson.getPersonDateOfBirth();
@@ -38,7 +38,7 @@ public class PersonDaoImpl implements PersonDao {
 				"personAge,personGender,personAddress,personPhoneNo,personPassword) values" + 
 				"(?,?,?,?,?,?,?,?,?)");
 		
-		pstmt.setInt(1,personId);
+		pstmt.setString(1,personId);
 		pstmt.setString(2,personType);
 		pstmt.setString(3, personName);
 		pstmt.setDate(4, personDateOfBirh);
@@ -125,7 +125,7 @@ con= openConnection();
 		
 		
 		
-			person.setPersonId(rs.getInt("personId"));
+			person.setPersonId(rs.getString("personId"));
 			person.setPersonIdType(rs.getString("personIdType"));
 			person.setPersonName(rs.getString("personName"));
 			person.setPersonDateOfBirth(rs.getDate("personDateOfBirth"));
@@ -155,7 +155,7 @@ con= openConnection();
 		
 		while(rs.next())
 		{
-			person.setPersonId(rs.getInt("personId"));
+			person.setPersonId(rs.getString("personId"));
 			person.setPersonIdType(rs.getString("personIdType"));
 			person.setPersonName(rs.getString("personName"));
 			person.setPersonDateOfBirth(rs.getDate("personDateOfBirth"));
