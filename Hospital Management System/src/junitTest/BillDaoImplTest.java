@@ -6,6 +6,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import bean.Bill;
+
 import dao.BillDaoImpl;
 
 public class BillDaoImplTest {
@@ -28,7 +30,15 @@ public class BillDaoImplTest {
 
 	@Test
 	public void testDeleteBill() {
-		fail("Not yet implemented");
+		 bd.deleteBill(1);
+		 Bill bill=new Bill();
+		 bill.setNumber(1);
+		 bill.setDoctorVisit(1);
+		 bill.setBedCharges(1);
+		 bill.setTests(1);
+		 bill.setMedicines(1);
+		 
+		 assertTrue(bd.insertBill(bill));
 	}
 
 	@Test
