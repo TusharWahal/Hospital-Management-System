@@ -19,7 +19,6 @@ public class PersonDaoImpl implements PersonDao {
 	private Connection con;
 	private ResultSet rs;
 	
-	@Override
 	public boolean insertPerson(Person newPerson) throws SQLException, ClassNotFoundException {
 
 		con= openConnection();
@@ -60,7 +59,6 @@ public class PersonDaoImpl implements PersonDao {
 		
 	}
 
-	@Override
 	public boolean deletePerson(int personId) throws ClassNotFoundException, SQLException {
 
 		con= openConnection();
@@ -81,7 +79,6 @@ public class PersonDaoImpl implements PersonDao {
 		return false;
 	}
 
-	@Override
 	public boolean updatePerson(int personId, Person renewPerson) throws ClassNotFoundException, SQLException {
 con= openConnection();
 		
@@ -112,7 +109,6 @@ con= openConnection();
 		
 	}
 
-	@Override
 	public Person displayPerson(int personId) throws ClassNotFoundException, SQLException {
 
 		con= openConnection();
@@ -141,7 +137,6 @@ con= openConnection();
 		return person;
 	}
 
-	@Override
 	public TreeSet<Person> displayAllPersons() throws ClassNotFoundException, SQLException {
 
 		con= openConnection();
