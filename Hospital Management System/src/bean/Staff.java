@@ -1,12 +1,12 @@
 package bean;
 
-public class Staff {
+public class Staff extends Department {
 	int staffId;
 	String staffName;
 	String specialization;
 	String timing;
 	String staffAddress;
-	int staffPhoneNo;
+	long staffPhoneNo;
 	public int getStaffId() {
 		return staffId;
 	}
@@ -37,10 +37,10 @@ public class Staff {
 	public void setStaffAddress(String staffAddress) {
 		this.staffAddress = staffAddress;
 	}
-	public int getStaffPhoneNo() {
+	public long getStaffPhoneNo() {
 		return staffPhoneNo;
 	}
-	public void setStaffPhoneNo(int staffPhoneNo) {
+	public void setStaffPhoneNo(long staffPhoneNo) {
 		this.staffPhoneNo = staffPhoneNo;
 	}
 }
