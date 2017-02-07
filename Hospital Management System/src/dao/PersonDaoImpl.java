@@ -19,6 +19,7 @@ public class PersonDaoImpl implements PersonDao {
 	private Connection con;
 	private ResultSet rs;
 	
+	@Override
 	public boolean insertPerson(Person newPerson) throws SQLException, ClassNotFoundException {
 
 		con= openConnection();
@@ -59,6 +60,7 @@ public class PersonDaoImpl implements PersonDao {
 		
 	}
 
+	@Override
 	public boolean deletePerson(int personId) throws ClassNotFoundException, SQLException {
 
 		con= openConnection();
@@ -79,12 +81,14 @@ public class PersonDaoImpl implements PersonDao {
 		return false;
 	}
 
+	@Override
 	public boolean updatePerson(int personId, Person renewPerson) throws ClassNotFoundException, SQLException {
-con= openConnection();
+
+		con= openConnection();
 		
 		
 		pstmt=con.prepareStatement("update Person set personIdType=?,personName=?,personDateOfBirth=?," +
-				"personAge=?,personGender=?,personAddress=?,personPhoneNo=?,personPassword=?");
+				"personAge=?,personGender=?,personAddress=?,personPhoneNo=?,personPassword=? where personId=?");
 		
 
 		pstmt.setString(1,renewPerson.getPersonIdType());
@@ -95,6 +99,7 @@ con= openConnection();
 		pstmt.setString(6, renewPerson.getPersonAddress());
 		pstmt.setLong(7, renewPerson.getPersonPhoneNo());
 		pstmt.setString(8, renewPerson.getPersonPassword());
+		pstmt.setLong(9, personId);
 		
 		int rows=pstmt.executeUpdate();
 		
@@ -109,6 +114,7 @@ con= openConnection();
 		
 	}
 
+	@Override
 	public Person displayPerson(int personId) throws ClassNotFoundException, SQLException {
 
 		con= openConnection();
@@ -137,6 +143,7 @@ con= openConnection();
 		return person;
 	}
 
+	@Override
 	public TreeSet<Person> displayAllPersons() throws ClassNotFoundException, SQLException {
 
 		con= openConnection();
