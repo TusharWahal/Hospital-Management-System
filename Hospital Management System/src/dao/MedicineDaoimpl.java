@@ -28,15 +28,17 @@ public class MedicineDaoimpl implements MedicineDao {
 		int quantity=newMedicine.getQuantity();
 		String dosage=newMedicine.getDosage();
 		float price=newMedicine.getPrice();
+		int patientId=newMedicine.getPatientId();
 		
-		pstmt=con.prepareStatement("insert into medicalreport (sNo,medicineName,quantity,dosage,price)"
-				+ "values" + "(?,?,?,?,?)");
+		pstmt=con.prepareStatement("insert into medicalreport (sNo,medicineName,quantity,dosage,price,patientId)"
+				+ "values" + "(?,?,?,?,?,?)");
 		
 		pstmt.setInt(1,sNo);
 		pstmt.setString(2, medicineName);
 		pstmt.setInt(3, quantity);
 		pstmt.setString(4, dosage);
 		pstmt.setFloat(5, price);
+		pstmt.setInt(6, patientId);
 		
 		int rows=pstmt.executeUpdate();
 		
@@ -81,7 +83,7 @@ public class MedicineDaoimpl implements MedicineDao {
 		
 		
 		pstmt=con.prepareStatement("update medicine set medicineName = ? , quantity = ? "
-				+ ", dosage = ? ,price = ? "
+				+ ", dosage = ? ,price = ? ,patientId = ? "
 				+ "where sNo = ?");
 		
 
@@ -89,6 +91,7 @@ public class MedicineDaoimpl implements MedicineDao {
 		pstmt.setInt(2,renewMedicine.getQuantity());
 		pstmt.setString(3, renewMedicine.getDosage());
 		pstmt.setFloat(4, renewMedicine.getPrice());
+		pstmt.setInt(5, renewMedicine.getPatientId());
 		
 		int rows=pstmt.executeUpdate();
 		
@@ -122,6 +125,7 @@ public class MedicineDaoimpl implements MedicineDao {
 			medicine.setQuantity(rs.getInt("quantity"));
 			medicine.setDosage(rs.getString("dosage"));
 			medicine.setPrice(rs.getFloat("price"));
+			medicine.setPatientId(rs.getInt("patientId"));
 		}
 		
 		closeConnection(con);
@@ -148,6 +152,7 @@ public class MedicineDaoimpl implements MedicineDao {
 			medicine.setQuantity(rs.getInt("quantity"));
 			medicine.setDosage(rs.getString("dosage"));
 			medicine.setPrice(rs.getFloat("price"));
+			medicine.setPatientId(rs.getInt("patientId"));
 			medicineList.add(medicine);
 		}
 		

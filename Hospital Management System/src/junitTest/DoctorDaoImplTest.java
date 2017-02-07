@@ -37,6 +37,7 @@ public class DoctorDaoImplTest {
 		doctor.setSpecialization("Hair Specialist");
 		doctor.setTiming("5-6");
 		doctor.setDepartmentId(0);
+		doctor.setDoctorPassword("pass");
 		assertTrue(dd.insertDoctor(doctor));
 		
 		
@@ -55,6 +56,7 @@ public class DoctorDaoImplTest {
 		doctor.setSpecialization("Hair Specialist");
 		doctor.setTiming("5-6");
 		doctor.setDepartmentId(0);
+		doctor.setDoctorPassword("pass");
 		dd.insertDoctor(doctor);
 		assertTrue(dd.deleteDoctor(1));
 	}
@@ -71,6 +73,7 @@ public class DoctorDaoImplTest {
 		doctor.setSpecialization("Hair Specialist");
 		doctor.setTiming("5-6");
 		doctor.setDepartmentId(0);
+		doctor.setDoctorPassword("pass");
 		dd.insertDoctor(doctor);
 		Doctor newdoctor=new Doctor();
 		newdoctor.setDoctorId(1);
@@ -80,6 +83,7 @@ public class DoctorDaoImplTest {
 		newdoctor.setSpecialization("Hair Specialist");
 		newdoctor.setTiming("5-6");
 		newdoctor.setDepartmentId(0);
+		doctor.setDoctorPassword("pass");
 		assertTrue(dd.updateDoctor(1,newdoctor));
 		
 		//assertEquals(newdoctor.getDoctorAddress(), dd.displayDoctor(1).getDoctorAddress());
@@ -99,6 +103,7 @@ public class DoctorDaoImplTest {
 		doctor.setSpecialization("Hair Specialist");
 		doctor.setTiming("5-6");
 		doctor.setDepartmentId(0);
+		doctor.setDoctorPassword("pass");
 		dd.insertDoctor(doctor);
 		
 		assertEquals(doctor, dd.displayDoctor(1));

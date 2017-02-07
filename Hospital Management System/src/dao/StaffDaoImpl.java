@@ -31,13 +31,14 @@ public class StaffDaoImpl implements StaffDao {
 	String timing=newStaff.getTiming();
 	long staffPhoneNo=newStaff.getStaffPhoneNo();
 	int departmentId=newStaff.getDepartmentId();
+	String staffPassword=newStaff.getStaffPassword();
 	
 	
 	
 	
 	pstmt=con.prepareStatement("insert into Staff (staffId,staffName" +
-			"timing,specialization,staffAddress,staffPhoneNo,departmentId) values" + 
-			"(?,?,?,?,?,?,?,?,?)");
+			"timing,specialization,staffAddress,staffPhoneNo,departmentId,staffPassword) values" + 
+			"(?,?,?,?,?,?,?,?,?,?)");
 	
 	pstmt.setInt(1,staffId);
 	pstmt.setString(2,staffName );
@@ -45,6 +46,7 @@ public class StaffDaoImpl implements StaffDao {
 	pstmt.setString(4, specialization);
 	pstmt.setString(5, staffAddress);
 	pstmt.setLong(6, staffPhoneNo);
+	pstmt.setString(7, staffPassword);
 	
 	
 	int rows=pstmt.executeUpdate();
@@ -91,7 +93,7 @@ public class StaffDaoImpl implements StaffDao {
 		
 		pstmt=con.prepareStatement("update staff set staffName = ? , specialization =? "
 				+ ", timing=? ,staffAddress=? "
-				+ ", staffPhoneNo=?, departmentId=? "
+				+ ", staffPhoneNo=?, departmentId=?, staffPassword=? "
 				+ "where staffId= ?");
 		
 
@@ -101,7 +103,8 @@ public class StaffDaoImpl implements StaffDao {
 		pstmt.setString(4, renewStaff.getStaffAddress());
 		pstmt.setLong(5, renewStaff.getStaffPhoneNo());
 		pstmt.setInt(6, renewStaff.getDepartmentId());
-		pstmt.setInt(7, staffId);
+		pstmt.setString(7, renewStaff.getStaffPassword());
+		pstmt.setInt(8, staffId);
 		
 		int rows=pstmt.executeUpdate();
 		
@@ -143,6 +146,7 @@ public class StaffDaoImpl implements StaffDao {
 			staff.setStaffPhoneNo(rs.getLong("staffPhoneNo"));
 			staff.setSpecialization(rs.getString("specialization"));
 			staff.setTiming(rs.getString("timing"));
+			staff.setStaffPassword(rs.getString("staffPassword"));
 		}
 		
 		closeConnection(con);
@@ -173,6 +177,7 @@ public class StaffDaoImpl implements StaffDao {
 			staff.setStaffPhoneNo(rs.getLong("staffPhoneNo"));
 			staff.setSpecialization(rs.getString("specialization"));
 			staff.setTiming(rs.getString("timing"));
+			staff.setStaffPassword(rs.getString("staffPassword"));
 			staffList.add(staff);
 		}
 		

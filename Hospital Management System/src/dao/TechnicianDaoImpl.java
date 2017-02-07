@@ -29,13 +29,14 @@ public class TechnicianDaoImpl implements TechnicianDao {
 		String timing=newTechnician.getTiming();
 		long technicianPhoneNo=newTechnician.getTechnicianPhoneNo();
 		int departmentId=newTechnician.getDepartmentId();
+		String technicianPassword=newTechnician.getTechnicianPassword();
 		
 		
 		
 		
 		pstmt=con.prepareStatement("insert into Technician (technicianId,technicianName" +
-				"timing,specialization,technicianAddress,technicianPhoneNo,departmentId) values" + 
-				"(?,?,?,?,?,?,?,?,?)");
+				"timing,specialization,technicianAddress,technicianPhoneNo,departmentId,technicianPassword) values" + 
+				"(?,?,?,?,?,?,?,?,?,?)");
 		
 		pstmt.setInt(1,technicianId);
 		pstmt.setString(2,technicianName );
@@ -44,6 +45,7 @@ public class TechnicianDaoImpl implements TechnicianDao {
 		pstmt.setString(5, technicianAddress);
 		pstmt.setLong(6, technicianPhoneNo);
 		pstmt.setInt(7, departmentId);
+		pstmt.setString(8, technicianPassword);
 		
 		
 		int rows=pstmt.executeUpdate();
@@ -89,7 +91,7 @@ public class TechnicianDaoImpl implements TechnicianDao {
 		
 		pstmt=con.prepareStatement("update technician set technicianName = ? , specialization =? "
 				+ ", timing=? ,technicianAddress=? "
-				+ ", technicianPhoneNo=?, departmentId=? "
+				+ ", technicianPhoneNo=?, departmentId=?, technicianPassword=? "
 				+ "where technicianId= ?");
 		
 
@@ -99,7 +101,8 @@ public class TechnicianDaoImpl implements TechnicianDao {
 		pstmt.setString(4, renewTechnician.getTechnicianAddress());
 		pstmt.setLong(5, renewTechnician.getTechnicianPhoneNo());
 		pstmt.setInt(6, renewTechnician.getDepartmentId());
-		pstmt.setInt(7, technicianId);
+		pstmt.setString(7, renewTechnician.getTechnicianPassword());
+		pstmt.setInt(8, technicianId);
 		
 		int rows=pstmt.executeUpdate();
 		
@@ -137,6 +140,7 @@ public class TechnicianDaoImpl implements TechnicianDao {
 			technician.setTechnicianPhoneNo(rs.getLong("technicianPhoneNo"));
 			technician.setSpecialization(rs.getString("specialization"));
 			technician.setTiming(rs.getString("timing"));
+			technician.setTechnicianPassword(rs.getString("technicianPassword"));
 		}
 		
 		closeConnection(con);
@@ -166,6 +170,7 @@ public class TechnicianDaoImpl implements TechnicianDao {
 			technician.setTechnicianPhoneNo(rs.getLong("technicianPhoneNo"));
 			technician.setSpecialization(rs.getString("specialization"));
 			technician.setTiming(rs.getString("timing"));
+			technician.setTechnicianPassword(rs.getString("technicianPassword"));
 			technicianList.add(technician);
 		}
 		

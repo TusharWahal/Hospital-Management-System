@@ -36,6 +36,7 @@ public class TechnicianDaoImplTest {
 		technician.setSpecialization("Hair Specialist");
 		technician.setTiming("5-6");
 		technician.setDepartmentId(0);
+		technician.setTechnicianPassword("pass");
 		assertTrue(dd.insertTechnician(technician));
 		
 		
@@ -54,6 +55,7 @@ public class TechnicianDaoImplTest {
 		technician.setSpecialization("Hair Specialist");
 		technician.setTiming("5-6");
 		technician.setDepartmentId(0);
+		technician.setTechnicianPassword("pass");
 		dd.insertTechnician(technician);
 		assertTrue(dd.deleteTechnician(1));
 	}
@@ -70,6 +72,7 @@ public class TechnicianDaoImplTest {
 		technician.setSpecialization("Hair Specialist");
 		technician.setTiming("5-6");
 		technician.setDepartmentId(0);
+		technician.setTechnicianPassword("pass");
 		dd.insertTechnician(technician);
 		Technician newtechnician=new Technician();
 		newtechnician.setTechnicianId(1);
@@ -79,6 +82,7 @@ public class TechnicianDaoImplTest {
 		newtechnician.setSpecialization("Hair Specialist");
 		newtechnician.setTiming("5-6");
 		newtechnician.setDepartmentId(0);
+		technician.setTechnicianPassword("pass");
 		assertTrue(dd.updateTechnician(1,newtechnician));
 		
 		//assertEquals(newtechnician.getTechnicianAddress(), dd.displayTechnician(1).getTechnicianAddress());
@@ -98,6 +102,7 @@ public class TechnicianDaoImplTest {
 		technician.setSpecialization("Hair Specialist");
 		technician.setTiming("5-6");
 		technician.setDepartmentId(0);
+		technician.setTechnicianPassword("pass");
 		dd.insertTechnician(technician);
 		
 		assertEquals(technician, dd.displayTechnician(1));

@@ -7,6 +7,7 @@ public class Staff extends Department {
 	String timing;
 	String staffAddress;
 	long staffPhoneNo;
+	String staffPassword;
 	public int getStaffId() {
 		return staffId;
 	}
@@ -42,5 +43,11 @@ public class Staff extends Department {
 	}
 	public void setStaffPhoneNo(long staffPhoneNo) {
 		this.staffPhoneNo = staffPhoneNo;
+	}
+	public String getStaffPassword() {
+		return staffPassword;
+	}
+	public void setStaffPassword(String staffPassword) {
+		this.staffPassword = staffPassword;
 	}
 }

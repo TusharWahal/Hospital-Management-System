@@ -27,9 +27,10 @@ public class DoctorDaoImpl implements DoctorDao {
 		String doctorTiming=newDoctor.getTiming();
 		long doctorPhoneNo=newDoctor.getDoctorPhoneNo();
 		int departmentId=newDoctor.getDepartmentId();
+		String doctorPassword=newDoctor.getDoctorPassword();
 		
 		pstmt=con.prepareStatement("insert into doctor (doctorId,doctorName,specialization,timing,doctorAddress,"
-				+ "doctorPhoneNo,departmentId) values" + "(?,?,?,?,?,?,?)");
+				+ "doctorPhoneNo,departmentId,doctorPassword) values" + "(?,?,?,?,?,?,?,?)");
 		
 		pstmt.setInt(1,doctorId);
 		pstmt.setString(2,doctorName);
@@ -38,6 +39,7 @@ public class DoctorDaoImpl implements DoctorDao {
 		pstmt.setString(5, doctorAddress);
 		pstmt.setLong(6, doctorPhoneNo);
 		pstmt.setInt(7, departmentId);
+		pstmt.setString(8, doctorPassword);
 		
 		int rows=pstmt.executeUpdate();
 		
@@ -85,7 +87,7 @@ public class DoctorDaoImpl implements DoctorDao {
 		
 		pstmt=con.prepareStatement("update doctor set doctorName = ? , specialization =? "
 				+ ", timing=? ,doctorAddress=? "
-				+ ", doctorPhoneNo=?, departmentId=? "
+				+ ", doctorPhoneNo=?, departmentId=?, doctorPassword=? "
 				+ "where doctorId= ?");
 		
 
@@ -95,7 +97,8 @@ public class DoctorDaoImpl implements DoctorDao {
 		pstmt.setString(4, renewDoctor.getDoctorAddress());
 		pstmt.setLong(5, renewDoctor.getDoctorPhoneNo());
 		pstmt.setInt(6, renewDoctor.getDepartmentId());
-		pstmt.setInt(7, doctorId);
+		pstmt.setString(7, renewDoctor.getDoctorPassword());
+		pstmt.setInt(8, doctorId);
 		
 		int rows=pstmt.executeUpdate();
 		
@@ -136,6 +139,7 @@ public class DoctorDaoImpl implements DoctorDao {
 			doctor.setDoctorPhoneNo(rs.getLong("doctorPhoneNo"));
 			doctor.setSpecialization(rs.getString("specialization"));
 			doctor.setTiming(rs.getString("timing"));
+			doctor.setDoctorPassword(rs.getString("doctorPassword"));
 		}
 		
 		closeConnection(con);
@@ -164,6 +168,7 @@ public class DoctorDaoImpl implements DoctorDao {
 			doctor.setDoctorPhoneNo(rs.getLong("doctorPhoneNo"));
 			doctor.setSpecialization(rs.getString("specialization"));
 			doctor.setTiming(rs.getString("timing"));
+			doctor.setDoctorPassword(rs.getString("doctorPassword"));
 			doctorList.add(doctor);
 		}
 		

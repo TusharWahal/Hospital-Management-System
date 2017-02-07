@@ -4,6 +4,7 @@ import static helper.ConnectToDb.closeConnection;
 import static helper.ConnectToDb.openConnection;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -26,15 +27,19 @@ public class ReceptionDaoImpl implements ReceptionDao {
 		String personId=newReception.getPersonId();
 		String purpose=newReception.getPurpose();
 		float payment=newReception.getPayment();
+		int doctorId=newReception.getDoctorId();
+		Date appointmentDate=newReception.getAppointmentDate();
 		
 		pstmt=con.prepareStatement("insert into Reception (regNo,personId" +
-				"purpose,payment) values" + 
-				"(?,?,?,?,)");
+				"purpose,payment,doctorId,appointmentDate,) values" + 
+				"(?,?,?,?,?,?)");
 		
 		pstmt.setInt(1,regNo);
 		pstmt.setString(2,personId );
 		pstmt.setString(3, purpose);
 		pstmt.setFloat(4, payment);
+		pstmt.setInt(5, doctorId);
+		pstmt.setDate(6, appointmentDate);
 		
 		
 		int rows=pstmt.executeUpdate();
@@ -79,13 +84,15 @@ public class ReceptionDaoImpl implements ReceptionDao {
 			
 			
 			pstmt=con.prepareStatement("update Reception set regNo = ? , personId =? "
-					+ ", purpose=? ,payment=? ");
+					+ ", purpose=? ,payment=? ,doctorId=? ,appointmentDate=? ");
 			
 
 			pstmt.setInt(1,renewReception.getRegNo());
 			pstmt.setString(2,renewReception.getPersonId());
 			pstmt.setString(3, renewReception.getPurpose());
 			pstmt.setFloat(4, renewReception.getPayment());
+			pstmt.setInt(5, renewReception.getDoctorId());
+			pstmt.setDate(6, renewReception.getAppointmentDate());
 			
 			int rows=pstmt.executeUpdate();
 			
@@ -120,6 +127,8 @@ con= openConnection();
 			reception.setPersonId(rs.getString("personId"));
 			reception.setPurpose(rs.getString("purpose"));
 			reception.setPayment(rs.getFloat("payment"));
+			reception.setDoctorId(rs.getInt("doctorId"));
+			reception.setAppointmentDate(rs.getDate("appointmentDate"));
 		}
 		
 		closeConnection(con);
@@ -132,7 +141,7 @@ con= openConnection();
 		 con= openConnection();
 			
 			
-			pstmt=con.prepareStatement("select * from technician ");
+			pstmt=con.prepareStatement("select * from reception ");
 			
 			
 			rs=pstmt.executeQuery();
@@ -146,6 +155,8 @@ con= openConnection();
 				reception.setPersonId(rs.getString("personId"));
 				reception.setPurpose(rs.getString("purpose"));
 				reception.setPayment(rs.getFloat("payment"));
+				reception.setDoctorId(rs.getInt("doctorId"));
+				reception.setAppointmentDate(rs.getDate("appointmentDate"));
 
 				receptionList.add(reception);
 			}

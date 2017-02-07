@@ -2,7 +2,9 @@ package junitTest;
 
 import static org.junit.Assert.*;
 
+import java.sql.Date;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 
 import org.junit.After;
 import org.junit.Before;
@@ -33,6 +35,10 @@ public class ReceptionDaoImplTest {
 		reception.setPersonId("Gurgaon");
 		reception.setPurpose("Dr Batra");
 		reception.setPayment(1234567890);
+		reception.setDoctorId(135);
+		String str="2015-03-31";  
+	    Date date=Date.valueOf(str);
+		reception.setAppointmentDate(date);
 		
 		assertTrue(dd.insertReception(reception));
 		
@@ -49,6 +55,10 @@ public class ReceptionDaoImplTest {
 		reception.setPersonId("Gurgaon");
 		reception.setPurpose("Dr Batra");
 		reception.setPayment(1234567890);
+		reception.setDoctorId(135);
+		String str="2015-03-31";  
+	    Date date=Date.valueOf(str);
+		reception.setAppointmentDate(date);
 		
 		dd.insertReception(reception);
 		assertTrue(dd.deleteReception(1));
@@ -63,6 +73,10 @@ public class ReceptionDaoImplTest {
 		reception.setPersonId("Gurgaon");
 		reception.setPurpose("Dr Batra");
 		reception.setPayment(1234567890);
+		reception.setDoctorId(135);
+		String str="2015-03-31";  
+	    Date date=Date.valueOf(str);
+		reception.setAppointmentDate(date);
 		
 		dd.insertReception(reception);
 		
@@ -89,6 +103,10 @@ public class ReceptionDaoImplTest {
 		reception.setPersonId("Gurgaon");
 		reception.setPurpose("Dr Batra");
 		reception.setPayment(1234567890);
+		reception.setDoctorId(135);
+		String str="2015-03-31";  
+	    Date date=Date.valueOf(str);
+		reception.setAppointmentDate(date);
 		
 		dd.insertReception(reception);
 		
