@@ -3,11 +3,27 @@ package bean;
 import java.sql.Date;
 
 public class Ward {
-	int bedNo;
-	String type;
-	String location;
-	Date dateAdmitted;
-	Date dateDischarged;
+	private int bedNo;
+	private String type;
+	private String location;
+	private Date dateAdmitted;
+	private Date dateDischarged;
+	private int staffId;
+	private int patientId;
+	
+	
+	public int getStaffId() {
+		return staffId;
+	}
+	public void setStaffId(int staffId) {
+		this.staffId = staffId;
+	}
+	public int getPatientId() {
+		return patientId;
+	}
+	public void setPatientId(int patientId) {
+		this.patientId = patientId;
+	}
 	public int getBedNo() {
 		return bedNo;
 	}
