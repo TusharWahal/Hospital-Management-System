@@ -6,6 +6,8 @@ public class Bill {
 	float bedCharges;
 	float tests;
 	float medicines;
+	int patientId;
+	int serialNo;
 	public int getNumber() {
 		return number;
 	}
@@ -35,5 +37,17 @@ public class Bill {
 	}
 	public void setMedicines(float medicines) {
 		this.medicines = medicines;
+	}
+	public int getPatientId() {
+		return patientId;
+	}
+	public void setPatientId(int patientId) {
+		this.patientId = patientId;
+	}
+	public int getSerialNo() {
+		return serialNo;
+	}
+	public void setSerialNo(int serialNo) {
+		this.serialNo = serialNo;
 	}
 }

@@ -4,16 +4,13 @@ import static helper.ConnectToDb.closeConnection;
 import static helper.ConnectToDb.openConnection;
 
 import java.sql.Connection;
-import java.sql.Date;
+//import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.TreeSet;
 
 import bean.Staff;
-import bean.Staff;
-import bean.Staff;
-
 public class StaffDaoImpl implements StaffDao {
 
 	private PreparedStatement pstmt=null;
@@ -45,6 +42,7 @@ public class StaffDaoImpl implements StaffDao {
 	pstmt.setString(4, specialization);
 	pstmt.setString(5, staffAddress);
 	pstmt.setLong(6, staffPhoneNo);
+	pstmt.setInt(7, departmentId);
 	
 	
 	int rows=pstmt.executeUpdate();

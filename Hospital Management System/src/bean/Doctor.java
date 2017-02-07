@@ -1,12 +1,13 @@
 package bean;
 
-public class Doctor extends Department {
+public class Doctor  {
 	int doctorId;
 	String doctorName;
 	String specialization;
 	String timing;
 	String doctorAddress;
 	long doctorPhoneNo;
+    int departmentId;
 	public int getDoctorId() {
 		return doctorId;
 	}
@@ -96,5 +97,11 @@ public class Doctor extends Department {
 		}
 		
 		return 1;
+	}
+	public int getDepartmentId() {
+		return departmentId;
+	}
+	public void setDepartmentId(int departmentId) {
+		this.departmentId = departmentId;
 	}
 }

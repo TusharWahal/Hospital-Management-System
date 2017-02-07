@@ -7,6 +7,15 @@ public class Staff extends Department {
 	String timing;
 	String staffAddress;
 	long staffPhoneNo;
+	int departmentId;
+	public int getDepartmentId()
+	{
+		return departmentId;
+	}
+	public void setDepartmentId(int departmentId)
+	{
+		this.departmentId = departmentId;
+	}
 	public int getStaffId() {
 		return staffId;
 	}

@@ -10,7 +10,6 @@ import java.sql.SQLException;
 import java.util.TreeSet;
 
 import bean.Bill;
-import bean.Person;
 
 public class BillDaoImpl implements BillDao {
 	

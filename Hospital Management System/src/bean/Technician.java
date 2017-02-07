@@ -7,6 +7,7 @@ public class Technician {
 	String timing;
 	String technicianAddress;
 	long technicianPhoneNo;
+	int departmentId;
 	public int getTechnicianId() {
 		return technicianId;
 	}
@@ -44,12 +45,10 @@ public class Technician {
 		this.technicianPhoneNo = technicianPhoneNo;
 	}
 	public int getDepartmentId() {
-		// TODO Auto-generated method stub
-		return 0;
+		return departmentId;
 	}
-	public void setDepartmentId(int int1) {
-		// TODO Auto-generated method stub
-		
+	public void setDepartmentId(int departmentId) {
+		this.departmentId=departmentId;
 	}
 	
 }

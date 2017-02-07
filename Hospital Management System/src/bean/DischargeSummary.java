@@ -12,6 +12,11 @@ public class DischargeSummary {
 	String operativeFindings;
 	String treatmentGiven;
 	String recommendations;
+	int patientId;
+	int otId;
+	int doctorId;
+	int bedNo;
+	
 	public int getSerialNo() {
 		return serialNo;
 	}
@@ -65,5 +70,29 @@ public class DischargeSummary {
 	}
 	public void setRecommendations(String recommendations) {
 		this.recommendations = recommendations;
+	}
+	public int getPatientId() {
+		return patientId;
+	}
+	public void setPatientId(int patientId) {
+		this.patientId = patientId;
+	}
+	public int getOtId() {
+		return otId;
+	}
+	public void setOtId(int otId) {
+		this.otId = otId;
+	}
+	public int getDoctorId() {
+		return doctorId;
+	}
+	public void setDoctorId(int doctorId) {
+		this.doctorId = doctorId;
+	}
+	public int getBedNo() {
+		return bedNo;
+	}
+	public void setBedNo(int bedNo) {
+		this.bedNo = bedNo;
 	}
 }
