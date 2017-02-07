@@ -134,6 +134,8 @@ public class DischargeSummaryDaoImplTest {
 		 dischargeSummary.setRecommendations("Regular CheckUp");
 		 dischargeSummaryList.add(dischargeSummary);
 		 
+		 dsd.insertDischargeSummary(dischargeSummary);
+		 
 		 assertEquals(dischargeSummary, dsd.displayAllDischargeSummarys());
 	}
 
