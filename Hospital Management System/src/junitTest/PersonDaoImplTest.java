@@ -43,9 +43,8 @@ public class PersonDaoImplTest {
 		person.setPersonAddress("Delhi");
 		person.setPersonPhoneNo(25299266);
 		person.setPersonPassword("pass");
-		pd.insertPerson(person);
 		
-		assertEquals(person, pd.displayPerson(1));
+		assertTrue(pd.insertPerson(person));
 	}
 
 	@Test
