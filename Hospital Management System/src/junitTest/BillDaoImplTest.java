@@ -29,6 +29,15 @@ public class BillDaoImplTest {
 	@Test
 	public void testInsertBill() throws ClassNotFoundException, SQLException {
 		bd.deleteBill(1);
+		
+		 Bill bill=new Bill();
+		 bill.setNumber(1);
+		 bill.setDoctorVisit(1);
+		 bill.setBedCharges(1);
+		 bill.setTests(1);
+		 bill.setMedicines(1);
+		 
+		 assertTrue(bd.insertBill(bill));
 	}
 
 	@Test
@@ -41,7 +50,7 @@ public class BillDaoImplTest {
 		 bill.setTests(1);
 		 bill.setMedicines(1);
 		 
-		 assertTrue(bd.insertBill(bill));
+		 assertTrue(bd.deleteBill(bill.getNumber()));
 	}
 
 	@Test
@@ -83,7 +92,7 @@ public class BillDaoImplTest {
 		 bill.setMedicines(1);
 		 bd.insertBill(bill);
 		 
-		 assertEquals(bill, bd.displayBill(1));
+		 assertEquals(bill.getNumber(), bd.displayBill(1).getNumber());
 	}
 
 	@Test

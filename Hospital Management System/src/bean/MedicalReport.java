@@ -9,6 +9,21 @@ public class MedicalReport {
 	String investigations;
 	String tests;
 	String recommendations;
+	int regNo;
+	int doctorId;
+	int technicianId;
+	public int getDoctorId() {
+		return doctorId;
+	}
+	public void setDoctorId(int doctorId) {
+		this.doctorId = doctorId;
+	}
+	public int getTechnicianId() {
+		return doctorId;
+	}
+	public void setTechnicianId(int technicianId) {
+		this.technicianId = technicianId;
+	}
 	public int getPatientId() {
 		return patientId;
 	}
@@ -44,5 +59,11 @@ public class MedicalReport {
 	}
 	public void setRecommendations(String recommendations) {
 		this.recommendations = recommendations;
+	}
+	public int getRegNo() {
+		return regNo;
+	}
+	public void setRegNo(int regNo) {
+		this.regNo = regNo;
 	}
 }

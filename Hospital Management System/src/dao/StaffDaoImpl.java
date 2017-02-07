@@ -11,8 +11,6 @@ import java.sql.SQLException;
 import java.util.TreeSet;
 
 import bean.Staff;
-import bean.Staff;
-import bean.Staff;
 
 public class StaffDaoImpl implements StaffDao {
 
@@ -38,7 +36,7 @@ public class StaffDaoImpl implements StaffDao {
 	
 	pstmt=con.prepareStatement("insert into Staff (staffId,staffName" +
 			"timing,specialization,staffAddress,staffPhoneNo,departmentId,staffPassword) values" + 
-			"(?,?,?,?,?,?,?,?,?,?)");
+			"(?,?,?,?,?,?,?,?)");
 	
 	pstmt.setInt(1,staffId);
 	pstmt.setString(2,staffName );
@@ -46,7 +44,8 @@ public class StaffDaoImpl implements StaffDao {
 	pstmt.setString(4, specialization);
 	pstmt.setString(5, staffAddress);
 	pstmt.setLong(6, staffPhoneNo);
-	pstmt.setString(7, staffPassword);
+	pstmt.setString(8, staffPassword);
+	pstmt.setInt(7, departmentId);
 	
 	
 	int rows=pstmt.executeUpdate();

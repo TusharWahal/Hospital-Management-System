@@ -7,8 +7,8 @@ public class Technician {
 	String timing;
 	String technicianAddress;
 	long technicianPhoneNo;
-	int departmentId;
 	String technicianPassword;
+	int departmentId;
 	public int getTechnicianId() {
 		return technicianId;
 	}
@@ -45,17 +45,17 @@ public class Technician {
 	public void setTechnicianPhoneNo(long technicianPhoneNo) {
 		this.technicianPhoneNo = technicianPhoneNo;
 	}
-	public int getDepartmentId() {
-		return departmentId;
-	}
-	public void setDepartmentId(int departmentId) {
-		this.departmentId = departmentId;	
-	}
+	
 	public String getTechnicianPassword() {
-		return technicianPassword;
+		return technicianPassword;}
+	public int getDepartmentId() {	
+		return departmentId;
 	}
 	public void setTechnicianPassword(String technicianPassword) {
 		this.technicianPassword = technicianPassword;
+		}
+	public void setDepartmentId(int departmentId) {
+		this.departmentId=departmentId;
 	}
 	
 }

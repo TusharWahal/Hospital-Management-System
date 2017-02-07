@@ -9,7 +9,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import bean.Department;
-import bean.Doctor;
+
 import dao.DepartmentDaoImpl;
 
 public class DepartmentDaoImplTest {

@@ -5,6 +5,7 @@ public class ICU {
 	String examination;
 	String investigations;
 	String operationDescription;
+	
 	public int getIcuId() {
 		return icuId;
 	}

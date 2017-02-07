@@ -7,6 +7,7 @@ public class Emergency {
 	Date dateOfAdmission;
 	String operationDone;
 	String treatment;
+	int regNo;
 	public int getEmergencyPatientId() {
 		return emergencyPatientId;
 	}
@@ -30,5 +31,11 @@ public class Emergency {
 	}
 	public void setTreatment(String treatment) {
 		this.treatment = treatment;
+	}
+	public int getRegNo() {
+		return regNo;
+	}
+	public void setRegNo(int regNo) {
+		this.regNo = regNo;
 	}
 }
