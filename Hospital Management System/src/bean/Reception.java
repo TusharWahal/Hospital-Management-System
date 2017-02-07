@@ -2,8 +2,16 @@ package bean;
 
 public class Reception {
 	int regNo;
+	String personId;
 	String purpose;
 	float payment;
+	
+	public String getPersonId() {
+		return personId;
+	}
+	public void setPersonId(String personId) {
+		this.personId = personId;
+	}
 	public int getRegNo() {
 		return regNo;
 	}

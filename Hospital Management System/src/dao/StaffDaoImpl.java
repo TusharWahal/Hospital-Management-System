@@ -11,6 +11,8 @@ import java.sql.SQLException;
 import java.util.TreeSet;
 
 import bean.Staff;
+import bean.Staff;
+import bean.Staff;
 
 public class StaffDaoImpl implements StaffDao {
 
@@ -58,27 +60,126 @@ public class StaffDaoImpl implements StaffDao {
 	}
 
 	@Override
-	public boolean deleteStaff(int staffId) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean deleteStaff(int staffId) throws ClassNotFoundException, SQLException {
+		con= openConnection();
+		
+		
+		pstmt=con.prepareStatement("delete from staff where staffId = ?");
+		
+		pstmt.setInt(1,staffId);
+		
+		int rows=pstmt.executeUpdate();
+		
+		if(rows>0)
+		{
+			closeConnection(con);
+			return true;
+		}
+		else 
+		{
+			closeConnection(con);
+			return false;
+		}
+
 	}
 
 	@Override
-	public boolean updateStaff(int staffId, Staff renewStaff) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean updateStaff(int staffId, Staff renewStaff) throws ClassNotFoundException, SQLException {
+
+		con= openConnection();
+		
+		
+		pstmt=con.prepareStatement("update staff set staffName = ? , specialization =? "
+				+ ", timing=? ,staffAddress=? "
+				+ ", staffPhoneNo=?, departmentId=? "
+				+ "where staffId= ?");
+		
+
+		pstmt.setString(1,renewStaff.getStaffName());
+		pstmt.setString(2,renewStaff.getSpecialization());
+		pstmt.setString(3, renewStaff.getTiming());
+		pstmt.setString(4, renewStaff.getStaffAddress());
+		pstmt.setLong(5, renewStaff.getStaffPhoneNo());
+		pstmt.setInt(6, renewStaff.getDepartmentId());
+		pstmt.setInt(7, staffId);
+		
+		int rows=pstmt.executeUpdate();
+		
+		if(rows>0)
+		{
+			closeConnection(con);
+			return true;
+		}
+		else 
+			{
+			closeConnection(con);
+			return false;
+			}
+		
+
+		
+
 	}
 
 	@Override
-	public Staff displayStaff(int staffId) {
-		// TODO Auto-generated method stub
-		return null;
+	public Staff displayStaff(int staffId) throws ClassNotFoundException, SQLException {
+
+
+		con= openConnection();
+		
+		
+		pstmt=con.prepareStatement("select * from staff where staffId = ?");
+		pstmt.setInt(1,staffId);
+		
+		rs=pstmt.executeQuery();
+		
+		Staff staff=new Staff();
+		while(rs.next())
+		{
+			staff.setStaffId(rs.getInt("staffId"));
+			staff.setDepartmentId(rs.getInt("departmentId"));
+			staff.setStaffAddress(rs.getString("staffAddress"));
+			staff.setStaffName(rs.getString("staffName"));
+			staff.setStaffPhoneNo(rs.getLong("staffPhoneNo"));
+			staff.setSpecialization(rs.getString("specialization"));
+			staff.setTiming(rs.getString("timing"));
+		}
+		
+		closeConnection(con);
+		return staff;
+
 	}
 
 	@Override
-	public TreeSet<Staff> displayAllStaffs() {
-		// TODO Auto-generated method stub
-		return null;
+	public TreeSet<Staff> displayAllStaffs() throws ClassNotFoundException, SQLException {
+	
+		con= openConnection();
+		
+		
+		pstmt=con.prepareStatement("select * from staff ");
+		
+		
+		rs=pstmt.executeQuery();
+		
+		TreeSet<Staff> staffList=new TreeSet<Staff>();
+		
+		Staff staff=new Staff();
+		while(rs.next())
+		{
+			staff.setStaffId(rs.getInt("staffId"));
+			staff.setDepartmentId(rs.getInt("departmentId"));
+			staff.setStaffAddress(rs.getString("staffAddress"));
+			staff.setStaffName(rs.getString("staffName"));
+			staff.setStaffPhoneNo(rs.getLong("staffPhoneNo"));
+			staff.setSpecialization(rs.getString("specialization"));
+			staff.setTiming(rs.getString("timing"));
+			staffList.add(staff);
+		}
+		
+		closeConnection(con);
+
+		return staffList;
+
 	}
 
 }
