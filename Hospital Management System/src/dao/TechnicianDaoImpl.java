@@ -43,6 +43,7 @@ public class TechnicianDaoImpl implements TechnicianDao {
 		pstmt.setString(4, specialization);
 		pstmt.setString(5, technicianAddress);
 		pstmt.setLong(6, technicianPhoneNo);
+		pstmt.setInt(7, departmentId);
 		
 		
 		int rows=pstmt.executeUpdate();
