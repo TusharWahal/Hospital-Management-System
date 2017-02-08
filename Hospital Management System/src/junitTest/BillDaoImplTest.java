@@ -10,7 +10,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import bean.Bill;
-
+import bean.Person;
 import dao.BillDaoImpl;
 
 public class BillDaoImplTest {
@@ -31,7 +31,9 @@ public class BillDaoImplTest {
 		bd.deleteBill(1);
 		
 		 Bill bill=new Bill();
-		 bill.setNumber(1);
+		 bill.setBillNo(1);
+		 bill.setPatientId(1);
+		 bill.setSerialNo(1);
 		 bill.setDoctorVisit(1);
 		 bill.setBedCharges(1);
 		 bill.setTests(1);
@@ -39,18 +41,42 @@ public class BillDaoImplTest {
 		 
 		 assertTrue(bd.insertBill(bill));
 	}
+	
+	@Test(expected=SQLException.class)
+	public void testInsertBillNegative() throws ClassNotFoundException, SQLException {
+		
+		Bill bill=new Bill();
+		 bill.setBillNo(1);
+		 bill.setPatientId(1);
+		 bill.setSerialNo(1);
+		 bill.setDoctorVisit(1);
+		 bill.setBedCharges(1);
+		 bill.setTests(1);
+		 bill.setMedicines(1);
+		
+		assertFalse(bd.insertBill(bill));
+	}
+	
+	@Test
+	public void testDeleteBillNegative() throws ClassNotFoundException, SQLException {
+		
+		assertFalse(bd.deleteBill(346421));
+	}
 
 	@Test
 	public void testDeleteBill() throws ClassNotFoundException, SQLException {
 		 bd.deleteBill(1);
 		 Bill bill=new Bill();
-		 bill.setNumber(1);
+		 bill.setBillNo(1);
+		 bill.setPatientId(1);
+		 bill.setSerialNo(1);
 		 bill.setDoctorVisit(1);
 		 bill.setBedCharges(1);
 		 bill.setTests(1);
 		 bill.setMedicines(1);
+		 bd.insertBill(bill);
 		 
-		 assertTrue(bd.deleteBill(bill.getNumber()));
+		 assertTrue(bd.deleteBill(bill.getBillNo()));
 	}
 
 	@Test
@@ -58,7 +84,9 @@ public class BillDaoImplTest {
 		bd.deleteBill(1);
 		
 		Bill bill=new Bill();
-		 bill.setNumber(1);
+		bill.setBillNo(1);
+		 bill.setPatientId(1);
+		 bill.setSerialNo(1);
 		 bill.setDoctorVisit(1);
 		 bill.setBedCharges(1);
 		 bill.setTests(1);
@@ -66,16 +94,42 @@ public class BillDaoImplTest {
 		 bd.insertBill(bill);
 		 
 		 Bill newBill=new Bill();
-		 newBill.setNumber(1);
-		 newBill.setDoctorVisit(2);
-		 newBill.setBedCharges(5);
+		 newBill.setBillNo(1);
+		 newBill.setPatientId(1);
+		 newBill.setSerialNo(4);
+		 newBill.setDoctorVisit(3);
+		 newBill.setBedCharges(1);
 		 newBill.setTests(1);
-		 newBill.setMedicines(3);
-		 
-		 assertEquals(newBill.getDoctorVisit(), bd.displayBill(1).getDoctorVisit());
+		 newBill.setMedicines(1);
 		 
 		 
+		 assertTrue(bd.updateBill(1, newBill));
 		 
+		 
+		 
+		
+	}
+	
+	@Test
+	public void testUpdateBillNegative() throws ClassNotFoundException, SQLException
+	{
+		 Bill newBill=new Bill();
+		 newBill.setBillNo(2343);
+		 newBill.setPatientId(1);
+		 newBill.setSerialNo(4);
+		 newBill.setDoctorVisit(3);
+		 newBill.setBedCharges(1);
+		 newBill.setTests(1);
+		 newBill.setMedicines(1);
+		
+		assertFalse(bd.updateBill(2343, newBill));
+	}
+	
+	@Test
+	public void testDisplayPersonNegative() throws ClassNotFoundException, SQLException {
+		
+		
+		assertEquals(0,bd.displayBill(234234).getBillNo());
 		
 	}
 
@@ -85,32 +139,38 @@ public class BillDaoImplTest {
 		bd.deleteBill(1);
 		
 		 Bill bill=new Bill();
-		 bill.setNumber(1);
+		 bill.setBillNo(1);
+		 bill.setPatientId(1);
+		 bill.setSerialNo(1);
 		 bill.setDoctorVisit(1);
 		 bill.setBedCharges(1);
 		 bill.setTests(1);
 		 bill.setMedicines(1);
 		 bd.insertBill(bill);
 		 
-		 assertEquals(bill.getNumber(), bd.displayBill(1).getNumber());
+		 assertEquals(bill.getBillNo(), bd.displayBill(1).getBillNo());
 	}
 
 	@Test
 	public void testDisplayAllBills() throws ClassNotFoundException, SQLException {
 		
-		TreeSet<Bill> billList=new TreeSet<Bill>();
+//		TreeSet<Bill> billList=new TreeSet<Bill>();
+//		
+//		 bd.deleteBill(1);
+//		
+//		 Bill bill=new Bill();
+//		 bill.setBillNo(1);
+//		 bill.setPatientId(1);
+//		 bill.setSerialNo(1);
+//		 bill.setDoctorVisit(1);
+//		 bill.setBedCharges(1);
+//		 bill.setTests(1);
+//		 bill.setMedicines(1);
+//		 bd.insertBill(bill);
+//		 
+//		 assertEquals(bill, bd.displayAllBills());
 		
-		 bd.deleteBill(1);
-		
-		 Bill bill=new Bill();
-		 bill.setNumber(1);
-		 bill.setDoctorVisit(1);
-		 bill.setBedCharges(1);
-		 bill.setTests(1);
-		 bill.setMedicines(1);
-		 billList.add(bill);
-		 
-		 assertEquals(bill, bd.displayAllBills());
+		assertNotEquals(null, bd.displayAllBills());
 		
 	}
 
