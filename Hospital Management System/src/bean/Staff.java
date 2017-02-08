@@ -1,6 +1,6 @@
 package bean;
 
-public class Staff  {
+public class Staff implements Comparable<Staff> {
 	int staffId;
 	String staffName;
 	String specialization;
@@ -56,7 +56,70 @@ public class Staff  {
 	public String getStaffPassword() {
 		return staffPassword;
 	}
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + departmentId;
+		result = prime * result + ((specialization == null) ? 0 : specialization.hashCode());
+		result = prime * result + ((staffAddress == null) ? 0 : staffAddress.hashCode());
+		result = prime * result + staffId;
+		result = prime * result + ((staffName == null) ? 0 : staffName.hashCode());
+		result = prime * result + ((staffPassword == null) ? 0 : staffPassword.hashCode());
+		result = prime * result + (int) (staffPhoneNo ^ (staffPhoneNo >>> 32));
+		result = prime * result + ((timing == null) ? 0 : timing.hashCode());
+		return result;
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Staff other = (Staff) obj;
+		if (departmentId != other.departmentId)
+			return false;
+		if (specialization == null) {
+			if (other.specialization != null)
+				return false;
+		} else if (!specialization.equals(other.specialization))
+			return false;
+		if (staffAddress == null) {
+			if (other.staffAddress != null)
+				return false;
+		} else if (!staffAddress.equals(other.staffAddress))
+			return false;
+		if (staffId != other.staffId)
+			return false;
+		if (staffName == null) {
+			if (other.staffName != null)
+				return false;
+		} else if (!staffName.equals(other.staffName))
+			return false;
+		if (staffPassword == null) {
+			if (other.staffPassword != null)
+				return false;
+		} else if (!staffPassword.equals(other.staffPassword))
+			return false;
+		if (staffPhoneNo != other.staffPhoneNo)
+			return false;
+		if (timing == null) {
+			if (other.timing != null)
+				return false;
+		} else if (!timing.equals(other.timing))
+			return false;
+		return true;
+	}
 	public void setStaffPassword(String staffPassword) {
 		this.staffPassword = staffPassword;
+	}
+	@Override
+	public int compareTo(Staff o) {
+		if(this.equals(o))
+			return 0;
+		else
+			return 1;
 	}
 }

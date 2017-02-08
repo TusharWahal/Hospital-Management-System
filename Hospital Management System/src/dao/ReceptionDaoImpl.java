@@ -30,8 +30,8 @@ public class ReceptionDaoImpl implements ReceptionDao {
 		int doctorId=newReception.getDoctorId();
 		Date appointmentDate=newReception.getAppointmentDate();
 		
-		pstmt=con.prepareStatement("insert into Reception (regNo,personId" +
-				"purpose,payment,doctorId,appointmentDate,) values" + 
+		pstmt=con.prepareStatement("insert into Reception(regNo,personId," +
+				"purpose,payment,doctorId,regDate) values " + 
 				"(?,?,?,?,?,?)");
 		
 		pstmt.setInt(1,regNo);
@@ -83,16 +83,16 @@ public class ReceptionDaoImpl implements ReceptionDao {
 		   con= openConnection();
 			
 			
-			pstmt=con.prepareStatement("update Reception set regNo = ? , personId =? "
-					+ ", purpose=? ,payment=? ,doctorId=? ,appointmentDate=? ");
+			pstmt=con.prepareStatement("update Reception set  personId =? "
+					+ ", purpose=? ,payment=? ,doctorId=? ,regDate=? where regNo = ?  ");
 			
 
-			pstmt.setInt(1,renewReception.getRegNo());
-			pstmt.setString(2,renewReception.getPersonId());
-			pstmt.setString(3, renewReception.getPurpose());
-			pstmt.setFloat(4, renewReception.getPayment());
-			pstmt.setInt(5, renewReception.getDoctorId());
-			pstmt.setDate(6, renewReception.getAppointmentDate());
+			pstmt.setInt(6,regNo);
+			pstmt.setString(1,renewReception.getPersonId());
+			pstmt.setString(2, renewReception.getPurpose());
+			pstmt.setFloat(3, renewReception.getPayment());
+			pstmt.setInt(4, renewReception.getDoctorId());
+			pstmt.setDate(5, renewReception.getAppointmentDate());
 			
 			int rows=pstmt.executeUpdate();
 			
@@ -128,7 +128,7 @@ con= openConnection();
 			reception.setPurpose(rs.getString("purpose"));
 			reception.setPayment(rs.getFloat("payment"));
 			reception.setDoctorId(rs.getInt("doctorId"));
-			reception.setAppointmentDate(rs.getDate("appointmentDate"));
+			reception.setAppointmentDate(rs.getDate("regDate"));
 		}
 		
 		closeConnection(con);
@@ -156,7 +156,7 @@ con= openConnection();
 				reception.setPurpose(rs.getString("purpose"));
 				reception.setPayment(rs.getFloat("payment"));
 				reception.setDoctorId(rs.getInt("doctorId"));
-				reception.setAppointmentDate(rs.getDate("appointmentDate"));
+				reception.setAppointmentDate(rs.getDate("regDate"));
 
 				receptionList.add(reception);
 			}

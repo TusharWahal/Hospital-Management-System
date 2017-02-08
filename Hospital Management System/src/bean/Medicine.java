@@ -1,6 +1,6 @@
 package bean;
 
-public class Medicine {
+public class Medicine implements Comparable<Medicine> {
 	int sNo;
 	String medicineName;
 	int quantity;
@@ -50,4 +50,56 @@ public class Medicine {
 	public void setBillNo(int billNo) {
 		this.billNo = billNo;
 	}
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + billNo;
+		result = prime * result + ((dosage == null) ? 0 : dosage.hashCode());
+		result = prime * result + ((medicineName == null) ? 0 : medicineName.hashCode());
+		result = prime * result + patientId;
+		result = prime * result + Float.floatToIntBits(price);
+		result = prime * result + quantity;
+		result = prime * result + sNo;
+		return result;
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Medicine other = (Medicine) obj;
+		if (billNo != other.billNo)
+			return false;
+		if (dosage == null) {
+			if (other.dosage != null)
+				return false;
+		} else if (!dosage.equals(other.dosage))
+			return false;
+		if (medicineName == null) {
+			if (other.medicineName != null)
+				return false;
+		} else if (!medicineName.equals(other.medicineName))
+			return false;
+		if (patientId != other.patientId)
+			return false;
+		if (Float.floatToIntBits(price) != Float.floatToIntBits(other.price))
+			return false;
+		if (quantity != other.quantity)
+			return false;
+		if (sNo != other.sNo)
+			return false;
+		return true;
+	}
+	@Override
+	public int compareTo(Medicine o) {
+		if(this.equals(o))
+				return 0;
+		else 
+			return 1;
+	}
+	
 }

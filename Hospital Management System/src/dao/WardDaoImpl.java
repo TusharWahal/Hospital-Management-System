@@ -143,7 +143,7 @@ public class WardDaoImpl implements WardDao {
 		{
 			ward.setBedNo(rs.getInt("bedNo"));
 			ward.setLocation(rs.getString("location"));
-			ward.setType(rs.getString("wardType"));
+			ward.setType(rs.getString("Type"));
 			ward.setDateAdmitted(rs.getDate("dateAdmitted"));
 			ward.setDateDischarged(rs.getDate("dateDischarged"));
 			ward.setPatientId(rs.getInt("patientId"));
@@ -170,7 +170,7 @@ public class WardDaoImpl implements WardDao {
 		{
 			ward.setBedNo(rs.getInt("bedNo"));
 			ward.setLocation(rs.getString("location"));
-			ward.setType(rs.getString("wardType"));
+			ward.setType(rs.getString("Type"));
 			ward.setDateAdmitted(rs.getDate("dateAdmitted"));
 			ward.setDateDischarged(rs.getDate("dateDischarged"));
 			ward.setPatientId(rs.getInt("patientId"));

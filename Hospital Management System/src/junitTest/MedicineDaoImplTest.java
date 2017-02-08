@@ -34,9 +34,9 @@ public class MedicineDaoImplTest {
 		medicine.setMedicineName("abc");
 		medicine.setQuantity(2);
 		medicine.setDosage("def");
-		medicine.setPrice(123);
-		medicine.setPatientId(123);
-		medicine.setBillNo(12345);
+		medicine.setPrice(0);
+		medicine.setPatientId(0);
+		medicine.setBillNo(0);
 		assertTrue(md.insertMedicine(medicine));
 	}
 
@@ -47,9 +47,9 @@ public class MedicineDaoImplTest {
 		medicine.setMedicineName("abc");
 		medicine.setQuantity(2);
 		medicine.setDosage("def");
-		medicine.setPrice(123);
-		medicine.setPatientId(123);
-		medicine.setBillNo(12345);
+		medicine.setPrice(0);
+		medicine.setPatientId(0);
+		medicine.setBillNo(0);
 		
 		assertFalse(md.insertMedicine(medicine));
 	}
@@ -62,9 +62,9 @@ public class MedicineDaoImplTest {
 		medicine.setMedicineName("abc");
 		medicine.setQuantity(2);
 		medicine.setDosage("def");
-		medicine.setPrice(123);
-		medicine.setPatientId(123);
-		medicine.setBillNo(12345);
+		medicine.setPrice(0);
+		medicine.setPatientId(0);
+		medicine.setBillNo(0);
 		md.insertMedicine(medicine);
 		assertTrue(md.deleteMedicine(1));
 	}
@@ -82,18 +82,18 @@ public class MedicineDaoImplTest {
 		medicine.setMedicineName("abc");
 		medicine.setQuantity(2);
 		medicine.setDosage("def");
-		medicine.setPrice(123);
-		medicine.setPatientId(123);
-		medicine.setBillNo(12345);
+		medicine.setPrice(0);
+		medicine.setPatientId(0);
+		medicine.setBillNo(0);
 		md.insertMedicine(medicine);
 		Medicine newmedicine = new Medicine();
 		newmedicine.setsNo(1);
 		newmedicine.setMedicineName("abc");
 		newmedicine.setQuantity(2);
 		newmedicine.setDosage("def");
-		newmedicine.setPrice(123);
-		newmedicine.setPatientId(123);
-		newmedicine.setBillNo(12345);
+		newmedicine.setPrice(0);
+		newmedicine.setPatientId(0);
+		newmedicine.setBillNo(0);
 		assertTrue(md.updateMedicine(1,newmedicine));
 
 	}
@@ -106,9 +106,9 @@ public class MedicineDaoImplTest {
 		newmedicine.setMedicineName("abc");
 		newmedicine.setQuantity(2);
 		newmedicine.setDosage("def");
-		newmedicine.setPrice(123);
-		newmedicine.setPatientId(123);
-		newmedicine.setBillNo(12345);
+		newmedicine.setPrice(0);
+		newmedicine.setPatientId(0);
+		newmedicine.setBillNo(0);
 		
 		assertFalse(md.updateMedicine(2343, newmedicine));
 	}
@@ -121,9 +121,9 @@ public class MedicineDaoImplTest {
 		medicine.setMedicineName("abc");
 		medicine.setQuantity(2);
 		medicine.setDosage("def");
-		medicine.setPrice(123);
-		medicine.setPatientId(123);
-		medicine.setBillNo(12345);
+		medicine.setPrice(0);
+		medicine.setPatientId(0);
+		medicine.setBillNo(0);
 		md.insertMedicine(medicine);
 		
 		assertEquals(medicine, md.displayMedicine(1));

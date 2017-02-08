@@ -120,7 +120,7 @@ public class PersonDaoImplTest {
 		newPerson.setPersonPassword("pass");
 		//pd.updatePerson("1",newPerson);
 		
-		assertTrue(pd.updatePerson("2", newPerson));
+		assertTrue(pd.updatePerson("1", newPerson));
 		//assertEquals(newPerson.getPersonAddress(), pd.displayPerson("1").getPersonAddress());
 	}
 

@@ -2,7 +2,7 @@ package bean;
 
 import java.sql.Date;
 
-public class Ward {
+public class Ward implements Comparable<Ward> {
 	private int bedNo;
 	private String type;
 	private String location;
@@ -54,4 +54,62 @@ public class Ward {
 	public void setDateDischarged(Date dateDischarged) {
 		this.dateDischarged = dateDischarged;
 	}
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + bedNo;
+		result = prime * result + ((dateAdmitted == null) ? 0 : dateAdmitted.hashCode());
+		result = prime * result + ((dateDischarged == null) ? 0 : dateDischarged.hashCode());
+		result = prime * result + ((location == null) ? 0 : location.hashCode());
+		result = prime * result + patientId;
+		result = prime * result + staffId;
+		result = prime * result + ((type == null) ? 0 : type.hashCode());
+		return result;
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Ward other = (Ward) obj;
+		if (bedNo != other.bedNo)
+			return false;
+		if (dateAdmitted == null) {
+			if (other.dateAdmitted != null)
+				return false;
+		} else if (!dateAdmitted.equals(other.dateAdmitted))
+			return false;
+		if (dateDischarged == null) {
+			if (other.dateDischarged != null)
+				return false;
+		} else if (!dateDischarged.equals(other.dateDischarged))
+			return false;
+		if (location == null) {
+			if (other.location != null)
+				return false;
+		} else if (!location.equals(other.location))
+			return false;
+		if (patientId != other.patientId)
+			return false;
+		if (staffId != other.staffId)
+			return false;
+		if (type == null) {
+			if (other.type != null)
+				return false;
+		} else if (!type.equals(other.type))
+			return false;
+		return true;
+	}
+	@Override
+	public int compareTo(Ward o) {
+		if(this.equals(o))
+			return 0;
+		else
+			return 1;
+	}
+	
 }

@@ -32,10 +32,10 @@ public class ReceptionDaoImplTest {
 		dd.deleteReception(1);
 		Reception reception=new Reception();
 		reception.setRegNo(1);
-		reception.setPersonId("Gurgaon");
-		reception.setPurpose("Dr Batra");
-		reception.setPayment(1234567890);
-		reception.setDoctorId(135);
+		reception.setPersonId("ABCD");
+		reception.setPurpose("asjkdhasd");
+		reception.setPayment(12345);
+		reception.setDoctorId(0);
 		String str="2015-03-31";  
 	    Date date=Date.valueOf(str);
 		reception.setAppointmentDate(date);
@@ -52,10 +52,10 @@ public class ReceptionDaoImplTest {
 		dd.deleteReception(1);
 		Reception reception=new Reception();
 		reception.setRegNo(1);
-		reception.setPersonId("Gurgaon");
+		reception.setPersonId("ABCD");
 		reception.setPurpose("Dr Batra");
-		reception.setPayment(1234567890);
-		reception.setDoctorId(135);
+		reception.setPayment(0);
+		reception.setDoctorId(0);
 		String str="2015-03-31";  
 	    Date date=Date.valueOf(str);
 		reception.setAppointmentDate(date);
@@ -70,10 +70,10 @@ public class ReceptionDaoImplTest {
 		dd.deleteReception(1);
 		Reception reception=new Reception();
 		reception.setRegNo(1);
-		reception.setPersonId("Gurgaon");
+		reception.setPersonId("ABCD");
 		reception.setPurpose("Dr Batra");
-		reception.setPayment(1234567890);
-		reception.setDoctorId(135);
+		reception.setPayment(0);
+		reception.setDoctorId(0);
 		String str="2015-03-31";  
 	    Date date=Date.valueOf(str);
 		reception.setAppointmentDate(date);
@@ -83,9 +83,9 @@ public class ReceptionDaoImplTest {
 		Reception newreception=new Reception();
 		
 		newreception.setRegNo(1);
-		newreception.setPersonId("Mumbai");
+		newreception.setPersonId("ABCD");
 		newreception.setPurpose("Dr Batra");
-		newreception.setPayment(1876543210);
+		newreception.setPayment(18);
 		
 		assertTrue(dd.updateReception(1,newreception));
 		
@@ -100,10 +100,10 @@ public class ReceptionDaoImplTest {
 		dd.deleteReception(1);
 		Reception reception=new Reception();
 		reception.setRegNo(1);
-		reception.setPersonId("Gurgaon");
+		reception.setPersonId("ABCD");
 		reception.setPurpose("Dr Batra");
-		reception.setPayment(1234567890);
-		reception.setDoctorId(135);
+		reception.setPayment(0);
+		reception.setDoctorId(0);
 		String str="2015-03-31";  
 	    Date date=Date.valueOf(str);
 		reception.setAppointmentDate(date);
