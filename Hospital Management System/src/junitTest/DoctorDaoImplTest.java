@@ -29,6 +29,8 @@ public class DoctorDaoImplTest {
 	@Test
 	public void testInsertDoctor() throws ClassNotFoundException, SQLException {
 		
+		
+		//Create necessary tables and insert one tuple for negative insert testing 
 		dd.deleteDoctor(4);
 		Doctor doctor=new Doctor();
 		doctor.setDoctorId(4);
