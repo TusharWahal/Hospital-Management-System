@@ -22,20 +22,24 @@ public class BillDaoImpl implements BillDao {
 
 		con= openConnection();
 		
-		int number = newBill.getNumber();
+		int billNo = newBill.getBillNo();
+		int patientId = newBill.getPatientId();
+		int serialNo = newBill.getSerialNo();
 		float doctorVisit = newBill.getDoctorVisit();
 		float bedCharges = newBill.getBedCharges();
 		float tests = newBill.getTests();
 		float medicines = newBill.getMedicines();
 		
-		pstmt=con.prepareStatement("insert into Bill (number,doctorVisit,bedCharges,tests,medicines" +
-				") values (?,?,?,?,?)");
+		pstmt=con.prepareStatement("insert into Bill (billNo,patientId,serialNo,doctorVisit,bedCharges,tests,medicines" +
+				") values (?,?,?,?,?,?,?)");
 		
-		pstmt.setInt(1,number);
-		pstmt.setFloat(2, doctorVisit);
-		pstmt.setFloat(3, bedCharges);
-		pstmt.setFloat(4, tests);
-		pstmt.setFloat(5, medicines);
+		pstmt.setInt(1,billNo);
+		pstmt.setInt(2,patientId);
+		pstmt.setInt(3,serialNo);
+		pstmt.setFloat(4, doctorVisit);
+		pstmt.setFloat(5, bedCharges);
+		pstmt.setFloat(6, tests);
+		pstmt.setFloat(7, medicines);
 		
 		int rows=pstmt.executeUpdate();
 		
@@ -55,7 +59,7 @@ public class BillDaoImpl implements BillDao {
 		con= openConnection();
 		
 		
-		pstmt=con.prepareStatement("delete from Bill where billId = ?");
+		pstmt=con.prepareStatement("delete from Bill where billNo = ?");
 		
 		pstmt.setInt(1,billId);
 		
@@ -76,15 +80,17 @@ public class BillDaoImpl implements BillDao {
 		con= openConnection();
 		
 		
-		pstmt=con.prepareStatement("update Bill set doctorVisit=?,bedCharges=?," +
-				"tests=?,medicines=? where number=?");
+		pstmt=con.prepareStatement("update Bill set patientId=?,serialNo=?,doctorVisit=?,bedCharges=?," +
+				"tests=?,medicines=? where billNo=?");
 		
 
-		pstmt.setFloat(1,renewBill.getDoctorVisit());
-		pstmt.setFloat(2, renewBill.getBedCharges());
-		pstmt.setFloat(3, renewBill.getTests());
-		pstmt.setFloat(4, renewBill.getMedicines());
-		pstmt.setInt(5, renewBill.getNumber());
+		pstmt.setInt(1, renewBill.getPatientId());
+		pstmt.setInt(2, renewBill.getSerialNo());
+		pstmt.setFloat(3,renewBill.getDoctorVisit());
+		pstmt.setFloat(4, renewBill.getBedCharges());
+		pstmt.setFloat(5, renewBill.getTests());
+		pstmt.setFloat(6, renewBill.getMedicines());
+		pstmt.setInt(7, renewBill.getBillNo());
 		
 		
 		int rows=pstmt.executeUpdate();
@@ -105,7 +111,7 @@ public class BillDaoImpl implements BillDao {
 		con= openConnection();
 		
 		
-		pstmt=con.prepareStatement("select * from Bill where number = ?");
+		pstmt=con.prepareStatement("select * from Bill where billNo = ?");
 		pstmt.setInt(1,billId);
 		
 		rs=pstmt.executeQuery();
@@ -113,12 +119,16 @@ public class BillDaoImpl implements BillDao {
 		Bill bill = new Bill();
 		
 		
-		
-			bill.setNumber(rs.getInt("number"));
+		while(rs.next()){
+			bill.setBillNo(rs.getInt("billNo"));
+			bill.setPatientId(rs.getInt("patientId"));
+			bill.setSerialNo(rs.getInt("serialNo"));
 			bill.setDoctorVisit(rs.getFloat("doctorVisit"));
 			bill.setBedCharges(rs.getFloat("bedCharges"));
 			bill.setTests(rs.getFloat("tests"));
 			bill.setMedicines(rs.getFloat("medicines"));
+		}
+			
 		
 		closeConnection(con);
 		return bill;
@@ -141,7 +151,9 @@ public class BillDaoImpl implements BillDao {
 		
 		while(rs.next())
 		{
-			bill.setNumber(rs.getInt("number"));
+			bill.setBillNo(rs.getInt("billNo"));
+			bill.setPatientId(rs.getInt("patientId"));
+			bill.setSerialNo(rs.getInt("serialNo"));
 			bill.setDoctorVisit(rs.getFloat("doctorVisit"));
 			bill.setBedCharges(rs.getFloat("bedCharges"));
 			bill.setTests(rs.getFloat("tests"));
