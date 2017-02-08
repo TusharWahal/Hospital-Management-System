@@ -31,7 +31,7 @@ public class PersonDaoImpl implements PersonDao {
 		int personAge=newPerson.getPersonAge();
 		String personGender=newPerson.getPersonGender();
 		String personAddress=newPerson.getPersonAddress();
-		int personPhoneNo=newPerson.getPersonPhoneNo();
+		long personPhoneNo=newPerson.getPersonPhoneNo();
 		String personPassword=newPerson.getPersonPassword();
 		
 		pstmt=con.prepareStatement("insert into Person (personId,personIdType,personName,personDateOfBirth," +
@@ -61,14 +61,14 @@ public class PersonDaoImpl implements PersonDao {
 	}
 
 	@Override
-	public boolean deletePerson(int personId) throws ClassNotFoundException, SQLException {
+	public boolean deletePerson(String personId) throws ClassNotFoundException, SQLException {
 
 		con= openConnection();
 		
 		
 		pstmt=con.prepareStatement("delete from Person where personId = ?");
 		
-		pstmt.setInt(1,personId);
+		pstmt.setString(1,personId);
 		
 		int rows=pstmt.executeUpdate();
 		
@@ -82,7 +82,7 @@ public class PersonDaoImpl implements PersonDao {
 	}
 
 	@Override
-	public boolean updatePerson(int personId, Person renewPerson) throws ClassNotFoundException, SQLException {
+	public boolean updatePerson(String personId, Person renewPerson) throws ClassNotFoundException, SQLException {
 
 		con= openConnection();
 		
@@ -99,7 +99,7 @@ public class PersonDaoImpl implements PersonDao {
 		pstmt.setString(6, renewPerson.getPersonAddress());
 		pstmt.setLong(7, renewPerson.getPersonPhoneNo());
 		pstmt.setString(8, renewPerson.getPersonPassword());
-		pstmt.setLong(9, personId);
+		pstmt.setString(9, personId);
 		
 		int rows=pstmt.executeUpdate();
 		
@@ -115,20 +115,20 @@ public class PersonDaoImpl implements PersonDao {
 	}
 
 	@Override
-	public Person displayPerson(int personId) throws ClassNotFoundException, SQLException {
+	public Person displayPerson(String personId) throws ClassNotFoundException, SQLException {
 
 		con= openConnection();
 		
 		
 		pstmt=con.prepareStatement("select * from Person where personId = ?");
-		pstmt.setInt(1,personId);
+		pstmt.setString(1,personId);
 		
 		rs=pstmt.executeQuery();
 		
 		Person person = new Person();
 		
 		
-		
+		while(rs.next()){
 			person.setPersonId(rs.getString("personId"));
 			person.setPersonIdType(rs.getString("personIdType"));
 			person.setPersonName(rs.getString("personName"));
@@ -138,6 +138,8 @@ public class PersonDaoImpl implements PersonDao {
 			person.setPersonAddress(rs.getString("personAddress"));
 			person.setPersonPhoneNo(rs.getInt("personPhoneNo"));
 			person.setPersonPassword(rs.getString("personPassword"));
+		}
+			
 		
 		closeConnection(con);
 		return person;
@@ -166,7 +168,7 @@ public class PersonDaoImpl implements PersonDao {
 			person.setPersonAge(rs.getInt("personAge"));
 			person.setPersonGender(rs.getString("personGender"));
 			person.setPersonAddress(rs.getString("personAddress"));
-			person.setPersonPhoneNo(rs.getInt("personPhoneNo"));
+			person.setPersonPhoneNo(rs.getLong("personPhoneNo"));
 			person.setPersonPassword(rs.getString("personPassword"));
 			personList.add(person);
 			

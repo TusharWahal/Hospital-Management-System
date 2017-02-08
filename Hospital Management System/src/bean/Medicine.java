@@ -7,7 +7,7 @@ public class Medicine {
 	String dosage;
 	float price;
 	int patientId;
-	int number;
+	int billNo;
 	public int getsNo() {
 		return sNo;
 	}
@@ -44,11 +44,10 @@ public class Medicine {
 	public void setPatientId(int patientId) {
 		this.patientId = patientId;
 	}
-	public int getNumber() {
-		return number;
+	public int getBillNo() {
+		return billNo;
 	}
-	public void setNumber(int number) {
-		this.number = number;
+	public void setBillNo(int billNo) {
+		this.billNo = billNo;
 	}
-	
 }

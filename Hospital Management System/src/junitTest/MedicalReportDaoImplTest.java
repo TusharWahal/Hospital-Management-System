@@ -2,15 +2,21 @@ package junitTest;
 
 import static org.junit.Assert.*;
 
+import java.sql.Date;
+import java.sql.SQLException;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import bean.Doctor;
+import bean.MedicalReport;
 import dao.MedicalReportDaoImpl;
 
 public class MedicalReportDaoImplTest {
 	
 	private MedicalReportDaoImpl mrd;
+	
 	@Before
 	public void setUp() throws Exception {
 		mrd=new MedicalReportDaoImpl();
@@ -22,28 +28,96 @@ public class MedicalReportDaoImplTest {
 	}
 
 	@Test
-	public void testInsertMedicalReport() {
-		fail("Not yet implemented");
+	public void testInsertMedicalReport() throws ClassNotFoundException, SQLException {
+		mrd.deleteMedicalReport(1);
+		MedicalReport medicalreport = new MedicalReport();
+		medicalreport.setPatientId(1);
+		String str="2015-03-31";  
+	    Date visitDate=Date.valueOf(str);
+		medicalreport.setVisitDate(visitDate);
+		medicalreport.setDiagnosis("abc");
+		medicalreport.setInvestigations("def");
+		medicalreport.setTests("ghi");
+		medicalreport.setRecommendations("jkl");
+		medicalreport.setRegNo(12345);
+		medicalreport.setDoctorId(12);
+		medicalreport.setTechnicianId(34);
+		assertTrue(mrd.insertMedicalReport(medicalreport));
 	}
 
 	@Test
-	public void testDeleteMedicalReport() {
-		fail("Not yet implemented");
+	public void testDeleteMedicalReport() throws ClassNotFoundException, SQLException {
+		mrd.deleteMedicalReport(1);
+		MedicalReport medicalreport = new MedicalReport();
+		medicalreport.setPatientId(1);
+		String str="2015-03-31";  
+	    Date visitDate=Date.valueOf(str);
+		medicalreport.setVisitDate(visitDate);
+		medicalreport.setDiagnosis("abc");
+		medicalreport.setInvestigations("def");
+		medicalreport.setTests("ghi");
+		medicalreport.setRecommendations("jkl");
+		medicalreport.setRegNo(12345);
+		medicalreport.setDoctorId(12);
+		medicalreport.setTechnicianId(34);
+		mrd.insertMedicalReport(medicalreport);
+		assertTrue(mrd.deleteMedicalReport(1));
 	}
 
 	@Test
-	public void testUpdateMedicalReport() {
-		fail("Not yet implemented");
+	public void testUpdateMedicalReport() throws ClassNotFoundException, SQLException {
+		mrd.deleteMedicalReport(1);
+		MedicalReport medicalreport = new MedicalReport();
+		medicalreport.setPatientId(1);
+		String str="2015-03-31";  
+	    Date visitDate=Date.valueOf(str);
+		medicalreport.setVisitDate(visitDate);
+		medicalreport.setDiagnosis("abc");
+		medicalreport.setInvestigations("def");
+		medicalreport.setTests("ghi");
+		medicalreport.setRecommendations("jkl");
+		medicalreport.setRegNo(12345);
+		medicalreport.setDoctorId(12);
+		medicalreport.setTechnicianId(34);
+		mrd.insertMedicalReport(medicalreport);
+		medicalreport.setPatientId(1);
+		str="2015-03-31";  
+	    visitDate=Date.valueOf(str);
+	    MedicalReport newmedicalreport = new MedicalReport();
+		newmedicalreport.setVisitDate(visitDate);
+		newmedicalreport.setDiagnosis("abc");
+		newmedicalreport.setInvestigations("def");
+		newmedicalreport.setTests("ghi");
+		newmedicalreport.setRecommendations("jkl");
+		newmedicalreport.setRegNo(12345);
+		newmedicalreport.setDoctorId(12);
+		newmedicalreport.setTechnicianId(34);
+		assertTrue(mrd.updateMedicalReport(1,newmedicalreport));
 	}
 
 	@Test
-	public void testDisplayMedicalReport() {
-		fail("Not yet implemented");
+	public void testDisplayMedicalReport() throws ClassNotFoundException, SQLException {
+		mrd.deleteMedicalReport(1);
+		MedicalReport medicalreport = new MedicalReport();
+		medicalreport.setPatientId(1);
+		String str="2015-03-31";  
+	    Date visitDate=Date.valueOf(str);
+		medicalreport.setVisitDate(visitDate);
+		medicalreport.setDiagnosis("abc");
+		medicalreport.setInvestigations("def");
+		medicalreport.setTests("ghi");
+		medicalreport.setRecommendations("jkl");
+		medicalreport.setRegNo(12345);
+		medicalreport.setDoctorId(12);
+		medicalreport.setTechnicianId(34);
+		mrd.insertMedicalReport(medicalreport);
+		
+		assertEquals(medicalreport, mrd.displayMedicalReport(1));
 	}
 
 	@Test
-	public void testDisplayAllMedicalReports() {
-		fail("Not yet implemented");
+	public void testDisplayAllMedicalReports() throws ClassNotFoundException, SQLException {
+		assertNotEquals(null, mrd.displayAllMedicalReports());
 	}
 
 }
