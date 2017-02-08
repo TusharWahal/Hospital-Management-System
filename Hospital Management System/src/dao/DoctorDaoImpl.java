@@ -30,7 +30,7 @@ public class DoctorDaoImpl implements DoctorDao {
 		String doctorPassword=newDoctor.getDoctorPassword();
 		
 		pstmt=con.prepareStatement("insert into doctor (doctorId,doctorName,specialization,timing,doctorAddress,"
-				+ "doctorPhoneNo,departmentId,doctorPassword) values" + "(?,?,?,?,?,?,?,?)");
+				+ "doctorPhoneNo,departmentId,Password) values" + "(?,?,?,?,?,?,?,?)");
 		
 		pstmt.setInt(1,doctorId);
 		pstmt.setString(2,doctorName);
@@ -87,7 +87,7 @@ public class DoctorDaoImpl implements DoctorDao {
 		
 		pstmt=con.prepareStatement("update doctor set doctorName = ? , specialization =? "
 				+ ", timing=? ,doctorAddress=? "
-				+ ", doctorPhoneNo=?, departmentId=?, doctorPassword=? "
+				+ ", doctorPhoneNo=?, departmentId=?, Password=? "
 				+ "where doctorId= ?");
 		
 
@@ -139,7 +139,7 @@ public class DoctorDaoImpl implements DoctorDao {
 			doctor.setDoctorPhoneNo(rs.getLong("doctorPhoneNo"));
 			doctor.setSpecialization(rs.getString("specialization"));
 			doctor.setTiming(rs.getString("timing"));
-			doctor.setDoctorPassword(rs.getString("doctorPassword"));
+			doctor.setDoctorPassword(rs.getString("Password"));
 		}
 		
 		closeConnection(con);
@@ -168,7 +168,7 @@ public class DoctorDaoImpl implements DoctorDao {
 			doctor.setDoctorPhoneNo(rs.getLong("doctorPhoneNo"));
 			doctor.setSpecialization(rs.getString("specialization"));
 			doctor.setTiming(rs.getString("timing"));
-			doctor.setDoctorPassword(rs.getString("doctorPassword"));
+			doctor.setDoctorPassword(rs.getString("Password"));
 			doctorList.add(doctor);
 		}
 		
