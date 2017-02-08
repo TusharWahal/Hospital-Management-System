@@ -55,13 +55,14 @@ public class MedicineDaoimpl implements MedicineDao {
 	}
 
 	@Override
-	public boolean deleteMedicine(int sNo) throws ClassNotFoundException, SQLException {
+	public boolean deleteMedicine(int sNo,int patientId) throws ClassNotFoundException, SQLException {
 		con= openConnection();
 		
 		
-		pstmt=con.prepareStatement("delete from medicine where sNo = ?");
+		pstmt=con.prepareStatement("delete from medicine where sNo = ? and patientId=?");
 		
 		pstmt.setInt(1,sNo);
+		pstmt.setInt(2,patientId);
 		
 		int rows=pstmt.executeUpdate();
 		
@@ -109,12 +110,13 @@ public class MedicineDaoimpl implements MedicineDao {
 	}
 
 	@Override
-	public Medicine displayMedicine(int sNo) throws ClassNotFoundException, SQLException {
+	public Medicine displayMedicine(int sNo,int patientId) throws ClassNotFoundException, SQLException {
 		con= openConnection();
 		
 		
-		pstmt=con.prepareStatement("select * from medicine where sNo = ?");
+		pstmt=con.prepareStatement("select * from medicine where sNo = ? and patientId=?");
 		pstmt.setInt(1,sNo);
+		pstmt.setInt(2,patientId);
 		
 		rs=pstmt.executeQuery();
 		
@@ -161,5 +163,6 @@ public class MedicineDaoimpl implements MedicineDao {
 
 		return medicineList;
 	}
+
 
 }
