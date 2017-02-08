@@ -108,7 +108,7 @@ public class DoctorDaoImplTest {
 		newdoctor.setDepartmentId(0);
 		newdoctor.setDoctorPassword("pass");
 		
-		assertTrue(dd.updateDoctor(1,newdoctor));
+		assertTrue(dd.updateDoctor(6,newdoctor));
 		
 		//assertEquals(newdoctor.getDoctorAddress(), dd.displayDoctor(1).getDoctorAddress());
 		
@@ -116,6 +116,7 @@ public class DoctorDaoImplTest {
 	}
 	
 
+	@Test
 	public void testUpdateDoctorNegative() throws ClassNotFoundException, SQLException
 	{
 		Doctor newdoctor=new Doctor();
