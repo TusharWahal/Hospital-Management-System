@@ -9,6 +9,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import bean.Doctor;
 import bean.Ward;
 import dao.WardDaoImpl;
 
@@ -43,6 +44,25 @@ public class WardDaoImplTest {
 		assertTrue(wd.insertWard(ward));
 	}
 
+	@Test(expected=SQLException.class)
+	public void testInsertWardNegative() throws ClassNotFoundException, SQLException {
+		
+		Ward ward = new Ward();
+		ward.setBedNo(1);
+		ward.setType("abc");
+		ward.setLocation("def");
+		String str="2015-03-31";  
+	    Date dateAdmitted=Date.valueOf(str);
+		ward.setDateAdmitted(dateAdmitted);
+		str="2015-03-31";  
+	    Date dateDischarged=Date.valueOf(str);
+	    ward.setDateAdmitted(dateDischarged);
+	    ward.setStaffId(123);
+	    ward.setPatientId(456);
+		
+		assertFalse(wd.insertWard(ward));
+	}
+	
 	@Test
 	public void testDeleteWard() throws ClassNotFoundException, SQLException {
 		wd.deleteWard(1);
@@ -59,6 +79,11 @@ public class WardDaoImplTest {
 	    ward.setStaffId(123);
 	    ward.setPatientId(456);
 		wd.insertWard(ward);
+	}
+	
+	@Test
+	public void testDeleteWardNegative() throws ClassNotFoundException, SQLException {
+		assertFalse(wd.deleteWard(12131));
 	}
 
 	@Test
@@ -94,6 +119,25 @@ public class WardDaoImplTest {
 	}
 
 	@Test
+	public void testUpdateWardNegative() throws ClassNotFoundException, SQLException
+	{
+		Ward newward = new Ward();
+		newward.setBedNo(1);
+		newward.setType("abc");
+		newward.setLocation("def");
+		String str="2015-03-31";  
+	    Date dateAdmitted=Date.valueOf(str);
+		newward.setDateAdmitted(dateAdmitted);
+		str="2015-03-31";  
+	    Date dateDischarged=Date.valueOf(str);
+	    newward.setDateAdmitted(dateDischarged);
+	    newward.setStaffId(123);
+	    newward.setPatientId(456);
+		
+		assertFalse(wd.updateWard(2343, newward));
+	}
+	
+	@Test
 	public void testDisplayWard() throws ClassNotFoundException, SQLException {
 		wd.deleteWard(1);
 		Ward ward = new Ward();
@@ -111,6 +155,11 @@ public class WardDaoImplTest {
 		wd.insertWard(ward);
 		
 		assertEquals(ward, wd.displayWard(1));
+	}
+	
+	@Test
+	public void testDisplayDoctorNegative() throws ClassNotFoundException, SQLException {	
+		assertEquals(0,wd.displayWard(234234).getBedNo());
 	}
 
 	@Test
