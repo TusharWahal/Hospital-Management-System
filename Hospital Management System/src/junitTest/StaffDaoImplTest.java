@@ -35,7 +35,7 @@ public class StaffDaoImplTest {
 		staff.setStaffAddress("ghi");
 		staff.setStaffPhoneNo(12345);
 		staff.setStaffPassword("jkl");
-		staff.setDepartmentId(1234);
+		staff.setDepartmentId(0);
 		assertTrue(sd.insertStaff(staff));
 	}
 	
@@ -51,7 +51,7 @@ public class StaffDaoImplTest {
 		staff.setStaffAddress("ghi");
 		staff.setStaffPhoneNo(12345);
 		staff.setStaffPassword("jkl");
-		staff.setDepartmentId(1234);
+		staff.setDepartmentId(0);
 		assertFalse(sd.insertStaff(staff));
 		
 	}
@@ -73,7 +73,7 @@ public class StaffDaoImplTest {
 		staff.setStaffAddress("ghi");
 		staff.setStaffPhoneNo(12345);
 		staff.setStaffPassword("jkl");
-		staff.setDepartmentId(1234);
+		staff.setDepartmentId(0);
 		sd.insertStaff(staff);
 		assertTrue(sd.deleteStaff(1));
 	}
@@ -89,8 +89,8 @@ public class StaffDaoImplTest {
 		newstaff.setStaffAddress("ghi");
 		newstaff.setStaffPhoneNo(12345);
 		newstaff.setStaffPassword("jkl");
-		newstaff.setDepartmentId(1234);
-		assertTrue(sd.updateStaff(23423,newstaff));
+		newstaff.setDepartmentId(0);
+		assertFalse(sd.updateStaff(23423,newstaff));
 		
 	}
 
@@ -105,7 +105,7 @@ public class StaffDaoImplTest {
 		staff.setStaffAddress("ghi");
 		staff.setStaffPhoneNo(12345);
 		staff.setStaffPassword("jkl");
-		staff.setDepartmentId(1234);
+		staff.setDepartmentId(0);
 		sd.insertStaff(staff);
 		Staff newstaff = new Staff();
 		newstaff.setStaffId(1);
@@ -115,7 +115,7 @@ public class StaffDaoImplTest {
 		newstaff.setStaffAddress("ghi");
 		newstaff.setStaffPhoneNo(12345);
 		newstaff.setStaffPassword("jkl");
-		newstaff.setDepartmentId(1234);
+		newstaff.setDepartmentId(0);
 		assertTrue(sd.updateStaff(1,newstaff));
 	}
 
@@ -135,7 +135,7 @@ public class StaffDaoImplTest {
 		staff.setStaffAddress("ghi");
 		staff.setStaffPhoneNo(12345);
 		staff.setStaffPassword("jkl");
-		staff.setDepartmentId(1234);
+		staff.setDepartmentId(0);
 		sd.insertStaff(staff);
 		
 		assertEquals(staff, sd.displayStaff(1));

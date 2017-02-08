@@ -34,8 +34,8 @@ public class StaffDaoImpl implements StaffDao {
 	
 	
 	
-	pstmt=con.prepareStatement("insert into Staff (staffId,staffName" +
-			"timing,specialization,staffAddress,staffPhoneNo,departmentId,staffPassword) values" + 
+	pstmt=con.prepareStatement("insert into Staff (staffId,staffName," +
+			"timing,specialization,staffAddress,staffPhoneNo,departmentId,Password) values" + 
 			"(?,?,?,?,?,?,?,?)");
 	
 	pstmt.setInt(1,staffId);
@@ -44,8 +44,8 @@ public class StaffDaoImpl implements StaffDao {
 	pstmt.setString(4, specialization);
 	pstmt.setString(5, staffAddress);
 	pstmt.setLong(6, staffPhoneNo);
-	pstmt.setString(8, staffPassword);
 	pstmt.setInt(7, departmentId);
+	pstmt.setString(8, staffPassword);
 	
 	
 	int rows=pstmt.executeUpdate();
@@ -92,7 +92,7 @@ public class StaffDaoImpl implements StaffDao {
 		
 		pstmt=con.prepareStatement("update staff set staffName = ? , specialization =? "
 				+ ", timing=? ,staffAddress=? "
-				+ ", staffPhoneNo=?, departmentId=?, staffPassword=? "
+				+ ", staffPhoneNo=?, departmentId=?, Password=? "
 				+ "where staffId= ?");
 		
 
@@ -145,7 +145,7 @@ public class StaffDaoImpl implements StaffDao {
 			staff.setStaffPhoneNo(rs.getLong("staffPhoneNo"));
 			staff.setSpecialization(rs.getString("specialization"));
 			staff.setTiming(rs.getString("timing"));
-			staff.setStaffPassword(rs.getString("staffPassword"));
+			staff.setStaffPassword(rs.getString("Password"));
 		}
 		
 		closeConnection(con);
@@ -176,7 +176,7 @@ public class StaffDaoImpl implements StaffDao {
 			staff.setStaffPhoneNo(rs.getLong("staffPhoneNo"));
 			staff.setSpecialization(rs.getString("specialization"));
 			staff.setTiming(rs.getString("timing"));
-			staff.setStaffPassword(rs.getString("staffPassword"));
+			staff.setStaffPassword(rs.getString("Password"));
 			staffList.add(staff);
 		}
 		
