@@ -27,8 +27,9 @@ public class MedicalReportDaoImpl implements MedicalReportDao {
 		String tests=newMedicalReport.getTests();
 		String recommendations=newMedicalReport.getRecommendations();
 		
-		pstmt=con.prepareStatement("insert into medicalreport (patientId,visitDate,diagnosis,investigations,tests,recommendations"
-				+ "values" + "(?,?,?,?,?,?)");
+		pstmt=con.prepareStatement("insert into medicalreport (patientId,visitDate,diagnosis,investigations,tests,recommendations,"
+				+ "doctorId,technicianId)"
+				+ "values" + "(?,?,?,?,?,?,?,?)");
 		
 		pstmt.setInt(1,patientId);
 		pstmt.setDate(2, visitDate);
@@ -36,6 +37,8 @@ public class MedicalReportDaoImpl implements MedicalReportDao {
 		pstmt.setString(4, investigations);
 		pstmt.setString(5, tests);
 		pstmt.setString(6, recommendations);
+		pstmt.setInt(7, newMedicalReport.getDoctorId());
+		pstmt.setInt(8, newMedicalReport.getTechnicianId());
 		
 		int rows=pstmt.executeUpdate();
 		
@@ -82,7 +85,7 @@ public class MedicalReportDaoImpl implements MedicalReportDao {
 		
 		pstmt=con.prepareStatement("update medicalreport set visitDate = ? , diagnosis = ? "
 				+ ", investigations = ? ,tests = ? "
-				+ ", recommendations=? "
+				+ ", recommendations= ? "
 				+ "where patientId = ?");
 		
 
@@ -91,6 +94,7 @@ public class MedicalReportDaoImpl implements MedicalReportDao {
 		pstmt.setString(3, renewMedicalReport.getInvestigations());
 		pstmt.setString(4, renewMedicalReport.getTests());
 		pstmt.setString(5, renewMedicalReport.getRecommendations());
+		pstmt.setInt(6, MedicalReportId);
 		
 		int rows=pstmt.executeUpdate();
 		
@@ -122,6 +126,7 @@ public class MedicalReportDaoImpl implements MedicalReportDao {
 			medicalreport.setPatientId(rs.getInt("patientId"));
 			medicalreport.setVisitDate(rs.getDate("visitDate"));
 			medicalreport.setDiagnosis(rs.getString("diagnosis"));
+			medicalreport.setRecommendations(rs.getString("recommendations"));
 			medicalreport.setInvestigations(rs.getString("investigations"));
 			medicalreport.setTests(rs.getString("tests"));
 		}

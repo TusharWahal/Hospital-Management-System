@@ -29,9 +29,9 @@ public class MedicalReportDaoImplTest {
 
 	@Test
 	public void testInsertMedicalReport() throws ClassNotFoundException, SQLException {
-		mrd.deleteMedicalReport(1);
+		mrd.deleteMedicalReport(0);
 		MedicalReport medicalreport = new MedicalReport();
-		medicalreport.setPatientId(1);
+		medicalreport.setPatientId(0);
 		String str="2015-03-31";  
 	    Date visitDate=Date.valueOf(str);
 		medicalreport.setVisitDate(visitDate);
@@ -39,9 +39,9 @@ public class MedicalReportDaoImplTest {
 		medicalreport.setInvestigations("def");
 		medicalreport.setTests("ghi");
 		medicalreport.setRecommendations("jkl");
-		medicalreport.setRegNo(12345);
-		medicalreport.setDoctorId(12);
-		medicalreport.setTechnicianId(34);
+		//medicalreport.setRegNo(0);
+		medicalreport.setDoctorId(0);
+		medicalreport.setTechnicianId(0);
 		assertTrue(mrd.insertMedicalReport(medicalreport));
 	}
 
@@ -57,18 +57,18 @@ public class MedicalReportDaoImplTest {
 		medicalreport.setInvestigations("def");
 		medicalreport.setTests("ghi");
 		medicalreport.setRecommendations("jkl");
-		medicalreport.setRegNo(12345);
-		medicalreport.setDoctorId(12);
-		medicalreport.setTechnicianId(34);
+		//medicalreport.setRegNo(1);
+		medicalreport.setDoctorId(0);
+		medicalreport.setTechnicianId(0);
 		
 		assertFalse(mrd.insertMedicalReport(medicalreport));
 	}
 	
 	@Test
 	public void testDeleteMedicalReport() throws ClassNotFoundException, SQLException {
-		mrd.deleteMedicalReport(1);
+		mrd.deleteMedicalReport(0);
 		MedicalReport medicalreport = new MedicalReport();
-		medicalreport.setPatientId(1);
+		medicalreport.setPatientId(0);
 		String str="2015-03-31";  
 	    Date visitDate=Date.valueOf(str);
 		medicalreport.setVisitDate(visitDate);
@@ -76,11 +76,11 @@ public class MedicalReportDaoImplTest {
 		medicalreport.setInvestigations("def");
 		medicalreport.setTests("ghi");
 		medicalreport.setRecommendations("jkl");
-		medicalreport.setRegNo(12345);
-		medicalreport.setDoctorId(12);
-		medicalreport.setTechnicianId(34);
+		//medicalreport.setRegNo(12345);
+		medicalreport.setDoctorId(0);
+		medicalreport.setTechnicianId(0);
 		mrd.insertMedicalReport(medicalreport);
-		assertTrue(mrd.deleteMedicalReport(1));
+		assertTrue(mrd.deleteMedicalReport(0));
 	}
 	
 	@Test
@@ -90,9 +90,9 @@ public class MedicalReportDaoImplTest {
 
 	@Test
 	public void testUpdateMedicalReport() throws ClassNotFoundException, SQLException {
-		mrd.deleteMedicalReport(1);
+		mrd.deleteMedicalReport(0);
 		MedicalReport medicalreport = new MedicalReport();
-		medicalreport.setPatientId(1);
+		medicalreport.setPatientId(0);
 		String str="2015-03-31";  
 	    Date visitDate=Date.valueOf(str);
 		medicalreport.setVisitDate(visitDate);
@@ -100,9 +100,9 @@ public class MedicalReportDaoImplTest {
 		medicalreport.setInvestigations("def");
 		medicalreport.setTests("ghi");
 		medicalreport.setRecommendations("jkl");
-		medicalreport.setRegNo(12345);
-		medicalreport.setDoctorId(12);
-		medicalreport.setTechnicianId(34);
+		//medicalreport.setRegNo(0);
+		medicalreport.setDoctorId(0);
+		medicalreport.setTechnicianId(0);
 		mrd.insertMedicalReport(medicalreport);
 		medicalreport.setPatientId(1);
 		str="2015-03-31";  
@@ -113,10 +113,10 @@ public class MedicalReportDaoImplTest {
 		newmedicalreport.setInvestigations("def");
 		newmedicalreport.setTests("ghi");
 		newmedicalreport.setRecommendations("jkl");
-		newmedicalreport.setRegNo(12345);
-		newmedicalreport.setDoctorId(12);
-		newmedicalreport.setTechnicianId(34);
-		assertTrue(mrd.updateMedicalReport(1,newmedicalreport));
+		//newmedicalreport.setRegNo(0);
+		newmedicalreport.setDoctorId(0);
+		newmedicalreport.setTechnicianId(0);
+		assertTrue(mrd.updateMedicalReport(0,newmedicalreport));
 	}
 	
 	@Test
@@ -130,18 +130,18 @@ public class MedicalReportDaoImplTest {
 		newmedicalreport.setInvestigations("def");
 		newmedicalreport.setTests("ghi");
 		newmedicalreport.setRecommendations("jkl");
-		newmedicalreport.setRegNo(12345);
-		newmedicalreport.setDoctorId(12);
-		newmedicalreport.setTechnicianId(34);
+	//	newmedicalreport.setRegNo(0);
+		newmedicalreport.setDoctorId(0);
+		newmedicalreport.setTechnicianId(0);
 		
 		assertFalse(mrd.updateMedicalReport(2343, newmedicalreport));
 	}
 
 	@Test
 	public void testDisplayMedicalReport() throws ClassNotFoundException, SQLException {
-		mrd.deleteMedicalReport(1);
+		mrd.deleteMedicalReport(0);
 		MedicalReport medicalreport = new MedicalReport();
-		medicalreport.setPatientId(1);
+		medicalreport.setPatientId(0);
 		String str="2015-03-31";  
 	    Date visitDate=Date.valueOf(str);
 		medicalreport.setVisitDate(visitDate);
@@ -149,12 +149,12 @@ public class MedicalReportDaoImplTest {
 		medicalreport.setInvestigations("def");
 		medicalreport.setTests("ghi");
 		medicalreport.setRecommendations("jkl");
-		medicalreport.setRegNo(12345);
-		medicalreport.setDoctorId(12);
-		medicalreport.setTechnicianId(34);
+		
+		medicalreport.setDoctorId(0);
+		medicalreport.setTechnicianId(0);
 		mrd.insertMedicalReport(medicalreport);
 		
-		assertEquals(medicalreport, mrd.displayMedicalReport(1));
+		assertEquals(medicalreport, mrd.displayMedicalReport(0));
 	}
 	
 	@Test

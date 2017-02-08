@@ -30,7 +30,7 @@ public class MedicineDaoimpl implements MedicineDao {
 		float price=newMedicine.getPrice();
 		int patientId=newMedicine.getPatientId();
 		
-		pstmt=con.prepareStatement("insert into medicalreport (sNo,medicineName,quantity,dosage,price,patientId)"
+		pstmt=con.prepareStatement("insert into medicine (sNo,medicineName,quantity,dosage,price,patientId)"
 				+ "values" + "(?,?,?,?,?,?)");
 		
 		pstmt.setInt(1,sNo);
@@ -92,6 +92,7 @@ public class MedicineDaoimpl implements MedicineDao {
 		pstmt.setString(3, renewMedicine.getDosage());
 		pstmt.setFloat(4, renewMedicine.getPrice());
 		pstmt.setInt(5, renewMedicine.getPatientId());
+		pstmt.setInt(6,sNo);
 		
 		int rows=pstmt.executeUpdate();
 		
