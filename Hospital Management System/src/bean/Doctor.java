@@ -1,6 +1,6 @@
 package bean;
 
-public class Doctor  {
+public class Doctor implements Comparable<Doctor>{
 	int doctorId;
 	String doctorName;
 	String specialization;
@@ -58,10 +58,12 @@ public class Doctor  {
 		this.doctorPassword = doctorPassword;
 	}
 	
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
-		int result = super.hashCode();
+		int result = 1;
+		result = prime * result + departmentId;
 		result = prime * result + ((doctorAddress == null) ? 0 : doctorAddress.hashCode());
 		result = prime * result + doctorId;
 		result = prime * result + ((doctorName == null) ? 0 : doctorName.hashCode());
@@ -75,11 +77,13 @@ public class Doctor  {
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
-		if (!super.equals(obj))
+		if (obj == null)
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
 		Doctor other = (Doctor) obj;
+		if (departmentId != other.departmentId)
+			return false;
 		if (doctorAddress == null) {
 			if (other.doctorAddress != null)
 				return false;
