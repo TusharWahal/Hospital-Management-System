@@ -34,9 +34,9 @@ public class TechnicianDaoImpl implements TechnicianDao {
 		
 		
 		
-		pstmt=con.prepareStatement("insert into Technician (technicianId,technicianName" +
-				"timing,specialization,technicianAddress,technicianPhoneNo,departmentId,technicianPassword) values" + 
-				"(?,?,?,?,?,?,?,?,?,?)");
+		pstmt=con.prepareStatement("insert into Technician (technicianId,technicianName," +
+				"timing,specialization,technicianAddress,technicianPhoneNo,departmentId,Password) values" + 
+				"(?,?,?,?,?,?,?,?)");
 		
 		pstmt.setInt(1,technicianId);
 		pstmt.setString(2,technicianName );
@@ -91,7 +91,7 @@ public class TechnicianDaoImpl implements TechnicianDao {
 		
 		pstmt=con.prepareStatement("update technician set technicianName = ? , specialization =? "
 				+ ", timing=? ,technicianAddress=? "
-				+ ", technicianPhoneNo=?, departmentId=?, technicianPassword=? "
+				+ ", technicianPhoneNo=?, departmentId=?, Password=? "
 				+ "where technicianId= ?");
 		
 
@@ -133,14 +133,14 @@ public class TechnicianDaoImpl implements TechnicianDao {
 		Technician technician=new Technician();
 		while(rs.next())
 		{
-			technician.setTechnicianId(rs.getInt("technicianId"));
-			technician.setTechnicianId(rs.getInt("departmentId"));
+			technician.setTechnicianId(technicianId);
+			technician.setDepartmentId(rs.getInt("departmentId"));
 			technician.setTechnicianAddress(rs.getString("technicianAddress"));
 			technician.setTechnicianName(rs.getString("technicianName"));
 			technician.setTechnicianPhoneNo(rs.getLong("technicianPhoneNo"));
 			technician.setSpecialization(rs.getString("specialization"));
 			technician.setTiming(rs.getString("timing"));
-			technician.setTechnicianPassword(rs.getString("technicianPassword"));
+			technician.setTechnicianPassword(rs.getString("Password"));
 		}
 		
 		closeConnection(con);
@@ -170,7 +170,7 @@ public class TechnicianDaoImpl implements TechnicianDao {
 			technician.setTechnicianPhoneNo(rs.getLong("technicianPhoneNo"));
 			technician.setSpecialization(rs.getString("specialization"));
 			technician.setTiming(rs.getString("timing"));
-			technician.setTechnicianPassword(rs.getString("technicianPassword"));
+			technician.setTechnicianPassword(rs.getString("Password"));
 			technicianList.add(technician);
 		}
 		
