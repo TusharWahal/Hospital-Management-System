@@ -26,8 +26,12 @@ public class DischargeSummaryDaoImpl implements DischargeSummaryDao {
 		con= openConnection();
 		
 		 int serialNo = newDischargeSummary.getSerialNo();
+		 int patientId = newDischargeSummary.getSerialNo();
+		 int otId = newDischargeSummary.getSerialNo();
+		 int bedNo = newDischargeSummary.getSerialNo();
 		 Date admissionDate = newDischargeSummary.getAdmissionDate();
 		 Date dischargeDate = newDischargeSummary.getDischargeDate();
+		 int doctorId = newDischargeSummary.getSerialNo();
 		 String history = newDischargeSummary.getHistory();
 		 String onExamination = newDischargeSummary.getOnExamination();
 		 String operationDone = newDischargeSummary.getOperationDone();
@@ -35,18 +39,22 @@ public class DischargeSummaryDaoImpl implements DischargeSummaryDao {
 		 String treatmentGiven = newDischargeSummary.getTreatmentGiven();
 		 String recommendations = newDischargeSummary.getRecommendations();
 		
-		pstmt=con.prepareStatement("insert into DischargeSummary (serialNo,admissionDate,dischargeDate,history" +
-				",onExamination,operationDone,operationFindings,treatmentGiven,recommendations) values (?,?,?,?,?,?,?,?,?)");
+		pstmt=con.prepareStatement("insert into DischargeSummary (serialNo,patientId,otId,bedNo,admissionDate,dischargeDate,doctorId,history" +
+				",onExamination,operationDone,operativeFindings,treatmentGiven,recommendations) values (?,?,?,?,?,?,?,?,?,?,?,?,?)");
 		
 		pstmt.setInt(1,serialNo);
-		pstmt.setDate(2, admissionDate);
-		pstmt.setDate(3, dischargeDate);
-		pstmt.setString(4, history);
-		pstmt.setString(5, onExamination);
-		pstmt.setString(6, operationDone);
-		pstmt.setString(7, operationFindings);
-		pstmt.setString(8, treatmentGiven);
-		pstmt.setString(9, recommendations);
+		pstmt.setInt(2, patientId);
+		pstmt.setInt(3, otId);
+		pstmt.setInt(4, bedNo);
+		pstmt.setDate(5, admissionDate);
+		pstmt.setDate(6, dischargeDate);
+		pstmt.setInt(7, doctorId);
+		pstmt.setString(8, history);
+		pstmt.setString(9, onExamination);
+		pstmt.setString(10, operationDone);
+		pstmt.setString(11, operationFindings);
+		pstmt.setString(12, treatmentGiven);
+		pstmt.setString(13, recommendations);
 		
 		int rows=pstmt.executeUpdate();
 		
@@ -65,7 +73,7 @@ public class DischargeSummaryDaoImpl implements DischargeSummaryDao {
 		con= openConnection();
 		
 		
-		pstmt=con.prepareStatement("delete from DischargeSummary where dischargeSummaryId = ?");
+		pstmt=con.prepareStatement("delete from DischargeSummary where serialNo = ?");
 		
 		pstmt.setInt(1,dischargeSummaryId);
 		
@@ -86,20 +94,24 @@ public class DischargeSummaryDaoImpl implements DischargeSummaryDao {
 		con= openConnection();
 		
 		
-		pstmt=con.prepareStatement("update DischargeSummary set admissionDate=?,dischargeDate=?,history=?" +
-				",onExamination=?,operationDone=?,operationFindings=?,treatmentGiven=?,recommendations=? where serialNo=?");
+		pstmt=con.prepareStatement("update DischargeSummary set patientId=?,otId=?,bedNo=?,admissionDate=?,"
+				+ "dischargeDate=?,doctorId=?,history=?" +
+				",onExamination=?,operationDone=?,operativeFindings=?,treatmentGiven=?,recommendations=? where serialNo=?");
 		
 
-		
-		pstmt.setDate(1, renewDischargeSummary.getAdmissionDate());
-		pstmt.setDate(2, renewDischargeSummary.getDischargeDate());
-		pstmt.setString(3, renewDischargeSummary.getHistory());
-		pstmt.setString(4, renewDischargeSummary.getOnExamination());
-		pstmt.setString(5, renewDischargeSummary.getOperationDone());
-		pstmt.setString(6, renewDischargeSummary.getOperativeFindings());
-		pstmt.setString(7, renewDischargeSummary.getTreatmentGiven());
-		pstmt.setString(8, renewDischargeSummary.getRecommendations());
-		pstmt.setInt(9,dischargeSummaryId);
+		pstmt.setInt(1, renewDischargeSummary.getPatientId());
+		pstmt.setInt(2, renewDischargeSummary.getOtId());
+		pstmt.setInt(3, renewDischargeSummary.getBedNo());
+		pstmt.setDate(4, renewDischargeSummary.getAdmissionDate());
+		pstmt.setDate(5, renewDischargeSummary.getDischargeDate());
+		pstmt.setInt(6, renewDischargeSummary.getDoctorId());
+		pstmt.setString(7, renewDischargeSummary.getHistory());
+		pstmt.setString(8, renewDischargeSummary.getOnExamination());
+		pstmt.setString(9, renewDischargeSummary.getOperationDone());
+		pstmt.setString(10, renewDischargeSummary.getOperativeFindings());
+		pstmt.setString(11, renewDischargeSummary.getTreatmentGiven());
+		pstmt.setString(12, renewDischargeSummary.getRecommendations());
+		pstmt.setInt(13,dischargeSummaryId);
 		
 		int rows=pstmt.executeUpdate();
 		
@@ -125,15 +137,22 @@ public class DischargeSummaryDaoImpl implements DischargeSummaryDao {
 		
 		DischargeSummary dischargeSummary = new DischargeSummary();
 		 
-		 dischargeSummary.setSerialNo(rs.getInt("serailNo"));
-		 dischargeSummary.setAdmissionDate(rs.getDate("admissionDate"));
-		 dischargeSummary.setDischargeDate(rs.getDate("discahrgeDate"));
-		 dischargeSummary.setHistory(rs.getString("history"));
-		 dischargeSummary.setOnExamination(rs.getString("onExamination"));
-		 dischargeSummary.setOperationDone(rs.getString("operationDone"));
-		 dischargeSummary.setOperativeFindings(rs.getString("operativeFindings"));
-		 dischargeSummary.setTreatmentGiven(rs.getString("treatmentGiven"));
-		 dischargeSummary.setRecommendations(rs.getString("recommendations"));
+		while(rs.next()){
+			dischargeSummary.setSerialNo(rs.getInt("serialNo"));
+			 dischargeSummary.setPatientId(rs.getInt("patientId"));
+			 dischargeSummary.setOtId(rs.getInt("otId"));
+			 dischargeSummary.setBedNo(rs.getInt("bedNo"));
+			 dischargeSummary.setAdmissionDate(rs.getDate("admissionDate"));
+			 dischargeSummary.setDischargeDate(rs.getDate("dischargeDate"));
+			 dischargeSummary.setDoctorId(rs.getInt("doctorId"));
+			 dischargeSummary.setHistory(rs.getString("history"));
+			 dischargeSummary.setOnExamination(rs.getString("onExamination"));
+			 dischargeSummary.setOperationDone(rs.getString("operationDone"));
+			 dischargeSummary.setOperativeFindings(rs.getString("operativeFindings"));
+			 dischargeSummary.setTreatmentGiven(rs.getString("treatmentGiven"));
+			 dischargeSummary.setRecommendations(rs.getString("recommendations"));
+		}
+		 
 		
 		closeConnection(con);
 		return dischargeSummary;
@@ -156,9 +175,13 @@ public class DischargeSummaryDaoImpl implements DischargeSummaryDao {
 		
 		while(rs.next())
 		{
-			dischargeSummary.setSerialNo(rs.getInt("serailNo"));
+			dischargeSummary.setSerialNo(rs.getInt("serialNo"));
+			 dischargeSummary.setPatientId(rs.getInt("patientId"));
+			 dischargeSummary.setOtId(rs.getInt("otId"));
+			 dischargeSummary.setBedNo(rs.getInt("bedNo"));
 			 dischargeSummary.setAdmissionDate(rs.getDate("admissionDate"));
-			 dischargeSummary.setDischargeDate(rs.getDate("discahrgeDate"));
+			 dischargeSummary.setDischargeDate(rs.getDate("dischargeDate"));
+			 dischargeSummary.setDoctorId(rs.getInt("doctorId"));
 			 dischargeSummary.setHistory(rs.getString("history"));
 			 dischargeSummary.setOnExamination(rs.getString("onExamination"));
 			 dischargeSummary.setOperationDone(rs.getString("operationDone"));
