@@ -100,8 +100,8 @@ public class PatientMenu {
 				}
 					break;
 			
-			case 6: SignUpLogInMenu sulim = new SignUpLogInMenu();
-					break;
+			case 6: return;
+					
 			
 			default: System.out.println("Invalid choice!!!");
 					break;

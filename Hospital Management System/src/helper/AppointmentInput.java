@@ -40,12 +40,14 @@ public class AppointmentInput {
 				System.out.println("The appointment fee contains characters!!!");
 			}
 		}
+		//System.out.println(fee);
+		String str="2017-02-09";
+		Date currentDate = new java.sql.Date(Calendar.getInstance().getTime().getTime());
+		//System.out.println(currentDate);
 		
-		Date currentDate=new Date(Calendar.getInstance().getTime().getTime());
 		
-	
 		int regNo= Math.abs((int) currentDate.getTime());
-		
+		//System.out.println(regNo);
 		//check values for validation
 		recep.setPersonId(personId);
 		recep.setDoctorId(doctorId);
@@ -54,7 +56,7 @@ public class AppointmentInput {
 		recep.setAppointmentDate(currentDate);
 		recep.setPurpose(purpose);
 		
-		sc.close();
+		
 		return true;
 		
 	}

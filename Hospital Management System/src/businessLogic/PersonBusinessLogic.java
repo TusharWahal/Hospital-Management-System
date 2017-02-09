@@ -68,19 +68,24 @@ public class PersonBusinessLogic {
 		}
 		return patientMedicines;
 	}
+	public boolean personSignUp(Person person) throws ClassNotFoundException, SQLException, IOException
+	{
+		return pd.insertPerson(person);
+	}
 	
 	
 	public Person personLogin(String personId, String personPassword) throws ClassNotFoundException, SQLException, IOException
 	{
 		Person person=new Person();
 		person = pd.displayPerson(personId);
+		//System.out.println(person);
 		if(person.getPersonId()==null)
 		{
 			return null;
 		}
 		else
 		{
-			person=pd.displayPerson(personId);
+			
 			if(person.getPersonPassword().equals(personPassword))
 			{
 				return person;

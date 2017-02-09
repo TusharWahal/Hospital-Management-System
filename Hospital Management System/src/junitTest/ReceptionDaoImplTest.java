@@ -111,7 +111,7 @@ public class ReceptionDaoImplTest {
 		
 		dd.insertReception(reception);
 		
-		assertEquals(reception, dd.displayReception(1));
+		assertEquals(reception.getRegNo(), dd.displayReception(1).getRegNo());
 		
 		
 	}

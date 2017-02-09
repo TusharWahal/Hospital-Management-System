@@ -54,7 +54,19 @@ public class PersonDaoImplTest {
 	@Test(expected=SQLException.class)
 	public void testInsertPersonNegative() throws ClassNotFoundException, SQLException, IOException {
 		
+		pd.deletePerson("2");
 		Person person=new Person();
+		person.setPersonId("2");
+		person.setPersonIdType("Patient");
+		person.setPersonName("XYZ");
+		person.setPersonDateOfBirth(null);
+		person.setPersonAge(16);
+		person.setPersonGender("Male");
+		person.setPersonAddress("Delhi");
+		person.setPersonPhoneNo(25299266);
+		person.setPersonPassword("pass");
+		pd.insertPerson(person);
+		
 		person.setPersonId("2");
 		person.setPersonIdType("Patient");
 		person.setPersonName("XYZ");

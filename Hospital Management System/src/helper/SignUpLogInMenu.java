@@ -29,7 +29,22 @@ public class SignUpLogInMenu {
 		case 1 : PersonInput pi = new PersonInput();
 				 pi.input();
 				 Person p = pi.getPerson();
-				 System.out.println(p);						//View your own details
+				 System.out.println(p);
+			try {
+				if(pb.personSignUp(p))
+				 {
+					 System.out.println("Succesfull Registration");
+				 }
+				else
+				{
+					System.out.println("Registration Failed");
+				}
+			} catch (ClassNotFoundException | SQLException | IOException e1) {
+				// TODO Auto-generated catch block
+				System.out.println("Sign Up Failed!! Choose another usernaem");
+			}
+						 
+				 //View your own details
 				 SignUpLogInMenu sulim = new SignUpLogInMenu();
 				 break;
 			
@@ -39,18 +54,33 @@ public class SignUpLogInMenu {
 				  System.out.println();
 				  System.out.print("Enter password : ");
 				  personPassword = sc.next();
+				  boolean flag=false;
 				  try {
-					  Person person=pb.personLogin(personId, personPassword);
+					  if(pb.personLogin(personId, personPassword).equals(null))
+					  {
+						  flag=false;
+					  }
+					  else{ 
+						  Person person=pb.personLogin(personId, personPassword);
+						  System.out.println("Welcome  "+person.getPersonName().toUpperCase());
+						  flag=true;
+						  }
 				  } catch (ClassNotFoundException | IOException e) {
 					  // TODO Auto-generated catch block
-					  e.printStackTrace();
+					  System.out.println(e);
 				  } catch (SQLException e) {
 					  // TODO Auto-generated catch block
-					  e.printStackTrace();
+					  System.out.println(e);
 				  }
+				  if(flag==true)
+				  {
 				  PatientMenu pm = new PatientMenu();
 				  break;
-				  
+				  }
+				  else{
+					  System.out.println("Wrong Username/Password");
+					  break;
+				  }
 		 default : System.out.println("Invalid choice!!!");
 		 		  break;
 		}

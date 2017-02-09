@@ -32,7 +32,7 @@ public class PersonInput {
 		int age;
 		while(true){
 			System.out.println("Enter Age : ");
-			strAge=sc.next();
+			strAge=sc.nextLine();
 			if(Pattern.matches("[0-9]{2}",strAge)){
 				age=Integer.parseInt(strAge);
 				break;
@@ -60,7 +60,7 @@ public class PersonInput {
 		long phoneNo;
 		while(true){
 			System.out.println("Enter Phone No. : ");
-			strPhoneNo=sc.next();
+			strPhoneNo=sc.nextLine();
 			if(Pattern.matches("[0-9]{10}",strPhoneNo)){
 				phoneNo=Long.parseLong(strPhoneNo);
 				break;

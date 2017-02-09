@@ -23,7 +23,7 @@ public class StaffMenu {
 		staffId=sc.nextInt();
 		System.out.print("\t\t\t\tEnter Password : ");
 		staffPassword=sc.next();
-		sc.close();
+		//sc.close();
 		try {
 			st=sb.staffLogin(staffId, staffPassword);
 		} catch (ClassNotFoundException | SQLException | IOException e) {
@@ -60,14 +60,14 @@ public class StaffMenu {
 				viewAllWardsMenu();
 		}
 		else if(choice==3){
-			sc.close();
+			//sc.close();
 			return;
 		}
 		else
 		{
 			System.out.println("\nInvalid Choice!!!");
 		}
-		sc.close();
+		//sc.close();
 		}
 	}
 	
@@ -96,7 +96,7 @@ public class StaffMenu {
 		TreeSet<Ward> wardtreeset = new TreeSet<Ward>();
 		System.out.println("\nEnter Staff ID:");
 		staffId=sc.nextInt();
-		sc.close();
+		//sc.close();
 		try {
 			wardtreeset = sbl.myWards(staffId);
 		} catch (ClassNotFoundException | SQLException | IOException e) {

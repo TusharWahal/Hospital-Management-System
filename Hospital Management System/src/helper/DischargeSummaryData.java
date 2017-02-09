@@ -41,6 +41,7 @@ public class DischargeSummaryData {
 			e.printStackTrace();
 		}
 		
+		System.out.println(mr);
 		int doctorId=mr.getDoctorId();
 		Date admissionDate=mr.getVisitDate();
 		
@@ -65,7 +66,7 @@ public class DischargeSummaryData {
 		int otId=Integer.parseInt(ot);
 		
 		
-	
+		
 		String recommedation=mr.getRecommendations();
 		
 		
