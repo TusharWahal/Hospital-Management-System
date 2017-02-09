@@ -11,7 +11,7 @@ import businessLogic.StaffBusinessLogic;
 import dao.WardDaoImpl;
 
 public class StaffMenu {
-	public void logInMenu() throws ClassNotFoundException,SQLException, IOException{
+	public void logInMenu(){
 		int staffId;
 		String staffPassword;
 		Scanner sc = new Scanner(System.in);
@@ -24,7 +24,12 @@ public class StaffMenu {
 		System.out.print("\t\t\t\tEnter Password : ");
 		staffPassword=sc.next();
 		sc.close();
-		st=sb.staffLogin(staffId, staffPassword);
+		try {
+			st=sb.staffLogin(staffId, staffPassword);
+		} catch (ClassNotFoundException | SQLException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		if(st!=null)
 		{
 			homeMenu();
@@ -36,7 +41,7 @@ public class StaffMenu {
 		}
 	}
 	
-	public void homeMenu() throws ClassNotFoundException,SQLException, IOException{
+	public void homeMenu() {
 		
 		while(true){
 		int choice;
@@ -46,12 +51,13 @@ public class StaffMenu {
 		System.out.println("\t\t\t\t2.View All Wards");
 		System.out.println("\t\t\t\t3.Logout");
 				choice=sc.nextInt();
-		
-		if(choice==1){
+		if(choice==1)
+		{
 			viewMyWardsMenu();
 		}
 		else if(choice==2){
-			viewAllWardsMenu();
+			
+				viewAllWardsMenu();
 		}
 		else if(choice==3){
 			sc.close();
@@ -65,11 +71,16 @@ public class StaffMenu {
 		}
 	}
 	
-	public void viewAllWardsMenu () throws ClassNotFoundException,SQLException, IOException
+	public void viewAllWardsMenu ()
 	{
 		WardDaoImpl wd = new WardDaoImpl();
 		TreeSet<Ward> wardtreeset = new TreeSet<Ward>();
-		wardtreeset = wd.displayAllWards();
+		try {
+			wardtreeset = wd.displayAllWards();
+		} catch (ClassNotFoundException | SQLException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
 		for(Ward w:wardtreeset)
 		{
 			System.out.println(w+"\n");
@@ -77,7 +88,7 @@ public class StaffMenu {
 		
 	}
 	
-	public void viewMyWardsMenu() throws ClassNotFoundException,SQLException, IOException
+	public void viewMyWardsMenu()
 	{
 		int staffId;
 		Scanner sc = new Scanner(System.in);
@@ -86,7 +97,12 @@ public class StaffMenu {
 		System.out.println("\nEnter Staff ID:");
 		staffId=sc.nextInt();
 		sc.close();
-		wardtreeset = sbl.myWards(staffId);
+		try {
+			wardtreeset = sbl.myWards(staffId);
+		} catch (ClassNotFoundException | SQLException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		for(Ward w:wardtreeset)
 		{
 			System.out.println(w+"\n");
