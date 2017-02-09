@@ -81,10 +81,10 @@ public class DoctorBusinessLogic {
 		return md.insertMedicine(newMedicine);
 		
 	}
-	public boolean removeMedicine(int sNo) throws ClassNotFoundException, SQLException
+	public boolean removeMedicine(int sNo,int patientId) throws ClassNotFoundException, SQLException
 	{
 	
-		return md.deleteMedicine(sNo);
+		return md.deleteMedicine(sNo,patientId);
 	}
 	public boolean modifyMedicine(int sNo,Medicine newMedicine) throws ClassNotFoundException, SQLException
 	{
@@ -96,8 +96,8 @@ public class DoctorBusinessLogic {
 	{
 		return md.displayAllMedicines();
 	}
-	public Medicine viewMedicine(int sNo) throws ClassNotFoundException, SQLException
+	public Medicine viewMedicine(int sNo,int patientId) throws ClassNotFoundException, SQLException
 	{
-		return md.displayMedicine(sNo);
+		return md.displayMedicine(sNo,patientId);
 	}
 }

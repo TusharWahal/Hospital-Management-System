@@ -28,7 +28,7 @@ public class MedicineDaoImplTest {
 
 	@Test
 	public void testInsertMedicine() throws ClassNotFoundException, SQLException {
-		md.deleteMedicine(1);
+		md.deleteMedicine(1,0);
 		Medicine medicine = new Medicine();
 		medicine.setsNo(1);
 		medicine.setMedicineName("abc");
@@ -56,7 +56,7 @@ public class MedicineDaoImplTest {
 	
 	@Test
 	public void testDeleteMedicine() throws ClassNotFoundException, SQLException {
-		md.deleteMedicine(1);
+		md.deleteMedicine(1,0);
 		Medicine medicine = new Medicine();
 		medicine.setsNo(1);
 		medicine.setMedicineName("abc");
@@ -66,17 +66,17 @@ public class MedicineDaoImplTest {
 		medicine.setPatientId(0);
 		medicine.setBillNo(0);
 		md.insertMedicine(medicine);
-		assertTrue(md.deleteMedicine(1));
+		assertTrue(md.deleteMedicine(1,0));
 	}
 	
 	@Test
 	public void testDeleteMedicineNegative() throws ClassNotFoundException, SQLException {
-		assertFalse(md.deleteMedicine(12131));
+		assertFalse(md.deleteMedicine(12131,0));
 	}
 
 	@Test
 	public void testUpdateMedicine() throws ClassNotFoundException, SQLException {
-		md.deleteMedicine(1);
+		md.deleteMedicine(1,0);
 		Medicine medicine = new Medicine();
 		medicine.setsNo(1);
 		medicine.setMedicineName("abc");
@@ -115,7 +115,7 @@ public class MedicineDaoImplTest {
 
 	@Test
 	public void testDisplayMedicine() throws ClassNotFoundException, SQLException {
-		md.deleteMedicine(1);
+		md.deleteMedicine(1,0);
 		Medicine medicine = new Medicine();
 		medicine.setsNo(1);
 		medicine.setMedicineName("abc");
@@ -126,12 +126,12 @@ public class MedicineDaoImplTest {
 		medicine.setBillNo(0);
 		md.insertMedicine(medicine);
 		
-		assertEquals(medicine, md.displayMedicine(1));
+		assertEquals(medicine, md.displayMedicine(1,0));
 	}
 
 	@Test
 	public void testDisplayMedicineNegative() throws ClassNotFoundException, SQLException {
-		assertEquals(0,md.displayMedicine(234234).getsNo());
+		assertEquals(0,md.displayMedicine(234234,0).getsNo());
 	}
 	@Test
 	public void testDisplayAllMedicines() throws ClassNotFoundException, SQLException {
