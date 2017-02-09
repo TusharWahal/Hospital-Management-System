@@ -60,9 +60,9 @@ public class MedicineDaoimpl implements MedicineDao {
 		con= openConnection();
 		
 		
-		pstmt=con.prepareStatement("delete from medicine where sNo = ? and patientId=?");
+		pstmt=con.prepareStatement("delete from medicine where  patientId=?");
 		
-		pstmt.setInt(1,sNo);
+		//pstmt.setInt(1,sNo);
 		pstmt.setInt(2,patientId);
 		
 		int rows=pstmt.executeUpdate();

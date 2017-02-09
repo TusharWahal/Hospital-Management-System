@@ -14,8 +14,11 @@ public class HospitalEmployeeMenu {
 		public HospitalEmployeeMenu(){
 			
 			Scanner sc=new Scanner(System.in);
+			System.out.println();
+			System.out.println("Hospital Menu");
+			System.out.println();
 			System.out.println("1.Doctor");
-			System.out.println("2.Staff");
+			System.out.println("2.Staff");//Modify Wards
 			System.out.println("3.Back");
 			
 			int choice=sc.nextInt();

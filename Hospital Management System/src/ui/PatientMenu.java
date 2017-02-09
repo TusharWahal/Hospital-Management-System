@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import java.util.Scanner;
 import java.util.ArrayList;
 
+import bean.Medicine;
 import bean.Reception;
 import businessLogic.PersonBusinessLogic;
 import helper.SignUpLogInMenu;
@@ -33,9 +34,17 @@ public class PatientMenu {
 			case 1: try {
 					ArrayList<Reception> receptionList = pb.myAppointments(personId);
 					//System.out.println(receptionList);
+					if(receptionList.size()==0)
+					{
+						System.out.println("No Appointments");
+					}
+					else 
+					{
 					for(Reception r : receptionList){
 						System.out.println(r);
 					}
+					}
+					
 				} catch (ClassNotFoundException | IOException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -50,7 +59,10 @@ public class PatientMenu {
 					System.out.print("Enter Patient Id : ");
 					patientId=sc.nextInt();
 				try {
-					System.out.println(pb.viewMedicalReport(patientId));
+					if(pb.viewMedicalReport(patientId).getPatientId()!=0)
+						System.out.println(pb.viewMedicalReport(patientId));
+					else
+						System.out.println("No Medical Report");
 				} catch (ClassNotFoundException| IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -65,7 +77,10 @@ public class PatientMenu {
 					System.out.println("Enter serial No of discharge summary : ");
 					serialNo=sc.nextInt();
 				try {
-					System.out.println(pb.viewDischargeSummary(serialNo));
+					if(pb.viewDischargeSummary(serialNo).getPatientId()!=0)
+						System.out.println(pb.viewDischargeSummary(serialNo));
+					else
+						System.out.println("No Discharge Summary");
 				} catch (ClassNotFoundException| IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -79,6 +94,11 @@ public class PatientMenu {
 					System.out.println("Enter bill No :");
 					billNo=sc.nextInt();
 				try {
+					if(pb.viewBill(billNo).getPatientId()==0)
+					{
+						System.out.println("No Bills");
+					}
+					else
 					System.out.println(pb.viewBill(billNo));
 				} catch (ClassNotFoundException| IOException e) {
 					// TODO Auto-generated catch block
@@ -93,7 +113,21 @@ public class PatientMenu {
 					System.out.println("Enter Patient Id :");
 					pId=sc.nextInt();
 				try {
-					System.out.println(pb.myMedicines(pId));
+					ArrayList<Medicine> medicineList=new ArrayList<Medicine>();
+					medicineList=pb.myMedicines(pId);
+					if(medicineList.size()==0)
+					{
+						System.out.println("No Medicines");
+					}
+					else 
+					{
+					System.out.println("Your Medicines");
+					for(Medicine m:medicineList)
+					{
+					System.out.println(m);
+					}
+					}
+				
 				} catch (ClassNotFoundException| IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();

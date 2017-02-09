@@ -12,6 +12,11 @@ public class Ward implements Comparable<Ward> {
 	private int patientId;
 	
 	
+	@Override
+	public String toString() {
+		return "Ward [bedNo=" + bedNo + ", type=" + type + ", location=" + location + ", dateAdmitted=" + dateAdmitted
+				+ ", dateDischarged=" + dateDischarged + ", staffId=" + staffId + ", patientId=" + patientId + "]";
+	}
 	public int getStaffId() {
 		return staffId;
 	}

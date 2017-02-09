@@ -34,8 +34,15 @@ public class PersonInput {
 			System.out.println("Enter Age : ");
 			strAge=sc.nextLine();
 			if(Pattern.matches("[0-9]{2}",strAge)){
+				
 				age=Integer.parseInt(strAge);
-				break;
+				if(age<0)
+				{System.out.println("Age should be positive");
+				}
+				else
+				{
+					break;
+				}
 			}
 			else{
 				System.out.println("The age contains characters!!!");

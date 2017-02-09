@@ -146,11 +146,11 @@ public class DoctorMenu {
 			try {
 				System.out.println("Enter Patient ID to view Medical Report:\n");
 				int patientId= scanner.nextInt();
-				dbl.viewMedicalReports(patientId);
+				System.out.println(dbl.viewMedicalReports(patientId));
 				
 				System.out.println("Enter Serial Number to view Medicine:\n");
 				int sNo= scanner.nextInt();
-				dbl.viewMedicine(sNo,patientId);
+				System.out.println(dbl.viewMedicine(sNo,patientId));
 				
 			} catch (ClassNotFoundException | SQLException|IOException e) {
 				System.out.println(APPOINTMENTS_DISPLAY_FAILED_MSG +

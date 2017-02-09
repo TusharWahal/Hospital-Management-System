@@ -14,7 +14,7 @@ public class Medicine implements Comparable<Medicine> {
 	@Override
 	public String toString() {
 		return "Medicine [sNo=" + sNo + ", medicineName=" + medicineName + ", quantity=" + quantity + ", dosage="
-				+ dosage + ", price=" + price + ", patientId=" + patientId + ", billNo=" + billNo + "]";
+				+ dosage + ", price=" + price + ", patientId=" + patientId + "]";
 	}
 	public void setsNo(int sNo) {
 		this.sNo = sNo;

@@ -56,12 +56,14 @@ public class SignUpLogInMenu {
 				  personPassword = sc.next();
 				  boolean flag=false;
 				  try {
-					  if(pb.personLogin(personId, personPassword).equals(null))
+				  Person person=pb.personLogin(personId, personPassword);
+				  
+					  if(person.equals(null))
 					  {
 						  flag=false;
 					  }
 					  else{ 
-						  Person person=pb.personLogin(personId, personPassword);
+						
 						  System.out.println("Welcome  "+person.getPersonName().toUpperCase());
 						  flag=true;
 						  }
@@ -72,6 +74,12 @@ public class SignUpLogInMenu {
 					  // TODO Auto-generated catch block
 					  System.out.println(e);
 				  }
+				  catch (Exception e) {
+					  // TODO Auto-generated catch block
+					  System.out.println("Wrong Username/Password");
+					  break;
+				  }
+				  
 				  if(flag==true)
 				  {
 				  PatientMenu pm = new PatientMenu(personId);
