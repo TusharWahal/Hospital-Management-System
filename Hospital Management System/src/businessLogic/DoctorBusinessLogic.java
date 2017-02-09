@@ -1,5 +1,6 @@
 package businessLogic;
 
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.TreeSet;
 
@@ -21,7 +22,7 @@ public class DoctorBusinessLogic {
 	MedicalReportDaoImpl mrd=new MedicalReportDaoImpl();
 	MedicineDaoimpl md=new MedicineDaoimpl();
 	
-	public Doctor doctorLogin(int doctorId, String doctorPassword) throws ClassNotFoundException, SQLException
+	public Doctor doctorLogin(int doctorId, String doctorPassword) throws ClassNotFoundException, SQLException, IOException
 	{
 		Doctor doctor=new Doctor();
 		if(dd.displayDoctor(doctorId).getDoctorId()==0)
@@ -38,7 +39,7 @@ public class DoctorBusinessLogic {
 			else return null;
 		}
 	}
-	public TreeSet<Reception> myAppointments(int doctorId) throws ClassNotFoundException, SQLException
+	public TreeSet<Reception> myAppointments(int doctorId) throws ClassNotFoundException, SQLException, IOException
 	{
 		TreeSet<Reception> receptionList=new TreeSet<Reception>();
 		receptionList=rd.displayAllReceptions();
@@ -51,52 +52,52 @@ public class DoctorBusinessLogic {
 		return doctorAppintments;
 	}
 	
-	public boolean addMedicalReport(MedicalReport newMedicalReport) throws ClassNotFoundException, SQLException
+	public boolean addMedicalReport(MedicalReport newMedicalReport) throws ClassNotFoundException, SQLException, IOException
 	{
 		return mrd.insertMedicalReport(newMedicalReport);
 		
 	}
-	public boolean removeMedicalReport(int patientId) throws ClassNotFoundException, SQLException
+	public boolean removeMedicalReport(int patientId) throws ClassNotFoundException, SQLException, IOException
 	{
 	
 		return mrd.deleteMedicalReport(patientId);
 	}
-	public boolean modifyMedicalReport(int patientId,MedicalReport newMedicalReport) throws ClassNotFoundException, SQLException
+	public boolean modifyMedicalReport(int patientId,MedicalReport newMedicalReport) throws ClassNotFoundException, SQLException, IOException
 	{
 	
 		return mrd.updateMedicalReport(patientId,newMedicalReport);
 	}
 
-	public TreeSet<MedicalReport> listMedicalReport() throws ClassNotFoundException, SQLException
+	public TreeSet<MedicalReport> listMedicalReport() throws ClassNotFoundException, SQLException, IOException
 	{
 		return mrd.displayAllMedicalReports();
 	}
-	public MedicalReport viewMedicalReports(int patientId) throws ClassNotFoundException, SQLException
+	public MedicalReport viewMedicalReports(int patientId) throws ClassNotFoundException, SQLException, IOException
 	{
 		return mrd.displayMedicalReport(patientId);
 	}
 	
-	public boolean addMedicine(Medicine newMedicine) throws ClassNotFoundException, SQLException
+	public boolean addMedicine(Medicine newMedicine) throws ClassNotFoundException, SQLException, IOException
 	{
 		return md.insertMedicine(newMedicine);
 		
 	}
-	public boolean removeMedicine(int sNo,int patientId) throws ClassNotFoundException, SQLException
+	public boolean removeMedicine(int sNo,int patientId) throws ClassNotFoundException, SQLException, IOException
 	{
 	
 		return md.deleteMedicine(sNo,patientId);
 	}
-	public boolean modifyMedicine(int sNo,Medicine newMedicine) throws ClassNotFoundException, SQLException
+	public boolean modifyMedicine(int sNo,Medicine newMedicine) throws ClassNotFoundException, SQLException, IOException
 	{
 	
 		return md.updateMedicine(sNo,newMedicine);
 	}
 
-	public TreeSet<Medicine> listMedicine() throws ClassNotFoundException, SQLException
+	public TreeSet<Medicine> listMedicine() throws ClassNotFoundException, SQLException, IOException
 	{
 		return md.displayAllMedicines();
 	}
-	public Medicine viewMedicine(int sNo,int patientId) throws ClassNotFoundException, SQLException
+	public Medicine viewMedicine(int sNo,int patientId) throws ClassNotFoundException, SQLException, IOException
 	{
 		return md.displayMedicine(sNo,patientId);
 	}

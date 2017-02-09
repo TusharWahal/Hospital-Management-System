@@ -1,5 +1,6 @@
 package dao;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -16,7 +17,7 @@ public class DoctorDaoImpl implements DoctorDao {
 	private ResultSet rs;
 
 	@Override
-	public boolean insertDoctor(Doctor newDoctor) throws ClassNotFoundException, SQLException {
+	public boolean insertDoctor(Doctor newDoctor) throws ClassNotFoundException, SQLException, IOException {
 		
 		con= openConnection();
 		
@@ -57,7 +58,7 @@ public class DoctorDaoImpl implements DoctorDao {
 	}
 
 	@Override
-	public boolean deleteDoctor(int doctorId) throws ClassNotFoundException, SQLException {
+	public boolean deleteDoctor(int doctorId) throws ClassNotFoundException, SQLException, IOException {
 		con= openConnection();
 		
 		
@@ -80,7 +81,7 @@ public class DoctorDaoImpl implements DoctorDao {
 	}
 
 	@Override
-	public boolean updateDoctor(int doctorId, Doctor renewDoctor) throws ClassNotFoundException, SQLException {
+	public boolean updateDoctor(int doctorId, Doctor renewDoctor) throws ClassNotFoundException, SQLException, IOException {
 		
 		con= openConnection();
 		
@@ -119,7 +120,7 @@ public class DoctorDaoImpl implements DoctorDao {
 	}
 
 	@Override
-	public Doctor displayDoctor(int doctorId) throws ClassNotFoundException, SQLException {
+	public Doctor displayDoctor(int doctorId) throws ClassNotFoundException, SQLException, IOException {
 		
 		con= openConnection();
 		
@@ -147,7 +148,7 @@ public class DoctorDaoImpl implements DoctorDao {
 	}
 
 	@Override
-	public TreeSet<Doctor> displayAllDoctors() throws ClassNotFoundException, SQLException {
+	public TreeSet<Doctor> displayAllDoctors() throws ClassNotFoundException, SQLException, IOException {
 		con= openConnection();
 		
 		

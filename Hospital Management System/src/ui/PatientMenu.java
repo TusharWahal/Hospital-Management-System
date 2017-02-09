@@ -1,5 +1,6 @@
 package ui;
 
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Scanner;
 import java.util.TreeSet;
@@ -32,7 +33,7 @@ public class PatientMenu {
 					for(Reception r : receptionList){
 						System.out.println(r);
 					}
-				} catch (ClassNotFoundException e1) {
+				} catch (ClassNotFoundException | IOException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				} catch (SQLException e1) {
@@ -47,7 +48,7 @@ public class PatientMenu {
 					patientId=sc.nextInt();
 				try {
 					pb.viewMedicalReport(patientId);
-				} catch (ClassNotFoundException e) {
+				} catch (ClassNotFoundException| IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				} catch (SQLException e) {
@@ -62,7 +63,7 @@ public class PatientMenu {
 					serialNo=sc.nextInt();
 				try {
 					pb.viewDischargeSummary(serialNo);
-				} catch (ClassNotFoundException e) {
+				} catch (ClassNotFoundException| IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				} catch (SQLException e) {
@@ -76,7 +77,7 @@ public class PatientMenu {
 					billNo=sc.nextInt();
 				try {
 					pb.viewBill(billNo);
-				} catch (ClassNotFoundException e) {
+				} catch (ClassNotFoundException| IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				} catch (SQLException e) {
@@ -90,7 +91,7 @@ public class PatientMenu {
 					pId=sc.nextInt();
 				try {
 					pb.myMedicines(pId);
-				} catch (ClassNotFoundException e) {
+				} catch (ClassNotFoundException| IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				} catch (SQLException e) {

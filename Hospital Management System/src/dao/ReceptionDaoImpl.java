@@ -3,6 +3,7 @@ package dao;
 import static helper.ConnectToDb.closeConnection;
 import static helper.ConnectToDb.openConnection;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -19,7 +20,7 @@ public class ReceptionDaoImpl implements ReceptionDao {
 	private ResultSet rs;
 
 	@Override
-	public boolean insertReception(Reception newReception) throws ClassNotFoundException,SQLException{
+	public boolean insertReception(Reception newReception) throws ClassNotFoundException,SQLException, IOException{
 		// TODO Auto-generated method stub
         con= openConnection();
 		
@@ -54,7 +55,7 @@ public class ReceptionDaoImpl implements ReceptionDao {
 	}
 
 	@Override
-	public boolean deleteReception(int regNo) throws ClassNotFoundException,SQLException {
+	public boolean deleteReception(int regNo) throws ClassNotFoundException,SQLException, IOException {
 		// TODO Auto-generated method stub
         con= openConnection();
 		
@@ -78,7 +79,7 @@ public class ReceptionDaoImpl implements ReceptionDao {
 	}
 
 	@Override
-	public boolean updateReception(int regNo, Reception renewReception) throws ClassNotFoundException,SQLException {
+	public boolean updateReception(int regNo, Reception renewReception) throws ClassNotFoundException,SQLException, IOException {
 		// TODO Auto-generated method stub
 		   con= openConnection();
 			
@@ -110,7 +111,7 @@ public class ReceptionDaoImpl implements ReceptionDao {
 	}
 
 	@Override
-	public Reception displayReception(int regNo) throws ClassNotFoundException,SQLException {
+	public Reception displayReception(int regNo) throws ClassNotFoundException,SQLException, IOException {
 		// TODO Auto-generated method stub
 con= openConnection();
 		
@@ -136,7 +137,7 @@ con= openConnection();
 	}
 
 	@Override
-	public TreeSet<Reception> displayAllReceptions() throws ClassNotFoundException,SQLException {
+	public TreeSet<Reception> displayAllReceptions() throws ClassNotFoundException,SQLException, IOException {
 		// TODO Auto-generated method stub
 		 con= openConnection();
 			

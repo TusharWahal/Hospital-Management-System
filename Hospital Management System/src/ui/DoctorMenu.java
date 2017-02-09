@@ -60,11 +60,12 @@ public class DoctorMenu {
 			try {
 				
 				dbl.myAppointments(doctor.getDoctorId());
-			} catch (ClassNotFoundException | SQLException e) {
+			} catch (ClassNotFoundException | SQLException |IOException e) {
 				System.out.println(APPOINTMENTS_DISPLAY_FAILED_MSG +
 						ERROR_DESC_PREFIX_MSG + ": " + e);
 				e.printStackTrace();
 			} 
+			
 			break;
 		case 2:
 			
@@ -92,7 +93,7 @@ public class DoctorMenu {
 				medicine=md.insert();
 				medicine.setPatientId(medicalReport.getPatientId());
 				dbl.addMedicine(medicine);
-			} catch (ClassNotFoundException | SQLException e) {
+			} catch (ClassNotFoundException | SQLException|IOException e) {
 				System.out.println(ADDING_MEDICAL_REPORT_FAILED_MSG +
 						ERROR_DESC_PREFIX_MSG + ": " + e);
 				e.printStackTrace();
@@ -105,7 +106,7 @@ public class DoctorMenu {
 				dbl.removeMedicalReport(patientId);
 				dbl.removeMedicine(medicine.getsNo(),patientId);
 				
-			} catch (ClassNotFoundException | SQLException e) {
+			} catch (ClassNotFoundException | SQLException|IOException e) {
 				System.out.println(APPOINTMENTS_DISPLAY_FAILED_MSG +
 						ERROR_DESC_PREFIX_MSG + ": " + e);
 				e.printStackTrace();
@@ -123,7 +124,7 @@ public class DoctorMenu {
 				dbl.modifyMedicalReport(medicalReport.getPatientId(), medicalReport);
 				dbl.modifyMedicine(medicine.getsNo(), medicine);
 				
-			} catch (ClassNotFoundException | SQLException e) {
+			} catch (ClassNotFoundException | SQLException|IOException e) {
 				System.out.println(APPOINTMENTS_DISPLAY_FAILED_MSG +
 						ERROR_DESC_PREFIX_MSG + ": " + e);
 				e.printStackTrace();
@@ -140,7 +141,7 @@ public class DoctorMenu {
 				int sNo= scanner.nextInt();
 				dbl.viewMedicine(sNo,patientId);
 				
-			} catch (ClassNotFoundException | SQLException e) {
+			} catch (ClassNotFoundException | SQLException|IOException e) {
 				System.out.println(APPOINTMENTS_DISPLAY_FAILED_MSG +
 						ERROR_DESC_PREFIX_MSG + ": " + e);
 				e.printStackTrace();
@@ -152,7 +153,7 @@ public class DoctorMenu {
 				dbl.listMedicalReport();
 				dbl.listMedicine();
 				
-			} catch (ClassNotFoundException | SQLException e) {
+			} catch (ClassNotFoundException | SQLException|IOException e) {
 				System.out.println(APPOINTMENTS_DISPLAY_FAILED_MSG +
 						ERROR_DESC_PREFIX_MSG + ": " + e);
 				e.printStackTrace();

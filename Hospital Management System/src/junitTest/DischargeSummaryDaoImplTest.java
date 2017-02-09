@@ -2,6 +2,7 @@ package junitTest;
 
 import static org.junit.Assert.*;
 
+import java.io.IOException;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.util.TreeSet;
@@ -29,7 +30,7 @@ public class DischargeSummaryDaoImplTest {
 	}
 
 	@Test
-	public void testInsertDischargeSummary() throws ClassNotFoundException, SQLException {
+	public void testInsertDischargeSummary() throws ClassNotFoundException, SQLException, IOException {
 		 dsd.deleteDischargeSummary(1);
 		
 		 DischargeSummary dischargeSummary = new DischargeSummary();
@@ -54,7 +55,7 @@ public class DischargeSummaryDaoImplTest {
 	}
 	
 	@Test(expected=SQLException.class)
-	public void testInsertDischargeSummaryNegative() throws ClassNotFoundException, SQLException {
+	public void testInsertDischargeSummaryNegative() throws ClassNotFoundException, SQLException, IOException {
 		
 
 		DischargeSummary dischargeSummary = new DischargeSummary();
@@ -79,13 +80,13 @@ public class DischargeSummaryDaoImplTest {
 	}
 
 	@Test
-	public void testDeleteDischargeSummaryNegative() throws ClassNotFoundException, SQLException {
+	public void testDeleteDischargeSummaryNegative() throws ClassNotFoundException, SQLException, IOException {
 		
 		assertFalse(dsd.deleteDischargeSummary(16501));
 	}
 	
 	@Test
-	public void testDeleteDischargeSummary() throws ClassNotFoundException, SQLException {
+	public void testDeleteDischargeSummary() throws ClassNotFoundException, SQLException, IOException {
 		
 		DischargeSummary dischargeSummary = new DischargeSummary();
 		 
@@ -111,7 +112,7 @@ public class DischargeSummaryDaoImplTest {
 	
 	
 	@Test
-	public void testUpdateDischargeSummary() throws ClassNotFoundException, SQLException {
+	public void testUpdateDischargeSummary() throws ClassNotFoundException, SQLException, IOException {
 		
 		dsd.deleteDischargeSummary(1);
 		
@@ -154,7 +155,7 @@ public class DischargeSummaryDaoImplTest {
 		 assertTrue(dsd.updateDischargeSummary(3, newDischargeSummary));
 	}
 	@Test
-	public void testUpdateDischargeSummaryNegative() throws ClassNotFoundException, SQLException
+	public void testUpdateDischargeSummaryNegative() throws ClassNotFoundException, SQLException, IOException
 	{
 		DischargeSummary dischargeSummary = new DischargeSummary();
 		 
@@ -179,7 +180,7 @@ public class DischargeSummaryDaoImplTest {
 	
 
 	@Test
-	public void testDisplayDischargeSummary() throws ClassNotFoundException, SQLException {
+	public void testDisplayDischargeSummary() throws ClassNotFoundException, SQLException, IOException {
 		 
 		 //dsd.deleteDischargeSummary(1);
 		
@@ -206,7 +207,7 @@ public class DischargeSummaryDaoImplTest {
 	}
 	
 	@Test
-	public void testDisplayDischargeSummaryNegative() throws ClassNotFoundException, SQLException {
+	public void testDisplayDischargeSummaryNegative() throws ClassNotFoundException, SQLException, IOException {
 		
 		
 		assertEquals(0,dsd.displayDischargeSummary(234234).getSerialNo());
@@ -214,7 +215,7 @@ public class DischargeSummaryDaoImplTest {
 	}
 
 	@Test
-	public void testDisplayAllDischargeSummarys() throws ClassNotFoundException, SQLException {
+	public void testDisplayAllDischargeSummarys() throws ClassNotFoundException, SQLException, IOException {
 //		TreeSet<DischargeSummary> dischargeSummaryList=new TreeSet<DischargeSummary>();
 //		
 //		 dsd.deleteDischargeSummary(1);

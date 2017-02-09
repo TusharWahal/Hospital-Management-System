@@ -2,6 +2,7 @@ package junitTest;
 
 import static org.junit.Assert.*;
 
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.TreeSet;
 
@@ -27,7 +28,7 @@ public class DoctorDaoImplTest {
 	}
 
 	@Test
-	public void testInsertDoctor() throws ClassNotFoundException, SQLException {
+	public void testInsertDoctor() throws ClassNotFoundException, SQLException, IOException {
 		
 		
 		//Create necessary tables and insert one tuple for negative insert testing 
@@ -46,7 +47,7 @@ public class DoctorDaoImplTest {
 		
 	}
 	@Test(expected=SQLException.class)
-	public void testInsertDoctorNegative() throws ClassNotFoundException, SQLException {
+	public void testInsertDoctorNegative() throws ClassNotFoundException, SQLException, IOException {
 		
 		Doctor doctor=new Doctor();
 		doctor.setDoctorId(0);
@@ -63,13 +64,13 @@ public class DoctorDaoImplTest {
 	
 
 	@Test
-	public void testDeleteDoctorNegative() throws ClassNotFoundException, SQLException {
+	public void testDeleteDoctorNegative() throws ClassNotFoundException, SQLException, IOException {
 		
 		assertFalse(dd.deleteDoctor(12131));
 	}
 	
 	@Test
-	public void testDeleteDoctor() throws ClassNotFoundException, SQLException {
+	public void testDeleteDoctor() throws ClassNotFoundException, SQLException, IOException {
 		
 		Doctor doctor=new Doctor();
 		doctor.setDoctorId(5);
@@ -85,7 +86,7 @@ public class DoctorDaoImplTest {
 	}
 
 	@Test
-	public void testUpdateDoctor() throws ClassNotFoundException, SQLException {
+	public void testUpdateDoctor() throws ClassNotFoundException, SQLException, IOException {
 		
 		dd.deleteDoctor(6);
 		Doctor doctor=new Doctor();
@@ -117,7 +118,7 @@ public class DoctorDaoImplTest {
 	
 
 	@Test
-	public void testUpdateDoctorNegative() throws ClassNotFoundException, SQLException
+	public void testUpdateDoctorNegative() throws ClassNotFoundException, SQLException, IOException
 	{
 		Doctor newdoctor=new Doctor();
 		
@@ -133,7 +134,7 @@ public class DoctorDaoImplTest {
 	}
 
 	@Test
-	public void testDisplayDoctor() throws ClassNotFoundException, SQLException {
+	public void testDisplayDoctor() throws ClassNotFoundException, SQLException, IOException {
 		
 		
 		dd.deleteDoctor(7);
@@ -155,7 +156,7 @@ public class DoctorDaoImplTest {
 		
 	}
 	@Test
-	public void testDisplayDoctorNegative() throws ClassNotFoundException, SQLException {
+	public void testDisplayDoctorNegative() throws ClassNotFoundException, SQLException, IOException {
 		
 		
 		assertEquals(0,dd.displayDoctor(234234).getDoctorId());
@@ -163,7 +164,7 @@ public class DoctorDaoImplTest {
 	}
 
 	@Test
-	public void testDisplayAllDoctors() throws ClassNotFoundException, SQLException {
+	public void testDisplayAllDoctors() throws ClassNotFoundException, SQLException, IOException {
 		
 		
 		

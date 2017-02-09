@@ -3,6 +3,7 @@ package dao;
 import static helper.ConnectToDb.closeConnection;
 import static helper.ConnectToDb.openConnection;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -20,7 +21,7 @@ public class DischargeSummaryDaoImpl implements DischargeSummaryDao {
 	private ResultSet rs;
 	
 	@Override
-	public boolean insertDischargeSummary(DischargeSummary newDischargeSummary) throws ClassNotFoundException, SQLException {
+	public boolean insertDischargeSummary(DischargeSummary newDischargeSummary) throws ClassNotFoundException, SQLException, IOException {
 
 
 		con= openConnection();
@@ -68,7 +69,7 @@ public class DischargeSummaryDaoImpl implements DischargeSummaryDao {
 	}
 
 	@Override
-	public boolean deleteDischargeSummary(int dischargeSummaryId) throws ClassNotFoundException, SQLException {
+	public boolean deleteDischargeSummary(int dischargeSummaryId) throws  IOException, SQLException, ClassNotFoundException {
 
 		con= openConnection();
 		
@@ -89,7 +90,7 @@ public class DischargeSummaryDaoImpl implements DischargeSummaryDao {
 	}
 
 	@Override
-	public boolean updateDischargeSummary(int dischargeSummaryId, DischargeSummary renewDischargeSummary) throws ClassNotFoundException, SQLException {
+	public boolean updateDischargeSummary(int dischargeSummaryId, DischargeSummary renewDischargeSummary) throws ClassNotFoundException, SQLException, IOException {
 
 		con= openConnection();
 		
@@ -125,7 +126,7 @@ public class DischargeSummaryDaoImpl implements DischargeSummaryDao {
 	}
 
 	@Override
-	public DischargeSummary displayDischargeSummary(int dischargeSummaryId) throws ClassNotFoundException, SQLException {
+	public DischargeSummary displayDischargeSummary(int dischargeSummaryId) throws ClassNotFoundException, SQLException, IOException {
 
 		con= openConnection();
 		
@@ -159,7 +160,7 @@ public class DischargeSummaryDaoImpl implements DischargeSummaryDao {
 	}
 
 	@Override
-	public TreeSet<DischargeSummary> displayAllDischargeSummarys() throws ClassNotFoundException, SQLException {
+	public TreeSet<DischargeSummary> displayAllDischargeSummarys() throws ClassNotFoundException, SQLException, IOException {
 
 		con= openConnection();
 		

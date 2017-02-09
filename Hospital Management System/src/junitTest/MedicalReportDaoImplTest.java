@@ -2,6 +2,7 @@ package junitTest;
 
 import static org.junit.Assert.*;
 
+import java.io.IOException;
 import java.sql.Date;
 import java.sql.SQLException;
 
@@ -28,7 +29,7 @@ public class MedicalReportDaoImplTest {
 	}
 
 	@Test
-	public void testInsertMedicalReport() throws ClassNotFoundException, SQLException {
+	public void testInsertMedicalReport() throws ClassNotFoundException, SQLException, IOException {
 		mrd.deleteMedicalReport(0);
 		MedicalReport medicalreport = new MedicalReport();
 		medicalreport.setPatientId(0);
@@ -46,7 +47,7 @@ public class MedicalReportDaoImplTest {
 	}
 
 	@Test(expected=SQLException.class)
-	public void testInsertMedicalReportNegative() throws ClassNotFoundException, SQLException {
+	public void testInsertMedicalReportNegative() throws ClassNotFoundException, SQLException, IOException {
 		
 		MedicalReport medicalreport = new MedicalReport();
 		medicalreport.setPatientId(1);
@@ -65,7 +66,7 @@ public class MedicalReportDaoImplTest {
 	}
 	
 	@Test
-	public void testDeleteMedicalReport() throws ClassNotFoundException, SQLException {
+	public void testDeleteMedicalReport() throws ClassNotFoundException, SQLException, IOException {
 		mrd.deleteMedicalReport(0);
 		MedicalReport medicalreport = new MedicalReport();
 		medicalreport.setPatientId(0);
@@ -84,12 +85,12 @@ public class MedicalReportDaoImplTest {
 	}
 	
 	@Test
-	public void testDeleteMedicalReportNegative() throws ClassNotFoundException, SQLException {
+	public void testDeleteMedicalReportNegative() throws ClassNotFoundException, SQLException, IOException {
 		assertFalse(mrd.deleteMedicalReport(12131));
 	}
 
 	@Test
-	public void testUpdateMedicalReport() throws ClassNotFoundException, SQLException {
+	public void testUpdateMedicalReport() throws ClassNotFoundException, SQLException, IOException {
 		mrd.deleteMedicalReport(0);
 		MedicalReport medicalreport = new MedicalReport();
 		medicalreport.setPatientId(0);
@@ -120,7 +121,7 @@ public class MedicalReportDaoImplTest {
 	}
 	
 	@Test
-	public void testUpdateMedicalReportNegative() throws ClassNotFoundException, SQLException
+	public void testUpdateMedicalReportNegative() throws ClassNotFoundException, SQLException, IOException
 	{
 		String str="2015-03-31";  
 	    Date visitDate=Date.valueOf(str);
@@ -138,7 +139,7 @@ public class MedicalReportDaoImplTest {
 	}
 
 	@Test
-	public void testDisplayMedicalReport() throws ClassNotFoundException, SQLException {
+	public void testDisplayMedicalReport() throws ClassNotFoundException, SQLException, IOException {
 		mrd.deleteMedicalReport(0);
 		MedicalReport medicalreport = new MedicalReport();
 		medicalreport.setPatientId(0);
@@ -158,12 +159,12 @@ public class MedicalReportDaoImplTest {
 	}
 	
 	@Test
-	public void testDisplayMedicalReportNegative() throws ClassNotFoundException, SQLException {
+	public void testDisplayMedicalReportNegative() throws ClassNotFoundException, SQLException, IOException {
 		assertEquals(0,mrd.displayMedicalReport(234234).getPatientId());	
 	}
 
 	@Test
-	public void testDisplayAllMedicalReports() throws ClassNotFoundException, SQLException {
+	public void testDisplayAllMedicalReports() throws ClassNotFoundException, SQLException, IOException {
 		assertNotEquals(null, mrd.displayAllMedicalReports());
 	}
 

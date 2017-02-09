@@ -3,6 +3,7 @@ package dao;
 import static helper.ConnectToDb.closeConnection;
 import static helper.ConnectToDb.openConnection;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -19,7 +20,7 @@ public class StaffDaoImpl implements StaffDao {
 	private ResultSet rs;
 	
 	@Override
-	public boolean insertStaff(Staff newStaff) throws ClassNotFoundException, SQLException {		
+	public boolean insertStaff(Staff newStaff) throws ClassNotFoundException, SQLException, IOException {		
 		con= openConnection();
 	
 	int staffId=newStaff.getStaffId();
@@ -61,7 +62,7 @@ public class StaffDaoImpl implements StaffDao {
 	}
 
 	@Override
-	public boolean deleteStaff(int staffId) throws ClassNotFoundException, SQLException {
+	public boolean deleteStaff(int staffId) throws ClassNotFoundException, SQLException, IOException {
 		con= openConnection();
 		
 		
@@ -85,7 +86,7 @@ public class StaffDaoImpl implements StaffDao {
 	}
 
 	@Override
-	public boolean updateStaff(int staffId, Staff renewStaff) throws ClassNotFoundException, SQLException {
+	public boolean updateStaff(int staffId, Staff renewStaff) throws ClassNotFoundException, SQLException, IOException {
 
 		con= openConnection();
 		
@@ -124,7 +125,7 @@ public class StaffDaoImpl implements StaffDao {
 	}
 
 	@Override
-	public Staff displayStaff(int staffId) throws ClassNotFoundException, SQLException {
+	public Staff displayStaff(int staffId) throws ClassNotFoundException, SQLException , IOException{
 
 
 		con= openConnection();
@@ -154,7 +155,7 @@ public class StaffDaoImpl implements StaffDao {
 	}
 
 	@Override
-	public TreeSet<Staff> displayAllStaffs() throws ClassNotFoundException, SQLException {
+	public TreeSet<Staff> displayAllStaffs() throws ClassNotFoundException, SQLException, IOException {
 	
 		con= openConnection();
 		

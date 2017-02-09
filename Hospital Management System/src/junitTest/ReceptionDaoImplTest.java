@@ -2,6 +2,7 @@ package junitTest;
 
 import static org.junit.Assert.*;
 
+import java.io.IOException;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
@@ -28,7 +29,7 @@ public class ReceptionDaoImplTest {
 	}
 
 	@Test
-	public void testInsertReception() throws ClassNotFoundException, SQLException {
+	public void testInsertReception() throws ClassNotFoundException, SQLException, IOException {
 		dd.deleteReception(1);
 		Reception reception=new Reception();
 		reception.setRegNo(1);
@@ -47,7 +48,7 @@ public class ReceptionDaoImplTest {
 	
 
 	@Test
-	public void testDeleteReception() throws ClassNotFoundException, SQLException {
+	public void testDeleteReception() throws ClassNotFoundException, SQLException, IOException {
 		
 		dd.deleteReception(1);
 		Reception reception=new Reception();
@@ -65,7 +66,7 @@ public class ReceptionDaoImplTest {
 	}
 
 	@Test
-	public void testUpdateReception() throws ClassNotFoundException, SQLException {
+	public void testUpdateReception() throws ClassNotFoundException, SQLException, IOException {
 		
 		dd.deleteReception(1);
 		Reception reception=new Reception();
@@ -95,7 +96,7 @@ public class ReceptionDaoImplTest {
 	}
 
 	@Test
-	public void testDisplayReception() throws ClassNotFoundException, SQLException {
+	public void testDisplayReception() throws ClassNotFoundException, SQLException, IOException {
 		
 		dd.deleteReception(1);
 		Reception reception=new Reception();
@@ -116,7 +117,7 @@ public class ReceptionDaoImplTest {
 	}
 
 	@Test
-	public void testDisplayAllReceptions() throws ClassNotFoundException, SQLException {
+	public void testDisplayAllReceptions() throws ClassNotFoundException, SQLException, IOException {
 		
 		assertNotEquals(null, dd.displayAllReceptions());
 		

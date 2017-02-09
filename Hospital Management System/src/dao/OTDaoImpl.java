@@ -4,6 +4,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.TreeSet;
+import java.io.IOException;
 import java.sql.Connection;
 import static helper.ConnectToDb.*;
 
@@ -16,7 +17,7 @@ public class OTDaoImpl implements OTDao {
 	private ResultSet rs;
 
 	@Override
-	public boolean insertOT(OT newOT) throws ClassNotFoundException, SQLException {
+	public boolean insertOT(OT newOT) throws ClassNotFoundException, SQLException, IOException {
 		con= openConnection(); 
 		
 		int otId = newOT.getOtId();
@@ -51,7 +52,7 @@ public class OTDaoImpl implements OTDao {
 	}
 
 	@Override
-	public boolean deleteOT(int OTId) throws ClassNotFoundException, SQLException {
+	public boolean deleteOT(int OTId) throws ClassNotFoundException, SQLException, IOException {
 		con= openConnection();
 		
 		
@@ -74,7 +75,7 @@ public class OTDaoImpl implements OTDao {
 	}
 
 	@Override
-	public boolean updateOT(int OTId, OT renewOT) throws ClassNotFoundException, SQLException {
+	public boolean updateOT(int OTId, OT renewOT) throws ClassNotFoundException, SQLException, IOException {
 		con= openConnection();
 		
 		
@@ -106,7 +107,7 @@ public class OTDaoImpl implements OTDao {
 	}
 
 	@Override
-	public OT displayOT(int OTId) throws ClassNotFoundException, SQLException {
+	public OT displayOT(int OTId) throws ClassNotFoundException, SQLException, IOException {
 		con= openConnection();
 		
 		
@@ -131,7 +132,7 @@ public class OTDaoImpl implements OTDao {
 	}
 
 	@Override
-	public TreeSet<OT> displayAllOTs() throws ClassNotFoundException, SQLException {
+	public TreeSet<OT> displayAllOTs() throws ClassNotFoundException, SQLException, IOException {
 		con= openConnection();
 		
 		

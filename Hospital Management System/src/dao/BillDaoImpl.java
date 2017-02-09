@@ -3,6 +3,7 @@ package dao;
 import static helper.ConnectToDb.closeConnection;
 import static helper.ConnectToDb.openConnection;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -18,7 +19,7 @@ public class BillDaoImpl implements BillDao {
 	private ResultSet rs;
 
 	@Override
-	public boolean insertBill(Bill newBill) throws ClassNotFoundException, SQLException {
+	public boolean insertBill(Bill newBill) throws ClassNotFoundException, SQLException, IOException {
 
 		con= openConnection();
 		
@@ -54,7 +55,7 @@ public class BillDaoImpl implements BillDao {
 	}
 
 	@Override
-	public boolean deleteBill(int billId) throws ClassNotFoundException, SQLException {
+	public boolean deleteBill(int billId) throws ClassNotFoundException, SQLException, IOException {
 
 		con= openConnection();
 		
@@ -75,7 +76,7 @@ public class BillDaoImpl implements BillDao {
 	}
 
 	@Override
-	public boolean updateBill(int BillId, Bill renewBill) throws ClassNotFoundException, SQLException {
+	public boolean updateBill(int BillId, Bill renewBill) throws ClassNotFoundException, SQLException, IOException {
 
 		con= openConnection();
 		
@@ -106,7 +107,7 @@ public class BillDaoImpl implements BillDao {
 	}
 
 	@Override
-	public Bill displayBill(int billId) throws ClassNotFoundException, SQLException {
+	public Bill displayBill(int billId) throws ClassNotFoundException, SQLException, IOException {
 
 		con= openConnection();
 		
@@ -135,7 +136,7 @@ public class BillDaoImpl implements BillDao {
 	}
 
 	@Override
-	public TreeSet<Bill> displayAllBills() throws ClassNotFoundException, SQLException {
+	public TreeSet<Bill> displayAllBills() throws ClassNotFoundException, SQLException, IOException {
 
 		con= openConnection();
 		

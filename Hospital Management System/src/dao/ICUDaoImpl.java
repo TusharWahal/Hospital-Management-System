@@ -3,6 +3,7 @@ package dao;
 import static helper.ConnectToDb.closeConnection;
 import static helper.ConnectToDb.openConnection;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -20,7 +21,7 @@ public class ICUDaoImpl implements ICUDao {
 	private ResultSet rs;
 	
 	@Override
-	public boolean insertICU(ICU newICU) throws ClassNotFoundException, SQLException {
+	public boolean insertICU(ICU newICU) throws ClassNotFoundException, SQLException, IOException {
 		con= openConnection();
 		
 		int icuId= newICU.getIcuId();
@@ -48,7 +49,7 @@ public class ICUDaoImpl implements ICUDao {
 	}
 
 	@Override
-	public boolean deleteICU(int icuId) throws ClassNotFoundException, SQLException {
+	public boolean deleteICU(int icuId) throws ClassNotFoundException, SQLException, IOException {
 
 		con= openConnection();
 		
@@ -69,7 +70,7 @@ public class ICUDaoImpl implements ICUDao {
 	}
 
 	@Override
-	public boolean updateICU(int icuId, ICU renewICU) throws ClassNotFoundException, SQLException {
+	public boolean updateICU(int icuId, ICU renewICU) throws ClassNotFoundException, SQLException, IOException {
 
 		con= openConnection();
 		
@@ -96,7 +97,7 @@ public class ICUDaoImpl implements ICUDao {
 	}
 
 	@Override
-	public ICU displayICU(int icuId) throws ClassNotFoundException, SQLException {
+	public ICU displayICU(int icuId) throws ClassNotFoundException, SQLException, IOException {
 
 		con= openConnection();
 		
@@ -118,7 +119,7 @@ public class ICUDaoImpl implements ICUDao {
 	}
 
 	@Override
-	public TreeSet<ICU> displayAllICUs() throws ClassNotFoundException, SQLException {
+	public TreeSet<ICU> displayAllICUs() throws ClassNotFoundException, SQLException, IOException {
 
 		con= openConnection();
 		

@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.TreeSet;
+import java.io.IOException;
 import java.sql.Connection;
 import static helper.ConnectToDb.*;
 
@@ -17,7 +18,7 @@ public class MedicalReportDaoImpl implements MedicalReportDao {
 	private ResultSet rs;
 	
 	@Override
-	public boolean insertMedicalReport(MedicalReport newMedicalReport) throws SQLException, ClassNotFoundException {
+	public boolean insertMedicalReport(MedicalReport newMedicalReport) throws SQLException, ClassNotFoundException, IOException {
 		con= openConnection(); 
 		
 		int patientId = newMedicalReport.getPatientId();
@@ -56,7 +57,7 @@ public class MedicalReportDaoImpl implements MedicalReportDao {
 	}
 
 	@Override
-	public boolean deleteMedicalReport(int patientId) throws ClassNotFoundException, SQLException {
+	public boolean deleteMedicalReport(int patientId) throws ClassNotFoundException, SQLException, IOException {
 		con= openConnection();
 		
 		
@@ -79,7 +80,7 @@ public class MedicalReportDaoImpl implements MedicalReportDao {
 	}
 
 	@Override
-	public boolean updateMedicalReport(int MedicalReportId, MedicalReport renewMedicalReport) throws ClassNotFoundException, SQLException {
+	public boolean updateMedicalReport(int MedicalReportId, MedicalReport renewMedicalReport) throws ClassNotFoundException, SQLException, IOException {
 		con= openConnection();
 		
 		
@@ -111,7 +112,7 @@ public class MedicalReportDaoImpl implements MedicalReportDao {
 	}
 
 	@Override
-	public MedicalReport displayMedicalReport(int patientId) throws ClassNotFoundException, SQLException {
+	public MedicalReport displayMedicalReport(int patientId) throws ClassNotFoundException, SQLException, IOException {
 		con= openConnection();
 		
 		
@@ -136,7 +137,7 @@ public class MedicalReportDaoImpl implements MedicalReportDao {
 	}
 
 	@Override
-	public TreeSet<MedicalReport> displayAllMedicalReports() throws ClassNotFoundException, SQLException {
+	public TreeSet<MedicalReport> displayAllMedicalReports() throws ClassNotFoundException, SQLException, IOException {
 		con= openConnection();
 		
 		
