@@ -1,5 +1,6 @@
 package ui;
 
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Scanner;
 import java.util.TreeSet;
@@ -91,6 +92,9 @@ public class ReceptionistMenu {
 			// TODO Auto-generated catch block
 			System.out.println("Registration Error !! Please Try Again");
 			return;
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			System.out.println("IO error");
 		}
 
 		return;
@@ -118,6 +122,10 @@ public class ReceptionistMenu {
 			// TODO Auto-generated catch block
 			System.out.println("No Such Apointment Exist");
 			return;
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			System.out.println(e);
+			return;
 		}
 		
 		
@@ -137,6 +145,9 @@ public class ReceptionistMenu {
 			// TODO Auto-generated catch block
 			System.out.println("No Appintments");
 			return;
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			System.out.println(e);
 		}
 		return;
 	}
@@ -174,6 +185,10 @@ public class ReceptionistMenu {
 		} catch (ClassNotFoundException | SQLException e) {
 			// TODO Auto-generated catch block
 			System.out.println("No Appintments");
+			return;
+		} catch (IOException e) {
+			
+			System.out.println(e);
 			return;
 		}
 		return;
@@ -223,6 +238,9 @@ public void viewSpecificDischargeSummary()
 		// TODO Auto-generated catch block
 		System.out.println("Discharge Summary Does Not Exist");
 		return;
+	} catch (IOException e) {
+		System.out.println(e);
+		return;
 	}
 	
 	return;
@@ -241,6 +259,8 @@ public void addDischargeSummary()
 			abl.addDischargeSummary(discharge);
 		} catch (ClassNotFoundException | SQLException e) {
 			System.out.println("Not a Unique Serial No Please select Other Serial Number and try again");
+		} catch (IOException e) {
+			System.out.println(e);
 		}
 		return;
 		
@@ -269,6 +289,9 @@ public void removeDischargeSummary(){
 		// TODO Auto-generated catch block
 		System.out.println("No Such Discharge Summary Exist");
 		return;
+	} catch (IOException e) {
+		System.out.println(e);
+		return;
 	}
 	
 	
@@ -289,6 +312,8 @@ public void listDischargeSummary()
 		// TODO Auto-generated catch block
 		System.out.println("No Dischare Summary");
 		return;
+	} catch (IOException e) {
+		System.out.println(e);
 	}
 	return;
 	
@@ -342,6 +367,9 @@ public void listDischargeSummary()
 			// TODO Auto-generated catch block
 			System.out.println(" Invalid Bill No Pleas Try Again");
 			return;
+		} catch (IOException e) {
+			System.out.println(e);
+			return;
 		}
 		
 		
@@ -357,6 +385,9 @@ public void listDischargeSummary()
 		} catch (ClassNotFoundException | SQLException e) {
 			// TODO Auto-generated catch block
 			System.out.println("No Such Bill Exist");
+			return;
+		} catch (IOException e) {
+			System.out.println(e);
 			return;
 		}
 	}
