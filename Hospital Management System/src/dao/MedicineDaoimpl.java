@@ -3,6 +3,7 @@ package dao;
 import static helper.ConnectToDb.closeConnection;
 import static helper.ConnectToDb.openConnection;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -20,7 +21,7 @@ public class MedicineDaoimpl implements MedicineDao {
 	private ResultSet rs;
 
 	@Override
-	public boolean insertMedicine(Medicine newMedicine) throws ClassNotFoundException, SQLException {
+	public boolean insertMedicine(Medicine newMedicine) throws ClassNotFoundException, SQLException, IOException {
 		con= openConnection(); 
 		
 		int sNo = newMedicine.getsNo();
@@ -55,7 +56,7 @@ public class MedicineDaoimpl implements MedicineDao {
 	}
 
 	@Override
-	public boolean deleteMedicine(int sNo,int patientId) throws ClassNotFoundException, SQLException {
+	public boolean deleteMedicine(int sNo,int patientId) throws ClassNotFoundException, SQLException, IOException {
 		con= openConnection();
 		
 		
@@ -79,7 +80,7 @@ public class MedicineDaoimpl implements MedicineDao {
 	}
 
 	@Override
-	public boolean updateMedicine(int sNo, Medicine renewMedicine) throws ClassNotFoundException, SQLException {
+	public boolean updateMedicine(int sNo, Medicine renewMedicine) throws ClassNotFoundException, SQLException, IOException {
 		con= openConnection();
 		
 		
@@ -110,7 +111,7 @@ public class MedicineDaoimpl implements MedicineDao {
 	}
 
 	@Override
-	public Medicine displayMedicine(int sNo,int patientId) throws ClassNotFoundException, SQLException {
+	public Medicine displayMedicine(int sNo,int patientId) throws ClassNotFoundException, SQLException, IOException {
 		con= openConnection();
 		
 		
@@ -136,7 +137,7 @@ public class MedicineDaoimpl implements MedicineDao {
 	}
 
 	@Override
-	public TreeSet<Medicine> displayAllMedicines() throws ClassNotFoundException, SQLException {
+	public TreeSet<Medicine> displayAllMedicines() throws ClassNotFoundException, SQLException , IOException{
 		con= openConnection();
 		
 		

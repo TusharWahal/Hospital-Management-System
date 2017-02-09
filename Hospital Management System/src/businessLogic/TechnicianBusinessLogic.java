@@ -35,6 +35,10 @@ public class TechnicianBusinessLogic {
 //	{
 //		return mrd.updateMedicalReport(patientId,newMedicalReport);
 //	}
+	public boolean modifyMedicalReport(int patientId,MedicalReport newMedicalReport) throws ClassNotFoundException, SQLException, IOException
+	{
+		return mrd.updateMedicalReport(patientId,newMedicalReport);
+	}
 	public TreeSet<MedicalReport> listMedicalReport() throws ClassNotFoundException, SQLException
 	{
 		return mrd.displayAllMedicalReports();

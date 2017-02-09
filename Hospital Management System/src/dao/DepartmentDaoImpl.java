@@ -3,6 +3,7 @@ package dao;
 import static helper.ConnectToDb.closeConnection;
 import static helper.ConnectToDb.openConnection;
 
+import java.io.IOException;
 import java.sql.Connection;
 import helper.ConnectToDb.*;
 import java.sql.PreparedStatement;
@@ -20,7 +21,7 @@ public class DepartmentDaoImpl implements DepartmentDao {
 	private ResultSet rs;
 	
 	@Override
-	public boolean insertDepartment(Department newDepartment) throws ClassNotFoundException, SQLException {
+	public boolean insertDepartment(Department newDepartment) throws ClassNotFoundException, SQLException, IOException {
 		
 		con= openConnection();
 		
@@ -55,7 +56,7 @@ public class DepartmentDaoImpl implements DepartmentDao {
 	}
 
 	@Override
-	public boolean deleteDepartment(int departmentId) throws SQLException, ClassNotFoundException {
+	public boolean deleteDepartment(int departmentId) throws SQLException, ClassNotFoundException, IOException {
 
 		con= openConnection();
 		
@@ -80,7 +81,7 @@ public class DepartmentDaoImpl implements DepartmentDao {
 	}
 
 	@Override
-	public boolean updateDepartment(int departmentId, Department renewDepartment) throws ClassNotFoundException, SQLException {
+	public boolean updateDepartment(int departmentId, Department renewDepartment) throws ClassNotFoundException, SQLException, IOException {
 
 		con= openConnection();
 		
@@ -116,7 +117,7 @@ public class DepartmentDaoImpl implements DepartmentDao {
 	}
 
 	@Override
-	public Department displayDepartment(int departmentId) throws ClassNotFoundException, SQLException {
+	public Department displayDepartment(int departmentId) throws ClassNotFoundException, SQLException, IOException {
 		
 		con= openConnection();
 		
@@ -142,7 +143,7 @@ public class DepartmentDaoImpl implements DepartmentDao {
 	}
 
 	@Override
-	public TreeSet<Department> displayAllDepartments() throws ClassNotFoundException, SQLException {
+	public TreeSet<Department> displayAllDepartments() throws ClassNotFoundException, SQLException, IOException {
 		
 		con= openConnection();
 		

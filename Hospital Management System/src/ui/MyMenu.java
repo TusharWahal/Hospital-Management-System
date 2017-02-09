@@ -1,5 +1,6 @@
 package ui;
 
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Scanner;
 
@@ -7,7 +8,7 @@ import helper.SignUpLogInMenu;
 
 public class MyMenu {
 	
-	public MyMenu() throws ClassNotFoundException, SQLException{
+	public MyMenu() throws ClassNotFoundException, SQLException, IOException{
 		while(true){
 		
 			int choice;

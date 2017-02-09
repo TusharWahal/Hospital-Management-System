@@ -1,5 +1,6 @@
 package businessLogic;
 
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.TreeSet;
 
@@ -21,12 +22,12 @@ public class DepartmentBusinessLogic {
 	StaffDaoImpl sd=new StaffDaoImpl();
 	TechnicianDaoImpl td=new TechnicianDaoImpl();
 	
-	public TreeSet<Department> listDepartment() throws ClassNotFoundException, SQLException
+	public TreeSet<Department> listDepartment() throws ClassNotFoundException, SQLException, IOException
 	{
 		return dd.displayAllDepartments();
 	}
 	
-	public TreeSet<Doctor> departmentDoctors(int departmentId) throws ClassNotFoundException, SQLException
+	public TreeSet<Doctor> departmentDoctors(int departmentId) throws ClassNotFoundException, SQLException, IOException
 	{
 		TreeSet<Doctor> doctorList=new TreeSet<Doctor>();
 		doctorList=dod.displayAllDoctors();
@@ -39,7 +40,7 @@ public class DepartmentBusinessLogic {
 		return departmentDoctorList;
 	}
 	
-	public TreeSet<Staff> departmentStaffs(int departmentId) throws ClassNotFoundException, SQLException
+	public TreeSet<Staff> departmentStaffs(int departmentId) throws ClassNotFoundException, SQLException, IOException
 	{
 		TreeSet<Staff> staffList=new TreeSet<Staff>();
 		staffList=sd.displayAllStaffs();
@@ -52,7 +53,7 @@ public class DepartmentBusinessLogic {
 		return departmentStaffList;
 	}
 	
-	public TreeSet<Technician> departmentTechnicians(int departmentId) throws ClassNotFoundException, SQLException
+	public TreeSet<Technician> departmentTechnicians(int departmentId) throws ClassNotFoundException, SQLException, IOException
 	{
 		TreeSet<Technician> technicianList=new TreeSet<Technician>();
 		technicianList=td.displayAllTechnicians();

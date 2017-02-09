@@ -2,6 +2,7 @@ package junitTest;
 
 import static org.junit.Assert.*;
 
+import java.io.IOException;
 import java.sql.SQLException;
 
 import org.junit.After;
@@ -27,7 +28,7 @@ public class DepartmentDaoImplTest {
 	}
 
 	@Test
-	public void testInsertDepartment() throws ClassNotFoundException, SQLException {
+	public void testInsertDepartment() throws ClassNotFoundException, SQLException, IOException {
 		
 		dd.deleteDepartment(1);
 		Department department=new Department();
@@ -40,7 +41,7 @@ public class DepartmentDaoImplTest {
 	}
 	
 	@Test(expected=SQLException.class)
-	public void testInsertDoctorNegative() throws ClassNotFoundException, SQLException {
+	public void testInsertDoctorNegative() throws ClassNotFoundException, SQLException, IOException {
 		
 		Department department=new Department();
 		department.setDepartmentId(0);
@@ -53,7 +54,7 @@ public class DepartmentDaoImplTest {
 
 	
 	@Test
-	public void testDeleteDepartment() throws ClassNotFoundException, SQLException {
+	public void testDeleteDepartment() throws ClassNotFoundException, SQLException, IOException {
 		//dummy values inserted manually
 		Department department=new Department();
 		department.setDepartmentId(2);
@@ -67,13 +68,13 @@ public class DepartmentDaoImplTest {
 	}
 
 	@Test
-	public void testDeleteDepartmentNegative() throws ClassNotFoundException, SQLException
+	public void testDeleteDepartmentNegative() throws ClassNotFoundException, SQLException, IOException
 	{
 		assertFalse(dd.deleteDepartment(231424));
 		
 	}
 	@Test
-	public void testUpdateDepartment() throws ClassNotFoundException, SQLException {
+	public void testUpdateDepartment() throws ClassNotFoundException, SQLException, IOException {
 		
 		dd.deleteDepartment(3);
 		Department department=new Department();
@@ -95,7 +96,7 @@ public class DepartmentDaoImplTest {
 	}
 	
 	@Test
-	public void testUpdateDepartmentNegative() throws ClassNotFoundException, SQLException
+	public void testUpdateDepartmentNegative() throws ClassNotFoundException, SQLException, IOException
 	{
 		Department newDepartment=new Department();
 		
@@ -108,7 +109,7 @@ public class DepartmentDaoImplTest {
 	}
 
 	@Test
-	public void testDisplayDepartment() throws ClassNotFoundException, SQLException {
+	public void testDisplayDepartment() throws ClassNotFoundException, SQLException, IOException {
 		
 		dd.deleteDepartment(3);
 		Department department=new Department();
@@ -122,7 +123,7 @@ public class DepartmentDaoImplTest {
 		
 	}
 	@Test
-	public void testDisplayDepartmentNegative() throws ClassNotFoundException, SQLException {
+	public void testDisplayDepartmentNegative() throws ClassNotFoundException, SQLException, IOException {
 		
 		
 		
@@ -131,7 +132,7 @@ public class DepartmentDaoImplTest {
 	}
 
 	@Test
-	public void testDisplayAllDepartments() throws ClassNotFoundException, SQLException {
+	public void testDisplayAllDepartments() throws ClassNotFoundException, SQLException, IOException {
 		
 		assertNotEquals(null, dd.displayAllDepartments());
 		

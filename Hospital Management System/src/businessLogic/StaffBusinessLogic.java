@@ -1,5 +1,6 @@
 package businessLogic;
 
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.TreeSet;
 
@@ -14,7 +15,7 @@ public class StaffBusinessLogic {
 	WardDaoImpl wd = new WardDaoImpl();
 	//OTDaoImpl ot = new OTDaoImpl();
 	
-	public Staff staffLogin(int staffId, String staffPassword) throws ClassNotFoundException, SQLException
+	public Staff staffLogin(int staffId, String staffPassword) throws ClassNotFoundException, SQLException, IOException
 	{
 		Staff staff;
 		if(sd.displayStaff(staffId).getStaffId()==0)
@@ -32,7 +33,7 @@ public class StaffBusinessLogic {
 		}
 	}
 	
-	public TreeSet<Ward> myWards(int staffId) throws ClassNotFoundException, SQLException
+	public TreeSet<Ward> myWards(int staffId) throws ClassNotFoundException, SQLException, IOException
 	{
 		TreeSet<Ward> wardList=new TreeSet<Ward>();
 		
@@ -52,7 +53,7 @@ public class StaffBusinessLogic {
 		
 	}
 	
-	public TreeSet<Ward> allWards() throws ClassNotFoundException, SQLException
+	public TreeSet<Ward> allWards() throws ClassNotFoundException, SQLException, IOException
 	{
 		TreeSet<Ward> wardList=new TreeSet<Ward>();
 		

@@ -2,6 +2,7 @@ package junitTest;
 
 import static org.junit.Assert.*;
 
+import java.io.IOException;
 import java.sql.Date;
 import java.sql.SQLException;
 
@@ -28,7 +29,7 @@ public class OTDaoImplTest {
 	}
 
 	@Test
-	public void testInsertOT() throws ClassNotFoundException, SQLException {
+	public void testInsertOT() throws ClassNotFoundException, SQLException, IOException {
 		otd.deleteOT(0);
 		OT ot = new OT();
 		ot.setOtId(0);
@@ -41,7 +42,7 @@ public class OTDaoImplTest {
 	}
 
 	@Test(expected=SQLException.class)
-	public void testInsertMedicalReportNegative() throws ClassNotFoundException, SQLException {
+	public void testInsertMedicalReportNegative() throws ClassNotFoundException, SQLException, IOException {
 	
 		OT ot = new OT();
 		ot.setOtId(0);
@@ -55,7 +56,7 @@ public class OTDaoImplTest {
 	}	
 	
 	@Test
-	public void testDeleteOT() throws ClassNotFoundException, SQLException {
+	public void testDeleteOT() throws ClassNotFoundException, SQLException, IOException {
 		otd.deleteOT(0);
 		OT ot = new OT();
 		ot.setOtId(0);
@@ -69,12 +70,12 @@ public class OTDaoImplTest {
 	}
 	
 	@Test
-	public void testDeleteOTNegative() throws ClassNotFoundException, SQLException {
+	public void testDeleteOTNegative() throws ClassNotFoundException, SQLException, IOException {
 		assertFalse(otd.deleteOT(12131));
 	}
 
 	@Test
-	public void testUpdateOT() throws ClassNotFoundException, SQLException {
+	public void testUpdateOT() throws ClassNotFoundException, SQLException, IOException {
 		otd.deleteOT(0);
 		OT ot = new OT();
 		ot.setOtId(0);
@@ -94,7 +95,7 @@ public class OTDaoImplTest {
 	}
 	
 	@Test
-	public void testUpdateMedicalReportNegative() throws ClassNotFoundException, SQLException
+	public void testUpdateMedicalReportNegative() throws ClassNotFoundException, SQLException, IOException
 	{
 	
 		OT newot = new OT();
@@ -109,7 +110,7 @@ public class OTDaoImplTest {
 
 
 	@Test
-	public void testDisplayOT() throws ClassNotFoundException, SQLException {
+	public void testDisplayOT() throws ClassNotFoundException, SQLException, IOException {
 		otd.deleteOT(0);
 		OT ot = new OT();
 		ot.setOtId(0);
@@ -124,12 +125,12 @@ public class OTDaoImplTest {
 	}
 
 	@Test
-	public void testDisplayOTNegative() throws ClassNotFoundException, SQLException {
+	public void testDisplayOTNegative() throws ClassNotFoundException, SQLException, IOException {
 		assertEquals(0,otd.displayOT(234234).getOtId());	
 	}
 	
 	@Test
-	public void testDisplayAllOTs() throws ClassNotFoundException, SQLException {
+	public void testDisplayAllOTs() throws ClassNotFoundException, SQLException, IOException {
 		assertNotEquals(null, otd.displayAllOTs());
 	}
 

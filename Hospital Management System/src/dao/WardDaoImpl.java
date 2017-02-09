@@ -3,6 +3,7 @@ package dao;
 import static helper.ConnectToDb.closeConnection;
 import static helper.ConnectToDb.openConnection;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -19,7 +20,7 @@ public class WardDaoImpl implements WardDao {
 	private ResultSet rs;
 
 	@Override
-	public boolean insertWard(Ward newWard) throws ClassNotFoundException, SQLException {
+	public boolean insertWard(Ward newWard) throws ClassNotFoundException, SQLException, IOException {
 		
 		con= openConnection();
 		
@@ -64,7 +65,7 @@ public class WardDaoImpl implements WardDao {
 	}
 
 	@Override
-	public boolean deleteWard(int bedNo) throws ClassNotFoundException, SQLException {
+	public boolean deleteWard(int bedNo) throws ClassNotFoundException, SQLException , IOException{
 
 		con= openConnection();
 		
@@ -89,7 +90,7 @@ public class WardDaoImpl implements WardDao {
 	}
 
 	@Override
-	public boolean updateWard(int bedNo, Ward renewWard) throws ClassNotFoundException, SQLException {
+	public boolean updateWard(int bedNo, Ward renewWard) throws ClassNotFoundException, SQLException, IOException {
 		con= openConnection();
 		
 		
@@ -128,7 +129,7 @@ public class WardDaoImpl implements WardDao {
 	}
 
 	@Override
-	public Ward displayWard(int bedNo) throws ClassNotFoundException, SQLException {
+	public Ward displayWard(int bedNo) throws ClassNotFoundException, SQLException , IOException{
 		
 		con= openConnection();
 		
@@ -156,7 +157,7 @@ public class WardDaoImpl implements WardDao {
 	}
 
 	@Override
-	public TreeSet<Ward> displayAllWards() throws ClassNotFoundException, SQLException {	
+	public TreeSet<Ward> displayAllWards() throws ClassNotFoundException, SQLException , IOException{	
 		con= openConnection();
 		
 		

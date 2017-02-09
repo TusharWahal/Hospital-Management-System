@@ -2,6 +2,7 @@ package junitTest;
 
 import static org.junit.Assert.*;
 
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.TreeSet;
 
@@ -27,7 +28,7 @@ public class BillDaoImplTest {
 	}
 
 	@Test
-	public void testInsertBill() throws ClassNotFoundException, SQLException {
+	public void testInsertBill() throws ClassNotFoundException, SQLException, IOException {
 		bd.deleteBill(1);
 		
 		 Bill bill=new Bill();
@@ -43,7 +44,7 @@ public class BillDaoImplTest {
 	}
 	
 	@Test(expected=SQLException.class)
-	public void testInsertBillNegative() throws ClassNotFoundException, SQLException {
+	public void testInsertBillNegative() throws ClassNotFoundException, SQLException, IOException {
 		
 		Bill bill=new Bill();
 		 bill.setBillNo(1);
@@ -58,13 +59,13 @@ public class BillDaoImplTest {
 	}
 	
 	@Test
-	public void testDeleteBillNegative() throws ClassNotFoundException, SQLException {
+	public void testDeleteBillNegative() throws ClassNotFoundException, SQLException, IOException {
 		
 		assertFalse(bd.deleteBill(346421));
 	}
 
 	@Test
-	public void testDeleteBill() throws ClassNotFoundException, SQLException {
+	public void testDeleteBill() throws ClassNotFoundException, SQLException, IOException {
 		 bd.deleteBill(1);
 		 Bill bill=new Bill();
 		 bill.setBillNo(1);
@@ -80,7 +81,7 @@ public class BillDaoImplTest {
 	}
 
 	@Test
-	public void testUpdateBill() throws ClassNotFoundException, SQLException {
+	public void testUpdateBill() throws ClassNotFoundException, SQLException, IOException {
 		bd.deleteBill(1);
 		
 		Bill bill=new Bill();
@@ -111,7 +112,7 @@ public class BillDaoImplTest {
 	}
 	
 	@Test
-	public void testUpdateBillNegative() throws ClassNotFoundException, SQLException
+	public void testUpdateBillNegative() throws ClassNotFoundException, SQLException, IOException
 	{
 		 Bill newBill=new Bill();
 		 newBill.setBillNo(2343);
@@ -126,7 +127,7 @@ public class BillDaoImplTest {
 	}
 	
 	@Test
-	public void testDisplayPersonNegative() throws ClassNotFoundException, SQLException {
+	public void testDisplayPersonNegative() throws ClassNotFoundException, SQLException, IOException {
 		
 		
 		assertEquals(0,bd.displayBill(234234).getBillNo());
@@ -134,7 +135,7 @@ public class BillDaoImplTest {
 	}
 
 	@Test
-	public void testDisplayBill() throws ClassNotFoundException, SQLException {
+	public void testDisplayBill() throws ClassNotFoundException, SQLException, IOException {
 
 		bd.deleteBill(1);
 		
@@ -152,7 +153,7 @@ public class BillDaoImplTest {
 	}
 
 	@Test
-	public void testDisplayAllBills() throws ClassNotFoundException, SQLException {
+	public void testDisplayAllBills() throws ClassNotFoundException, SQLException, IOException {
 		
 //		TreeSet<Bill> billList=new TreeSet<Bill>();
 //		

@@ -1,5 +1,6 @@
 package ui;
 
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Scanner;
 import java.util.TreeSet;
@@ -14,7 +15,7 @@ public class HospitalInfo {
 	
 	DepartmentBusinessLogic db = new DepartmentBusinessLogic();
 	
-	public HospitalInfo() throws ClassNotFoundException, SQLException{
+	public HospitalInfo() throws ClassNotFoundException, SQLException, IOException{
 		
 		while(true){
 			

@@ -2,6 +2,7 @@ package junitTest;
 
 import static org.junit.Assert.*;
 
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.TreeSet;
 
@@ -27,7 +28,7 @@ public class ICUDaoImplTest {
 	}
 
 	@Test
-	public void testInsertICU() throws ClassNotFoundException, SQLException {
+	public void testInsertICU() throws ClassNotFoundException, SQLException, IOException {
 		icud.deleteICU(1);
 		
 		ICU icu = new ICU();
@@ -41,7 +42,7 @@ public class ICUDaoImplTest {
 	}
 
 	@Test
-	public void testDeleteICU() throws ClassNotFoundException, SQLException {
+	public void testDeleteICU() throws ClassNotFoundException, SQLException, IOException {
 
 		ICU icu = new ICU();
 		
@@ -54,7 +55,7 @@ public class ICUDaoImplTest {
 	}
 
 	@Test
-	public void testUpdateICU() throws ClassNotFoundException, SQLException {
+	public void testUpdateICU() throws ClassNotFoundException, SQLException, IOException {
 
 		icud.deleteICU(1);
 		
@@ -77,7 +78,7 @@ public class ICUDaoImplTest {
 	}
 
 	@Test
-	public void testDisplayICU() throws ClassNotFoundException, SQLException {
+	public void testDisplayICU() throws ClassNotFoundException, SQLException, IOException {
 
 		icud.deleteICU(1);
 		
@@ -94,7 +95,7 @@ public class ICUDaoImplTest {
 	}
 
 	@Test
-	public void testDisplayAllICUs() throws ClassNotFoundException, SQLException {
+	public void testDisplayAllICUs() throws ClassNotFoundException, SQLException, IOException {
 		TreeSet<ICU> icuList=new TreeSet<ICU>();
 		
 

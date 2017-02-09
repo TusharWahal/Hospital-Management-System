@@ -2,6 +2,7 @@ package junitTest;
 
 import static org.junit.Assert.*;
 
+import java.io.IOException;
 import java.sql.SQLException;
 
 import org.junit.After;
@@ -25,7 +26,7 @@ public class StaffDaoImplTest {
 	}
 
 	@Test
-	public void testInsertStaff() throws ClassNotFoundException, SQLException {
+	public void testInsertStaff() throws ClassNotFoundException, SQLException, IOException {
 		sd.deleteStaff(1);
 		Staff staff = new Staff();
 		staff.setStaffId(1);
@@ -40,7 +41,7 @@ public class StaffDaoImplTest {
 	}
 	
 	@Test(expected=SQLException.class)
-	public void tesInsertStaffNegative() throws ClassNotFoundException, SQLException{
+	public void tesInsertStaffNegative() throws ClassNotFoundException, SQLException, IOException{
 		
 		
 		Staff staff = new Staff();
@@ -57,13 +58,13 @@ public class StaffDaoImplTest {
 	}
 	
 	@Test
-	public void testDeleteStaffNegative() throws ClassNotFoundException, SQLException
+	public void testDeleteStaffNegative() throws ClassNotFoundException, SQLException, IOException
 	{
 		assertFalse(sd.deleteStaff(2423424));
 	}
 
 	@Test
-	public void testDeleteStaff() throws ClassNotFoundException, SQLException {
+	public void testDeleteStaff() throws ClassNotFoundException, SQLException, IOException {
 		sd.deleteStaff(1);
 		Staff staff = new Staff();
 		staff.setStaffId(1);
@@ -79,7 +80,7 @@ public class StaffDaoImplTest {
 	}
 	
 	@Test
-	public void testUpdateStaffNegative() throws ClassNotFoundException, SQLException
+	public void testUpdateStaffNegative() throws ClassNotFoundException, SQLException, IOException
 	{
 		Staff newstaff = new Staff();
 
@@ -95,7 +96,7 @@ public class StaffDaoImplTest {
 	}
 
 	@Test
-	public void testUpdateStaff() throws ClassNotFoundException, SQLException {
+	public void testUpdateStaff() throws ClassNotFoundException, SQLException, IOException {
 		sd.deleteStaff(1);
 		Staff staff = new Staff();
 		staff.setStaffId(1);
@@ -120,12 +121,12 @@ public class StaffDaoImplTest {
 	}
 
 	@Test
-	public void testDisplayStaffNegative() throws ClassNotFoundException, SQLException
+	public void testDisplayStaffNegative() throws ClassNotFoundException, SQLException, IOException
 	{
 		assertEquals(0, sd.displayStaff(324).getStaffId());
 	}
 	@Test
-	public void testDisplayStaff() throws ClassNotFoundException, SQLException {
+	public void testDisplayStaff() throws ClassNotFoundException, SQLException, IOException {
 		sd.deleteStaff(1);
 		Staff staff = new Staff();
 		staff.setStaffId(1);
@@ -142,7 +143,7 @@ public class StaffDaoImplTest {
 	}
 
 	@Test
-	public void testDisplayAllStaffs() throws ClassNotFoundException, SQLException {
+	public void testDisplayAllStaffs() throws ClassNotFoundException, SQLException, IOException {
 		assertNotEquals(null, sd.displayAllStaffs());
 	}
 
