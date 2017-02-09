@@ -4,11 +4,13 @@ import java.sql.SQLException;
 import java.util.Scanner;
 import java.util.TreeSet;
 
+import bean.Bill;
 import bean.DischargeSummary;
 import bean.MedicalReport;
 import bean.Reception;
 import businessLogic.AdminBusinessLogic;
 import helper.AppointmentInput;
+import helper.BillData;
 import helper.DischargeSummaryData;
 
 public class ReceptionistMenu {
@@ -26,7 +28,7 @@ public class ReceptionistMenu {
 			System.out.println("\t\t\t\t3.Discharge Summary");
 			System.out.println("\t\t\t\t4.Bills");
 			System.out.println("\t\t\t\t5.Department");
-			System.out.println("\t\t\t\t6.Patient");
+			//System.out.println("\t\t\t\t6.Patient");
 			System.out.println("\t\t\t\t\t7.Log Out");
 			System.out.print("\n\n\t\t\t\tEnter your choice : ");
 			choice=sc.nextInt();
@@ -42,8 +44,8 @@ public class ReceptionistMenu {
 			break;
 			case 5:departmentMenu();
 			break;
-			case 6:addRemovePatientMenu();
-			break;
+			//case 6:addRemovePatientMenu();
+			//break;
 			case 7:return;
 			default :break;
 			}
@@ -300,11 +302,63 @@ public void listDischargeSummary()
 		int choice;
 		Scanner sc = new Scanner(System.in);
 		System.out.println("\t\t\t\t1.Add Bill");
-		System.out.println("\t\t\t\t2.Remove Bill");
-		System.out.println("\t\t\t\t3.Modify Bill");
-		System.out.println("\t\t\t\t4.List Bills");
+		//System.out.println("\t\t\t\t2.Remove Bill");
+		//System.out.println("\t\t\t\t3.Modify Bill");
+		System.out.println("\t\t\t\t2.List Bills");
+		System.out.println("3.Back");
+
 		System.out.print("\n\n\t\t\t\tEnter your choice : ");
 		choice=sc.nextInt();
+		
+		switch(choice)
+		{
+		case 1:addBill();
+			break;
+		case 2:removeBill();
+			break;
+	//	case 4:System.out.println("Functionality Under Construction!! Sorry!!"); 
+		//	break;
+		//case 5:System.out.println("Functionality Under Construction!! Sorry!!");
+			//break;
+		case 3:return;
+		default:break;
+		}
+	}
+	public void addBill()
+	{
+		BillData bd=new BillData();
+		
+		bd.input();
+		Bill bill=bd.getBill();
+		try {
+			abl.addBill(bill);
+			
+			float totalPrice=abl.calculateBill(bill.getBillNo());
+			
+			System.out.println("Your Total Price ="+totalPrice);
+			
+			return;
+		} catch (ClassNotFoundException | SQLException e) {
+			// TODO Auto-generated catch block
+			System.out.println(" Invalid Bill No Pleas Try Again");
+			return;
+		}
+		
+		
+	}
+	public void removeBill()
+	{
+		Scanner sc=new Scanner(System.in);
+		System.out.println("Enter Bill Number That You Want To Delete");
+		int billNumber=Integer.parseInt(sc.nextLine());
+		try {
+			abl.removeBill(billNumber);
+			return;
+		} catch (ClassNotFoundException | SQLException e) {
+			// TODO Auto-generated catch block
+			System.out.println("No Such Bill Exist");
+			return;
+		}
 	}
 	
 	public void departmentMenu(){
