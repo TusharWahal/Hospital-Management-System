@@ -1,6 +1,7 @@
 package helper;
 
 import java.sql.Date;
+import java.util.Calendar;
 import java.util.Scanner;
 
 import bean.MedicalReport;
@@ -16,10 +17,8 @@ public class MedicalReportData {
 		System.out.println("Enter Patient ID:\n");
 		medicalReport.setPatientId(Integer.parseInt(sc.nextLine()));
 		
-		String visitDateString;
-		System.out.println("Enter visit Date:\n");
-		visitDateString=sc.nextLine();
-		Date visitDate = Date.valueOf(visitDateString);
+		
+		Date visitDate = new java.sql.Date(Calendar.getInstance().getTime().getTime());
 		medicalReport.setVisitDate(visitDate);//Date as Input.//Manage format
 		
 		System.out.println("Enter Diagnosis:\n");

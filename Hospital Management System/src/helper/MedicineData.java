@@ -51,8 +51,6 @@ public class MedicineData {
 		}
 		medicine.setPrice(price);
 		
-		System.out.println("Enter Bill Number:\n");
-		medicine.setBillNo(Integer.parseInt(sc.nextLine()));
 		
 		return medicine;
 		
