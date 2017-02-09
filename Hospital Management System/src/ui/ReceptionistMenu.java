@@ -4,10 +4,12 @@ import java.sql.SQLException;
 import java.util.Scanner;
 import java.util.TreeSet;
 
+import bean.DischargeSummary;
 import bean.MedicalReport;
 import bean.Reception;
 import businessLogic.AdminBusinessLogic;
 import helper.AppointmentInput;
+import helper.DischargeSummaryData;
 
 public class ReceptionistMenu {
 	
@@ -176,16 +178,123 @@ public class ReceptionistMenu {
 		
 	}
 	
-	public void dischargeSummaryMenu(){
-		int choice;
+public void dischargeSummaryMenu(){
+		
+		
+		while(true)
+			{
+			int choice;
 		Scanner sc = new Scanner(System.in);
 		System.out.println("\t\t\t\t1.Add Discharge Summary");
 		System.out.println("\t\t\t\t2.Remove Discharge Summary");
-		System.out.println("\t\t\t\t3.Modify Discharge Summary");
+		System.out.println("\t\t\t\t3.View Specific Discharge Summary");
 		System.out.println("\t\t\t\t4.List Discharge summaries");
 		System.out.print("\n\n\t\t\t\tEnter your choice : ");
 		choice=sc.nextInt();
+			switch(choice)
+			{
+			case 1:addDischargeSummary();
+				break;
+			case 2:removeDischargeSummary();
+				break;
+			case 3://display specific list
+				break;
+			case 4:listDischargeSummary();
+				break;
+			case 5:return;
+			default: break;
+				
+			}
+			}
 	}
+
+public void viewSpecificDischargeSummary()
+{
+	Scanner sc=new Scanner(System.in);
+	System.out.println("Enter Serial Number");
+	String sn=sc.nextLine();
+	int SerialNo=Integer.parseInt(sn);
+	
+	try {
+		System.out.println(abl.viewDischargeSummary(SerialNo));
+	} catch (ClassNotFoundException | SQLException e) {
+		// TODO Auto-generated catch block
+		System.out.println("Discharge Summary Does Not Exist");
+		return;
+	}
+	
+	return;
+	
+	}
+
+
+public void addDischargeSummary()
+	{
+	
+	DischargeSummaryData dsd=new DischargeSummaryData();
+	DischargeSummary discharge=new DischargeSummary();
+	discharge=dsd.getDs();
+		
+		try {
+			abl.addDischargeSummary(discharge);
+		} catch (ClassNotFoundException | SQLException e) {
+			System.out.println("Not a Unique Serial No Please select Other Serial Number and try again");
+		}
+		return;
+		
+	}
+
+public void removeDischargeSummary(){
+	
+	Scanner sc=new Scanner(System.in);
+	System.out.println("Enter The Serial No For Discharge Summary That You Want To Delete");
+	String sn=sc.nextLine();
+	int serialNo=Integer.parseInt(sn);
+	try {
+		boolean removed=abl.removeDischargeSummary(serialNo);
+		if(removed==true)
+		{
+			System.out.println("Discharge Summary deleted");
+			return;
+		}
+		else
+		{
+			System.out.println("No Such Discharge Summary Exist");
+			return;
+		}
+		
+	} catch (ClassNotFoundException | SQLException e) {
+		// TODO Auto-generated catch block
+		System.out.println("No Such Discharge Summary Exist");
+		return;
+	}
+	
+	
+}
+
+public void listDischargeSummary()
+{
+	
+	try {
+		TreeSet<DischargeSummary> dsList= abl.listDischargeSummary();
+		
+		for(DischargeSummary d:dsList)
+		{
+			System.out.println(d);
+		}
+		//Option to Select medical report
+	} catch (ClassNotFoundException | SQLException e) {
+		// TODO Auto-generated catch block
+		System.out.println("No Dischare Summary");
+		return;
+	}
+	return;
+	
+}
+
+
+
+
 	
 	public void billsMenu(){
 		int choice;
