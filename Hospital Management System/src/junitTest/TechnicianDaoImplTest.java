@@ -2,6 +2,7 @@ package junitTest;
 
 import static org.junit.Assert.*;
 
+import java.io.IOException;
 import java.sql.SQLException;
 
 import org.junit.After;
@@ -26,7 +27,7 @@ public class TechnicianDaoImplTest {
 	}
 
 	@Test
-	public void testInsertTechnician() throws ClassNotFoundException, SQLException {
+	public void testInsertTechnician() throws ClassNotFoundException, SQLException, IOException {
 		dd.deleteTechnician(1);
 		Technician technician=new Technician();
 		technician.setTechnicianId(1);
@@ -44,7 +45,7 @@ public class TechnicianDaoImplTest {
 	
 
 	@Test
-	public void testDeleteTechnician() throws ClassNotFoundException, SQLException {
+	public void testDeleteTechnician() throws ClassNotFoundException, SQLException, IOException {
 		
 		dd.deleteTechnician(1);
 		Technician technician=new Technician();
@@ -61,7 +62,7 @@ public class TechnicianDaoImplTest {
 	}
 
 	@Test
-	public void testUpdateTechnician() throws ClassNotFoundException, SQLException {
+	public void testUpdateTechnician() throws ClassNotFoundException, SQLException, IOException {
 		
 		dd.deleteTechnician(1);
 		Technician technician=new Technician();
@@ -91,7 +92,7 @@ public class TechnicianDaoImplTest {
 	}
 
 	@Test
-	public void testDisplayTechnician() throws ClassNotFoundException, SQLException {
+	public void testDisplayTechnician() throws ClassNotFoundException, SQLException, IOException {
 		
 		dd.deleteTechnician(1);
 		Technician technician=new Technician();
@@ -111,7 +112,7 @@ public class TechnicianDaoImplTest {
 	}
 
 	@Test
-	public void testDisplayAllTechnicians() throws ClassNotFoundException, SQLException {
+	public void testDisplayAllTechnicians() throws ClassNotFoundException, SQLException, IOException {
 		
 		assertNotEquals(null, dd.displayAllTechnicians());
 		

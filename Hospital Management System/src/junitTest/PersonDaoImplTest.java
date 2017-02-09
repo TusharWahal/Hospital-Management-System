@@ -2,6 +2,7 @@ package junitTest;
 
 import static org.junit.Assert.*;
 
+import java.io.IOException;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.util.TreeSet;
@@ -31,7 +32,7 @@ public class PersonDaoImplTest {
 	}
 
 	@Test
-	public void testInsertPerson() throws ClassNotFoundException, SQLException {
+	public void testInsertPerson() throws ClassNotFoundException, SQLException, IOException {
 		
 		//Create necessary tables and insert one tuple for negative insert testing 
 		pd.deletePerson("1");
@@ -51,7 +52,7 @@ public class PersonDaoImplTest {
 
 	
 	@Test(expected=SQLException.class)
-	public void testInsertPersonNegative() throws ClassNotFoundException, SQLException {
+	public void testInsertPersonNegative() throws ClassNotFoundException, SQLException, IOException {
 		
 		Person person=new Person();
 		person.setPersonId("2");
@@ -68,13 +69,13 @@ public class PersonDaoImplTest {
 	}
 	
 	@Test
-	public void testDeletePersonNegative() throws ClassNotFoundException, SQLException {
+	public void testDeletePersonNegative() throws ClassNotFoundException, SQLException, IOException {
 		
 		assertFalse(pd.deletePerson("346421"));
 	}
 	
 	@Test
-	public void testDeletePerson() throws ClassNotFoundException, SQLException {
+	public void testDeletePerson() throws ClassNotFoundException, SQLException, IOException {
 		
 		pd.deletePerson("1");
 		Person person=new Person();
@@ -92,7 +93,7 @@ public class PersonDaoImplTest {
 	}
 
 	@Test
-	public void testUpdatePerson() throws ClassNotFoundException, SQLException {
+	public void testUpdatePerson() throws ClassNotFoundException, SQLException, IOException {
 		
 		pd.deletePerson("1");
 		Person person=new Person();
@@ -125,7 +126,7 @@ public class PersonDaoImplTest {
 	}
 
 	@Test
-	public void testUpdatePersonNegative() throws ClassNotFoundException, SQLException
+	public void testUpdatePersonNegative() throws ClassNotFoundException, SQLException, IOException
 	{
 		Person newPerson=new Person();
 		
@@ -143,7 +144,7 @@ public class PersonDaoImplTest {
 	}
 	
 	@Test
-	public void testDisplayPerson() throws ClassNotFoundException, SQLException {
+	public void testDisplayPerson() throws ClassNotFoundException, SQLException, IOException {
 		
 		pd.deletePerson("1");
 		Person person=new Person();
@@ -162,7 +163,7 @@ public class PersonDaoImplTest {
 	}
 
 	@Test
-	public void testDisplayPersonNegative() throws ClassNotFoundException, SQLException {
+	public void testDisplayPersonNegative() throws ClassNotFoundException, SQLException, IOException {
 		
 		
 		assertEquals(null,pd.displayPerson("234234").getPersonId());
@@ -170,7 +171,7 @@ public class PersonDaoImplTest {
 	}
 	
 	@Test
-	public void testDisplayAllPersons() throws ClassNotFoundException, SQLException {
+	public void testDisplayAllPersons() throws ClassNotFoundException, SQLException, IOException {
 		
 //		TreeSet<Person> personList=new TreeSet<Person>();
 //		pd.deletePerson("1");

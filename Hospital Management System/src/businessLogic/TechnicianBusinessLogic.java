@@ -1,5 +1,6 @@
 package businessLogic;
 
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.TreeSet;
 
@@ -13,7 +14,7 @@ public class TechnicianBusinessLogic {
 	MedicalReportDaoImpl mrd=new MedicalReportDaoImpl();
 	TechnicianDaoImpl td= new TechnicianDaoImpl();
 	
-	public Technician technicianLogin(int technicianId, String technicianPassword) throws ClassNotFoundException, SQLException
+	public Technician technicianLogin(int technicianId, String technicianPassword) throws ClassNotFoundException, SQLException, IOException
 	{
 		Technician technician;
 		if(td.displayTechnician(technicianId).getTechnicianId()==0)
@@ -31,15 +32,15 @@ public class TechnicianBusinessLogic {
 		}
 	}
 	
-	public boolean modifyMedicalReport(int patientId,MedicalReport newMedicalReport) throws ClassNotFoundException, SQLException
+	public boolean modifyMedicalReport(int patientId,MedicalReport newMedicalReport) throws ClassNotFoundException, SQLException, IOException
 	{
 		return mrd.updateMedicalReport(patientId,newMedicalReport);
 	}
-	public TreeSet<MedicalReport> listMedicalReport() throws ClassNotFoundException, SQLException
+	public TreeSet<MedicalReport> listMedicalReport() throws ClassNotFoundException, SQLException, IOException
 	{
 		return mrd.displayAllMedicalReports();
 	}
-	public MedicalReport viewMedicalReports(int patientId) throws ClassNotFoundException, SQLException
+	public MedicalReport viewMedicalReports(int patientId) throws ClassNotFoundException, SQLException, IOException
 	{
 		return mrd.displayMedicalReport(patientId);
 	}

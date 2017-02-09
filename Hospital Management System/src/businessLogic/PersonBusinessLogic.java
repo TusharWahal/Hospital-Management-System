@@ -1,5 +1,6 @@
 package businessLogic;
 
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.TreeSet;
 
@@ -26,22 +27,22 @@ public class PersonBusinessLogic {
 	ReceptionDaoImpl rd = new ReceptionDaoImpl();
 	MedicineDaoimpl md = new MedicineDaoimpl();
 		
-	public TreeSet<Reception> listReception() throws ClassNotFoundException, SQLException
+	public TreeSet<Reception> listReception() throws ClassNotFoundException, SQLException, IOException
 	{
 		return rd.displayAllReceptions();
 	}
 	
-	public MedicalReport viewMedicalReport(int patientId) throws ClassNotFoundException, SQLException
+	public MedicalReport viewMedicalReport(int patientId) throws ClassNotFoundException, SQLException, IOException
 	{
 		return mrd.displayMedicalReport(patientId);
 	}
 	
-	public Bill viewBill(int billNo) throws ClassNotFoundException, SQLException
+	public Bill viewBill(int billNo) throws ClassNotFoundException, SQLException, IOException
 	{
 		return bd.displayBill(billNo);
 	}
 	
-	public DischargeSummary viewDischargeSummary(int patientId) throws ClassNotFoundException, SQLException
+	public DischargeSummary viewDischargeSummary(int patientId) throws ClassNotFoundException, SQLException, IOException
 	{
 		return dsd.displayDischargeSummary(patientId);
 	}
@@ -55,7 +56,7 @@ public class PersonBusinessLogic {
 //		return pd.updatePerson(personId,newPerson);
 //	}
 	
-	public TreeSet<Medicine> myMedicines(int patientId) throws ClassNotFoundException, SQLException
+	public TreeSet<Medicine> myMedicines(int patientId) throws ClassNotFoundException, SQLException, IOException
 	{
 		TreeSet<Medicine> medicineList=new TreeSet<Medicine>();
 		medicineList=md.displayAllMedicines();
@@ -69,7 +70,7 @@ public class PersonBusinessLogic {
 	}
 	
 	
-	public Person personLogin(String personId, String personPassword) throws ClassNotFoundException, SQLException
+	public Person personLogin(String personId, String personPassword) throws ClassNotFoundException, SQLException, IOException
 	{
 		Person person=new Person();
 		person = pd.displayPerson(personId);

@@ -2,6 +2,7 @@ package junitTest;
 
 import static org.junit.Assert.*;
 
+import java.io.IOException;
 import java.sql.SQLException;
 
 import org.junit.After;
@@ -27,7 +28,7 @@ public class MedicineDaoImplTest {
 	}
 
 	@Test
-	public void testInsertMedicine() throws ClassNotFoundException, SQLException {
+	public void testInsertMedicine() throws ClassNotFoundException, SQLException, IOException {
 		md.deleteMedicine(1,0);
 		Medicine medicine = new Medicine();
 		medicine.setsNo(1);
@@ -41,7 +42,7 @@ public class MedicineDaoImplTest {
 	}
 
 	@Test(expected=SQLException.class)
-	public void testInsertMedicineNegative() throws ClassNotFoundException, SQLException {	
+	public void testInsertMedicineNegative() throws ClassNotFoundException, SQLException, IOException {	
 		Medicine medicine = new Medicine();
 		medicine.setsNo(1);
 		medicine.setMedicineName("abc");
@@ -55,7 +56,7 @@ public class MedicineDaoImplTest {
 	}
 	
 	@Test
-	public void testDeleteMedicine() throws ClassNotFoundException, SQLException {
+	public void testDeleteMedicine() throws ClassNotFoundException, SQLException, IOException {
 		md.deleteMedicine(1,0);
 		Medicine medicine = new Medicine();
 		medicine.setsNo(1);
@@ -70,12 +71,12 @@ public class MedicineDaoImplTest {
 	}
 	
 	@Test
-	public void testDeleteMedicineNegative() throws ClassNotFoundException, SQLException {
+	public void testDeleteMedicineNegative() throws ClassNotFoundException, SQLException, IOException {
 		assertFalse(md.deleteMedicine(12131,0));
 	}
 
 	@Test
-	public void testUpdateMedicine() throws ClassNotFoundException, SQLException {
+	public void testUpdateMedicine() throws ClassNotFoundException, SQLException, IOException {
 		md.deleteMedicine(1,0);
 		Medicine medicine = new Medicine();
 		medicine.setsNo(1);
@@ -99,7 +100,7 @@ public class MedicineDaoImplTest {
 	}
 	
 	@Test
-	public void testUpdateMedicineNegative() throws ClassNotFoundException, SQLException
+	public void testUpdateMedicineNegative() throws ClassNotFoundException, SQLException, IOException
 	{
 		Medicine newmedicine = new Medicine();
 		newmedicine.setsNo(1);
@@ -114,7 +115,7 @@ public class MedicineDaoImplTest {
 	}
 
 	@Test
-	public void testDisplayMedicine() throws ClassNotFoundException, SQLException {
+	public void testDisplayMedicine() throws ClassNotFoundException, SQLException, IOException {
 		md.deleteMedicine(1,0);
 		Medicine medicine = new Medicine();
 		medicine.setsNo(1);
@@ -130,11 +131,11 @@ public class MedicineDaoImplTest {
 	}
 
 	@Test
-	public void testDisplayMedicineNegative() throws ClassNotFoundException, SQLException {
+	public void testDisplayMedicineNegative() throws ClassNotFoundException, SQLException, IOException {
 		assertEquals(0,md.displayMedicine(234234,0).getsNo());
 	}
 	@Test
-	public void testDisplayAllMedicines() throws ClassNotFoundException, SQLException {
+	public void testDisplayAllMedicines() throws ClassNotFoundException, SQLException, IOException {
 		assertNotEquals(null, md.displayAllMedicines());
 	}
 

@@ -1,5 +1,6 @@
 package ui;
 
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Scanner;
 import java.util.TreeSet;
@@ -10,7 +11,7 @@ import businessLogic.StaffBusinessLogic;
 import dao.WardDaoImpl;
 
 public class StaffMenu {
-	public void logInMenu() throws ClassNotFoundException,SQLException{
+	public void logInMenu() throws ClassNotFoundException,SQLException, IOException{
 		int staffId;
 		String staffPassword;
 		Scanner sc = new Scanner(System.in);
@@ -35,7 +36,7 @@ public class StaffMenu {
 		}
 	}
 	
-	public void homeMenu() throws ClassNotFoundException,SQLException{
+	public void homeMenu() throws ClassNotFoundException,SQLException, IOException{
 		
 		while(true){
 		int choice;
@@ -64,7 +65,7 @@ public class StaffMenu {
 		}
 	}
 	
-	public void viewAllWardsMenu () throws ClassNotFoundException,SQLException
+	public void viewAllWardsMenu () throws ClassNotFoundException,SQLException, IOException
 	{
 		WardDaoImpl wd = new WardDaoImpl();
 		TreeSet<Ward> wardtreeset = new TreeSet<Ward>();
@@ -76,7 +77,7 @@ public class StaffMenu {
 		
 	}
 	
-	public void viewMyWardsMenu() throws ClassNotFoundException,SQLException
+	public void viewMyWardsMenu() throws ClassNotFoundException,SQLException, IOException
 	{
 		int staffId;
 		Scanner sc = new Scanner(System.in);

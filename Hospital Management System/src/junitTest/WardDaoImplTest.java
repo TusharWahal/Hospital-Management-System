@@ -2,6 +2,7 @@ package junitTest;
 
 import static org.junit.Assert.*;
 
+import java.io.IOException;
 import java.sql.Date;
 import java.sql.SQLException;
 
@@ -27,7 +28,7 @@ public class WardDaoImplTest {
 	}
 
 	@Test
-	public void testInsertWard() throws ClassNotFoundException, SQLException {
+	public void testInsertWard() throws ClassNotFoundException, SQLException, IOException {
 		wd.deleteWard(1);
 		Ward ward = new Ward();
 		ward.setBedNo(1);
@@ -45,7 +46,7 @@ public class WardDaoImplTest {
 	}
 
 	@Test(expected=SQLException.class)
-	public void testInsertWardNegative() throws ClassNotFoundException, SQLException {
+	public void testInsertWardNegative() throws ClassNotFoundException, SQLException, IOException {
 		
 		Ward ward = new Ward();
 		ward.setBedNo(1);
@@ -64,7 +65,7 @@ public class WardDaoImplTest {
 	}
 	
 	@Test
-	public void testDeleteWard() throws ClassNotFoundException, SQLException {
+	public void testDeleteWard() throws ClassNotFoundException, SQLException, IOException {
 		wd.deleteWard(1);
 		Ward ward = new Ward();
 		ward.setBedNo(1);
@@ -82,12 +83,12 @@ public class WardDaoImplTest {
 	}
 	
 	@Test
-	public void testDeleteWardNegative() throws ClassNotFoundException, SQLException {
+	public void testDeleteWardNegative() throws ClassNotFoundException, SQLException, IOException {
 		assertFalse(wd.deleteWard(12131));
 	}
 
 	@Test
-	public void testUpdateWard() throws ClassNotFoundException, SQLException {
+	public void testUpdateWard() throws ClassNotFoundException, SQLException, IOException {
 		wd.deleteWard(1);
 		Ward ward = new Ward();
 		ward.setBedNo(1);
@@ -119,7 +120,7 @@ public class WardDaoImplTest {
 	}
 
 	@Test
-	public void testUpdateWardNegative() throws ClassNotFoundException, SQLException
+	public void testUpdateWardNegative() throws ClassNotFoundException, SQLException, IOException
 	{
 		Ward newward = new Ward();
 		newward.setBedNo(1);
@@ -138,7 +139,7 @@ public class WardDaoImplTest {
 	}
 	
 	@Test
-	public void testDisplayWard() throws ClassNotFoundException, SQLException {
+	public void testDisplayWard() throws ClassNotFoundException, SQLException, IOException {
 		wd.deleteWard(1);
 		Ward ward = new Ward();
 		ward.setBedNo(1);
@@ -158,12 +159,12 @@ public class WardDaoImplTest {
 	}
 	
 	@Test
-	public void testDisplayDoctorNegative() throws ClassNotFoundException, SQLException {	
+	public void testDisplayDoctorNegative() throws ClassNotFoundException, SQLException, IOException {	
 		assertEquals(0,wd.displayWard(234234).getBedNo());
 	}
 
 	@Test
-	public void testDisplayAllWards() throws ClassNotFoundException, SQLException {
+	public void testDisplayAllWards() throws ClassNotFoundException, SQLException, IOException {
 		assertNotEquals(null, wd.displayAllWards());
 	}
 

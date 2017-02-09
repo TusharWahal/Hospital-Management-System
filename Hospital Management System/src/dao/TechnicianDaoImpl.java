@@ -3,6 +3,7 @@ package dao;
 import static helper.ConnectToDb.closeConnection;
 import static helper.ConnectToDb.openConnection;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -18,7 +19,7 @@ public class TechnicianDaoImpl implements TechnicianDao {
 	private ResultSet rs;
 	
 	@Override
-	public boolean insertTechnician(Technician newTechnician) throws ClassNotFoundException, SQLException {
+	public boolean insertTechnician(Technician newTechnician) throws ClassNotFoundException, SQLException, IOException {
 		// TODO Auto-generated method stub
 		con= openConnection();
 		
@@ -60,7 +61,7 @@ public class TechnicianDaoImpl implements TechnicianDao {
 	}
 
 	@Override
-	public boolean deleteTechnician(int technicianId) throws ClassNotFoundException, SQLException {
+	public boolean deleteTechnician(int technicianId) throws ClassNotFoundException, SQLException, IOException {
 		// TODO Auto-generated method stub
         con= openConnection();
 		
@@ -84,7 +85,7 @@ public class TechnicianDaoImpl implements TechnicianDao {
 	}
 
 	@Override
-	public boolean updateTechnician(int technicianId, Technician renewTechnician) throws ClassNotFoundException, SQLException {
+	public boolean updateTechnician(int technicianId, Technician renewTechnician) throws ClassNotFoundException, SQLException , IOException{
 		// TODO Auto-generated method stub
         con= openConnection();
 		
@@ -120,7 +121,7 @@ public class TechnicianDaoImpl implements TechnicianDao {
 	}
 
 	@Override
-	public Technician displayTechnician(int technicianId) throws ClassNotFoundException, SQLException {
+	public Technician displayTechnician(int technicianId) throws ClassNotFoundException, SQLException , IOException{
 		// TODO Auto-generated method stub
         con= openConnection();
 		
@@ -148,7 +149,7 @@ public class TechnicianDaoImpl implements TechnicianDao {
 	}
 
 	@Override
-	public TreeSet<Technician> displayAllTechnicians() throws ClassNotFoundException, SQLException {
+	public TreeSet<Technician> displayAllTechnicians() throws ClassNotFoundException, SQLException , IOException{
 		// TODO Auto-generated method stub
         con= openConnection();
 		

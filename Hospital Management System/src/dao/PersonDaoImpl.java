@@ -3,6 +3,7 @@ package dao;
 import static helper.ConnectToDb.closeConnection;
 import static helper.ConnectToDb.openConnection;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -20,7 +21,7 @@ public class PersonDaoImpl implements PersonDao {
 	private ResultSet rs;
 	
 	@Override
-	public boolean insertPerson(Person newPerson) throws SQLException, ClassNotFoundException {
+	public boolean insertPerson(Person newPerson) throws SQLException, ClassNotFoundException, IOException {
 
 		con= openConnection();
 		
@@ -61,7 +62,7 @@ public class PersonDaoImpl implements PersonDao {
 	}
 
 	@Override
-	public boolean deletePerson(String personId) throws ClassNotFoundException, SQLException {
+	public boolean deletePerson(String personId) throws ClassNotFoundException, SQLException, IOException {
 
 		con= openConnection();
 		
@@ -82,7 +83,7 @@ public class PersonDaoImpl implements PersonDao {
 	}
 
 	@Override
-	public boolean updatePerson(String personId, Person renewPerson) throws ClassNotFoundException, SQLException {
+	public boolean updatePerson(String personId, Person renewPerson) throws ClassNotFoundException, SQLException, IOException {
 
 		con= openConnection();
 		
@@ -115,7 +116,7 @@ public class PersonDaoImpl implements PersonDao {
 	}
 
 	@Override
-	public Person displayPerson(String personId) throws ClassNotFoundException, SQLException {
+	public Person displayPerson(String personId) throws ClassNotFoundException, SQLException, IOException {
 
 		con= openConnection();
 		
@@ -146,7 +147,7 @@ public class PersonDaoImpl implements PersonDao {
 	}
 
 	@Override
-	public TreeSet<Person> displayAllPersons() throws ClassNotFoundException, SQLException {
+	public TreeSet<Person> displayAllPersons() throws ClassNotFoundException, SQLException , IOException{
 
 		con= openConnection();
 		

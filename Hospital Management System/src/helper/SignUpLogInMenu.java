@@ -1,5 +1,6 @@
 package helper;
 
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Scanner;
 
@@ -40,7 +41,7 @@ public class SignUpLogInMenu {
 				  personPassword = sc.next();
 				  try {
 					  Person person=pb.personLogin(personId, personPassword);
-				  } catch (ClassNotFoundException e) {
+				  } catch (ClassNotFoundException | IOException e) {
 					  // TODO Auto-generated catch block
 					  e.printStackTrace();
 				  } catch (SQLException e) {
