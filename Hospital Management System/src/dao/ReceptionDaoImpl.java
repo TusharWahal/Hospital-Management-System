@@ -158,10 +158,12 @@ con= openConnection();
 				reception.setPayment(rs.getFloat("payment"));
 				reception.setDoctorId(rs.getInt("doctorId"));
 				reception.setAppointmentDate(rs.getDate("regDate"));
-
+				
+				//System.out.println(reception);
 				receptionList.add(reception);
 			}
 			
+		//	System.out.println(receptionList);
 			closeConnection(con);
 
 			return receptionList;

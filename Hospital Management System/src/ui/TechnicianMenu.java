@@ -25,7 +25,7 @@ public class TechnicianMenu {
 		technicianId=sc.nextInt();
 		System.out.print("\t\t\t\tEnter Password : ");
 		technicianPassword=sc.next();
-		sc.close();
+		//sc.close();
 		try {
 			try {
 				t=tb.technicianLogin(technicianId, technicianPassword);
@@ -108,14 +108,14 @@ public class TechnicianMenu {
 			}
 		}
 		else if(choice==4){
-			sc.close();
+			//sc.close();
 			return;
 		}
 		else
 		{
 			System.out.println("\nInvalid Choice!!!");
 		}
-		sc.close();
+		//sc.close();
 		}
 	}
 }

@@ -120,14 +120,12 @@ public class PersonDaoImpl implements PersonDao {
 
 		con= openConnection();
 		
-		
-		pstmt=con.prepareStatement("select * from Person where personId = ?");
+		pstmt=con.prepareStatement("select * from Person where personId like ?");
 		pstmt.setString(1,personId);
 		
 		rs=pstmt.executeQuery();
 		
 		Person person = new Person();
-		
 		
 		while(rs.next()){
 			person.setPersonId(rs.getString("personId"));
@@ -137,7 +135,7 @@ public class PersonDaoImpl implements PersonDao {
 			person.setPersonAge(rs.getInt("personAge"));
 			person.setPersonGender(rs.getString("personGender"));
 			person.setPersonAddress(rs.getString("personAddress"));
-			person.setPersonPhoneNo(rs.getInt("personPhoneNo"));
+			person.setPersonPhoneNo(rs.getLong("personPhoneNo"));
 			person.setPersonPassword(rs.getString("personPassword"));
 		}
 			

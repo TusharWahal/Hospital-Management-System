@@ -9,6 +9,12 @@ public class Reception implements Comparable<Reception> {
 	float payment;
 	int doctorId;
 	Date appointmentDate;
+	
+	@Override
+	public String toString() {
+		return "Reception [regNo=" + regNo + ", personId=" + personId + ", purpose=" + purpose + ", payment=" + payment
+				+ ", doctorId=" + doctorId + ", appointmentDate=" + appointmentDate + "]";
+	}
 	public String getPersonId() {
 		return personId;
 	}
@@ -92,9 +98,11 @@ public class Reception implements Comparable<Reception> {
 	}
 	@Override
 	public int compareTo(Reception o) {
-		if(this.equals(o))
-			return 0;
-		else
-			return 1;
+//		if(this.getRegNo().comparo.getRegNo())
+//			return 0;
+//		else if(this.getRegNo()>o.getRegNo())
+//			return 1;
+//		else 
+			return -1;
 	}
 }

@@ -67,6 +67,12 @@ public class ReceptionistMenu {
 		System.out.println("\t\t\t\t4.List Appointments");
 		System.out.print("\n\n5.Back");
 		System.out.print("\t\t\t\tEnter your choice : ");
+		try {
+			System.out.println(System.in.available());
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			System.out.println(e);
+		}
 		choice=sc.nextInt();
 		
 		switch(choice)
@@ -87,12 +93,13 @@ public class ReceptionistMenu {
 		ai.input();
 		Reception appointment=new Reception();
 		appointment=ai.getRecep();
+	
 		
 		try {
 			abl.addReception(appointment);
 		} catch (ClassNotFoundException | SQLException e) {
 			// TODO Auto-generated catch block
-			System.out.println("Registration Error !! Please Try Again");
+			System.out.println(e+"Registration Error !! Please Try Again");
 			return;
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -138,6 +145,7 @@ public class ReceptionistMenu {
 		try {
 			TreeSet<Reception> appointmentList= abl.listReception();
 			
+			//System.out.println(appointmentList);
 			for(Reception r:appointmentList)
 			{
 				System.out.println(r);
@@ -209,14 +217,14 @@ public void dischargeSummaryMenu(){
 		System.out.println("\t\t\t\t3.View Specific Discharge Summary");
 		System.out.println("\t\t\t\t4.List Discharge summaries");
 		System.out.print("\n\n\t\t\t\tEnter your choice : ");
-		choice=sc.nextInt();
+		choice=Integer.parseInt(sc.nextLine());
 			switch(choice)
 			{
 			case 1:addDischargeSummary();
 				break;
 			case 2:removeDischargeSummary();
 				break;
-			case 3://display specific list
+			case 3:viewSpecificDischargeSummary();//display specific list
 				break;
 			case 4:listDischargeSummary();
 				break;
@@ -255,12 +263,13 @@ public void addDischargeSummary()
 	
 	DischargeSummaryData dsd=new DischargeSummaryData();
 	DischargeSummary discharge=new DischargeSummary();
+	dsd.input();
 	discharge=dsd.getDs();
 		
 		try {
 			abl.addDischargeSummary(discharge);
 		} catch (ClassNotFoundException | SQLException e) {
-			System.out.println("Not a Unique Serial No Please select Other Serial Number and try again");
+			System.out.println(e+"Medical Report does not exist for the given patient ID");
 		} catch (IOException e) {
 			System.out.println(e);
 		}
