@@ -1,5 +1,6 @@
 package ui;
 
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Scanner;
 import java.util.TreeSet;
@@ -25,7 +26,12 @@ public class TechnicianMenu {
 		System.out.print("\t\t\t\tEnter Password : ");
 		technicianPassword=sc.next();
 		sc.close();
-		t=tb.technicianLogin(technicianId, technicianPassword);
+		try {
+			t=tb.technicianLogin(technicianId, technicianPassword);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		if(t!=null)
 		{
 			homeMenu();
@@ -52,13 +58,23 @@ public class TechnicianMenu {
 			int patientId=0;
 			TechnicianBusinessLogic tb= new TechnicianBusinessLogic();
 			MedicalReport mr=new MedicalReport();
-			mr=tb.viewMedicalReports(patientId);
+			try {
+				mr=tb.viewMedicalReports(patientId);
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			System.out.println(mr);
 		}
 		else if(choice==2){
 			TreeSet<MedicalReport> mrtreeset = new TreeSet<MedicalReport>();
 			TechnicianBusinessLogic tb= new TechnicianBusinessLogic();
-			mrtreeset=tb.listMedicalReport();
+			try {
+				mrtreeset=tb.listMedicalReport();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			for(MedicalReport mr:mrtreeset)
 			{
 				System.out.println(mr);
@@ -66,7 +82,20 @@ public class TechnicianMenu {
 		}
 		else if(choice==3)
 		{
-			
+			TechnicianBusinessLogic tb= new TechnicianBusinessLogic();
+			MedicalReport medicalreport = new MedicalReport();
+			int patientId=0;
+			System.out.println("Enter patient Id : ");
+			patientId=sc.nextInt();
+			String tests;
+			System.out.println("Enter tests : ");
+			tests=sc.next();
+			try {
+				medicalreport=tb.modifyMedicalReport(patientId, tests);
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 		else if(choice==4){
 			sc.close();

@@ -32,6 +32,10 @@ public class TechnicianBusinessLogic {
 		}
 	}
 	
+//	public boolean modifyMedicalReport(int patientId,MedicalReport newMedicalReport) throws ClassNotFoundException, SQLException
+//	{
+//		return mrd.updateMedicalReport(patientId,newMedicalReport);
+//	}
 	public boolean modifyMedicalReport(int patientId,MedicalReport newMedicalReport) throws ClassNotFoundException, SQLException, IOException
 	{
 		return mrd.updateMedicalReport(patientId,newMedicalReport);
@@ -43,5 +47,12 @@ public class TechnicianBusinessLogic {
 	public MedicalReport viewMedicalReports(int patientId) throws ClassNotFoundException, SQLException, IOException
 	{
 		return mrd.displayMedicalReport(patientId);
+	}
+	
+	public MedicalReport modifyMedicalReport(int patientId, String tests) throws ClassNotFoundException, SQLException, IOException{
+		MedicalReport mr =new MedicalReport();
+		mr=mrd.displayMedicalReport(patientId);
+		mr.setTests(tests);
+		return mr;
 	}
 }
