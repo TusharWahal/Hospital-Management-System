@@ -13,7 +13,7 @@ import businessLogic.TechnicianBusinessLogic;
 
 public class TechnicianMenu {
 
-	public void logInMenu() throws ClassNotFoundException,SQLException{
+	public void logInMenu() {
 		int technicianId;
 		String technicianPassword;
 		Scanner sc = new Scanner(System.in);
@@ -27,14 +27,24 @@ public class TechnicianMenu {
 		technicianPassword=sc.next();
 		sc.close();
 		try {
-			t=tb.technicianLogin(technicianId, technicianPassword);
+			try {
+				t=tb.technicianLogin(technicianId, technicianPassword);
+			} catch (ClassNotFoundException | SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		if(t!=null)
 		{
-			homeMenu();
+			try {
+				homeMenu();
+			} catch (ClassNotFoundException | SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 		else
 		{
@@ -91,7 +101,7 @@ public class TechnicianMenu {
 			System.out.println("Enter tests : ");
 			tests=sc.next();
 			try {
-				medicalreport=tb.modifyMedicalReport(patientId, tests);
+				medicalreport = tb.modifyMedicalReport(patientId, tests);
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
