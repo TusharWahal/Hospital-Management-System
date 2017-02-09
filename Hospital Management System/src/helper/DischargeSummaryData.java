@@ -1,5 +1,6 @@
 package helper;
 
+import java.io.IOException;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.util.Calendar;
@@ -34,6 +35,10 @@ public class DischargeSummaryData {
 			mr=abl.viewMedicalReports(patientId);
 		} catch (ClassNotFoundException | SQLException e) {
 			System.out.println("Patient Id is Wrong !! Please Try Again");
+			e.printStackTrace();
+		} catch (IOException e) {
+			System.out.println("Patient Id is Wrong !! Please Try Again");
+			e.printStackTrace();
 		}
 		
 		int doctorId=mr.getDoctorId();
