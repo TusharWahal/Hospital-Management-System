@@ -70,9 +70,10 @@ public class HospitalEmployeeMenu {
 				flag=true;
 				}
 				else flag=false;
-			} catch (ClassNotFoundException | SQLException | IOException e) {
+			} catch (ClassNotFoundException | SQLException | IOException | NullPointerException e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
+				System.out.println("Wrond UserName/Password");
+				break;
 			}
 			if(flag==true)
 			{
