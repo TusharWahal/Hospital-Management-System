@@ -66,7 +66,15 @@ public class TechnicianMenu {
 		}
 		else if(choice==3)
 		{
-			
+			TechnicianBusinessLogic tb= new TechnicianBusinessLogic();
+			MedicalReport medicalreport = new MedicalReport();
+			int patientId=0;
+			System.out.println("Enter patient Id : ");
+			patientId=sc.nextInt();
+			String tests;
+			System.out.println("Enter tests : ");
+			tests=sc.next();
+			medicalreport=tb.modifyMedicalReport(patientId, tests);
 		}
 		else if(choice==4){
 			sc.close();

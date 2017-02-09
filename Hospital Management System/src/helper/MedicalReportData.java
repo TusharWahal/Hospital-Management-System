@@ -15,8 +15,11 @@ public class MedicalReportData {
 		System.out.println("Enter Patient ID:\n");
 		medicalReport.setPatientId(sc.nextInt());
 		
+		String visitDateString;
 		System.out.println("Enter visit Date:\n");
-		medicalReport.setVisitDate(Date.valueOf(sc.next()));//Date as Input.//Manage format
+		visitDateString=sc.next();
+		Date visitDate = Date.valueOf(visitDateString);
+		medicalReport.setVisitDate(visitDate);//Date as Input.//Manage format
 		
 		System.out.println("Enter Diagnosis:\n");
 		medicalReport.setDiagnosis(sc.next());

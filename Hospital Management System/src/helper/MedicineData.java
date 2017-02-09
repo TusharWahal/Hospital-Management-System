@@ -1,6 +1,7 @@
 package helper;
 
 import java.util.Scanner;
+import java.util.regex.Pattern;
 
 import bean.Medicine;
 
@@ -17,14 +18,38 @@ public class MedicineData {
 		System.out.println("Enter Medicine Name:\n");
 		medicine.setMedicineName(sc.next());
 		
-		System.out.println("Enter Quantity:\n");
-		medicine.setQuantity(sc.nextInt());
+		String strQuantity;
+		int quantity;
+		while(true){
+			System.out.println("Enter Quantity:\n");
+			strQuantity=sc.nextLine();
+			if(Pattern.matches("[0-9]+",strQuantity)){
+				quantity=Integer.parseInt(strQuantity);
+				break;
+			}
+			else{
+					System.out.println("The quantity contains characters!!!");
+				}
+		}
+		medicine.setQuantity(quantity);
 		
 		System.out.println("Enter Dosage:\n");
 		medicine.setDosage(sc.next());
 		
-		System.out.println("Enter Price:\n");
-		medicine.setPrice(sc.nextInt());
+		String strPrice;
+		float price;
+		while(true){
+			System.out.println("Enter Price:\n");
+			strPrice=sc.nextLine();
+			if(Pattern.matches("\\d+\\.\\d+",strQuantity)){
+				price=Float.parseFloat(strPrice);
+				break;
+			}
+			else{
+				System.out.println("The quantity contains characters!!!");
+			}
+		}
+		medicine.setPrice(price);
 		
 		System.out.println("Enter Bill Number:\n");
 		medicine.setBillNo(sc.nextInt());
