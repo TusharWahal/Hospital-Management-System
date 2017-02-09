@@ -3,7 +3,7 @@ package ui;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Scanner;
-import java.util.TreeSet;
+import java.util.ArrayList;
 
 import bean.MedicalReport;
 
@@ -77,15 +77,15 @@ public class TechnicianMenu {
 			System.out.println(mr);
 		}
 		else if(choice==2){
-			TreeSet<MedicalReport> mrtreeset = new TreeSet<MedicalReport>();
+			ArrayList<MedicalReport> mrArrayList = new ArrayList<MedicalReport>();
 			TechnicianBusinessLogic tb= new TechnicianBusinessLogic();
 			try {
-				mrtreeset=tb.listMedicalReport();
+				mrArrayList=tb.listMedicalReport();
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			for(MedicalReport mr:mrtreeset)
+			for(MedicalReport mr:mrArrayList)
 			{
 				System.out.println(mr);
 			}

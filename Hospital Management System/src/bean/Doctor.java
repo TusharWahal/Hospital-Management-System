@@ -1,12 +1,12 @@
 package bean;
 
 public class Doctor implements Comparable<Doctor>{
-	int doctorId;
-	String doctorName;
-	String specialization;
-	String timing;
-	String doctorAddress;
-	long doctorPhoneNo;
+	private int doctorId;
+	private String doctorName;
+	private String specialization;
+	private String timing;
+	private String doctorAddress;
+	private long doctorPhoneNo;
 	public int getDepartmentId() {
 		return departmentId;
 	}

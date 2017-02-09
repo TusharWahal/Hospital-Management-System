@@ -2,7 +2,7 @@ package dao;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.TreeSet;
+import java.util.ArrayList;
 
 import bean.Doctor;
 
@@ -11,5 +11,5 @@ public interface DoctorDao {
 	public boolean deleteDoctor(int doctorId) throws ClassNotFoundException, SQLException, IOException;
 	public boolean updateDoctor(int doctorId, Doctor renewDoctor) throws ClassNotFoundException, SQLException, IOException;
 	public Doctor displayDoctor(int doctorId) throws ClassNotFoundException, SQLException, IOException;
-	public TreeSet<Doctor> displayAllDoctors() throws SQLException, ClassNotFoundException, IOException;
+	public ArrayList<Doctor> displayAllDoctors() throws SQLException, ClassNotFoundException, IOException;
 }

@@ -9,7 +9,7 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.TreeSet;
+import java.util.ArrayList;
 
 import bean.Staff;
 
@@ -155,7 +155,7 @@ public class StaffDaoImpl implements StaffDao {
 	}
 
 	@Override
-	public TreeSet<Staff> displayAllStaffs() throws ClassNotFoundException, SQLException, IOException {
+	public ArrayList<Staff> displayAllStaffs() throws ClassNotFoundException, SQLException, IOException {
 	
 		con= openConnection();
 		
@@ -165,11 +165,12 @@ public class StaffDaoImpl implements StaffDao {
 		
 		rs=pstmt.executeQuery();
 		
-		TreeSet<Staff> staffList=new TreeSet<Staff>();
+		ArrayList<Staff> staffList=new ArrayList<Staff>();
 		
-		Staff staff=new Staff();
+		
 		while(rs.next())
 		{
+			Staff staff=new Staff();
 			staff.setStaffId(rs.getInt("staffId"));
 			staff.setDepartmentId(rs.getInt("departmentId"));
 			staff.setStaffAddress(rs.getString("staffAddress"));

@@ -2,7 +2,7 @@ package dao;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.TreeSet;
+import java.util.ArrayList;
 
 import bean.Ward;
 
@@ -11,6 +11,6 @@ public interface WardDao {
 	public boolean deleteWard(int bedNo) throws ClassNotFoundException, SQLException, IOException;
 	public boolean updateWard(int bedNo, Ward renewWard) throws ClassNotFoundException, SQLException, IOException;
 	public Ward displayWard(int bedNo) throws ClassNotFoundException, SQLException, IOException;
-	public TreeSet<Ward> displayAllWards() throws ClassNotFoundException, SQLException, IOException;
+	public ArrayList<Ward> displayAllWards() throws ClassNotFoundException, SQLException, IOException;
 	//test
 }

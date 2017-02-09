@@ -3,7 +3,7 @@ package ui;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Scanner;
-import java.util.TreeSet;
+import java.util.ArrayList;
 
 import bean.Reception;
 import businessLogic.PersonBusinessLogic;
@@ -12,8 +12,10 @@ import helper.SignUpLogInMenu;
 public class PatientMenu {
 	
 	PersonBusinessLogic pb = new PersonBusinessLogic();
+	private String personId;
 	
-	public PatientMenu() {
+	public PatientMenu(String personId) {
+		this.personId=personId;
 		while(true){
 			int choice;
 			Scanner sc = new Scanner(System.in);
@@ -29,7 +31,8 @@ public class PatientMenu {
 			switch(choice){
 			
 			case 1: try {
-					TreeSet<Reception> receptionList = pb.listReception();
+					ArrayList<Reception> receptionList = pb.myAppointments(personId);
+					//System.out.println(receptionList);
 					for(Reception r : receptionList){
 						System.out.println(r);
 					}
@@ -47,7 +50,7 @@ public class PatientMenu {
 					System.out.print("Enter Patient Id : ");
 					patientId=sc.nextInt();
 				try {
-					pb.viewMedicalReport(patientId);
+					System.out.println(pb.viewMedicalReport(patientId));
 				} catch (ClassNotFoundException| IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -62,7 +65,7 @@ public class PatientMenu {
 					System.out.println("Enter serial No of discharge summary : ");
 					serialNo=sc.nextInt();
 				try {
-					pb.viewDischargeSummary(serialNo);
+					System.out.println(pb.viewDischargeSummary(serialNo));
 				} catch (ClassNotFoundException| IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -76,7 +79,7 @@ public class PatientMenu {
 					System.out.println("Enter bill No :");
 					billNo=sc.nextInt();
 				try {
-					pb.viewBill(billNo);
+					System.out.println(pb.viewBill(billNo));
 				} catch (ClassNotFoundException| IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -90,7 +93,7 @@ public class PatientMenu {
 					System.out.println("Enter Patient Id :");
 					pId=sc.nextInt();
 				try {
-					pb.myMedicines(pId);
+					System.out.println(pb.myMedicines(pId));
 				} catch (ClassNotFoundException| IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();

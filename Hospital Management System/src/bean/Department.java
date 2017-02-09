@@ -1,15 +1,20 @@
 package bean;
 
 public class Department implements Comparable<Department> {
-	int departmentId;
-	String departmentName;
-	String departmentLocation;
-	String description;
+	private int departmentId;
+	private String departmentName;
+	private String departmentLocation;
+	private String description;
 	public int getDepartmentId() {
 		return departmentId;
 	}
 	public void setDepartmentId(int departmentId) {
 		this.departmentId = departmentId;
+	}
+	@Override
+	public String toString() {
+		return "Department [departmentId=" + departmentId + ", departmentName=" + departmentName
+				+ ", departmentLocation=" + departmentLocation + ", description=" + description + "]";
 	}
 	public String getDepartmentName() {
 		return departmentName;
@@ -69,9 +74,9 @@ public class Department implements Comparable<Department> {
 	}
 	@Override
 	public int compareTo(Department o) {
-		if(this.equals(o))
-			return 0;
-		else
+//		if(this.equals(o))
+//			return 0;
+//		else
 			return 1;
 	}
 	

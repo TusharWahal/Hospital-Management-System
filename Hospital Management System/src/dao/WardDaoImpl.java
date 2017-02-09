@@ -9,7 +9,7 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.TreeSet;
+import java.util.ArrayList;
 
 import bean.Ward;
 import bean.Ward;
@@ -157,7 +157,7 @@ public class WardDaoImpl implements WardDao {
 	}
 
 	@Override
-	public TreeSet<Ward> displayAllWards() throws ClassNotFoundException, SQLException , IOException{	
+	public ArrayList<Ward> displayAllWards() throws ClassNotFoundException, SQLException , IOException{	
 		con= openConnection();
 		
 		
@@ -165,10 +165,11 @@ public class WardDaoImpl implements WardDao {
 		
 		
 		rs=pstmt.executeQuery();
-		TreeSet<Ward> wardList=new TreeSet<Ward>();
-		Ward ward=new Ward();
+		ArrayList<Ward> wardList=new ArrayList<Ward>();
+		
 		while(rs.next())
 		{
+			Ward ward=new Ward();
 			ward.setBedNo(rs.getInt("bedNo"));
 			ward.setLocation(rs.getString("location"));
 			ward.setType(rs.getString("Type"));

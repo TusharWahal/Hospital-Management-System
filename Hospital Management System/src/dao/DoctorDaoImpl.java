@@ -5,7 +5,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.TreeSet;
+import java.util.ArrayList;
 import static helper.ConnectToDb.*;
 
 import bean.Doctor;
@@ -148,7 +148,7 @@ public class DoctorDaoImpl implements DoctorDao {
 	}
 
 	@Override
-	public TreeSet<Doctor> displayAllDoctors() throws ClassNotFoundException, SQLException, IOException {
+	public ArrayList<Doctor> displayAllDoctors() throws ClassNotFoundException, SQLException, IOException {
 		con= openConnection();
 		
 		
@@ -157,11 +157,12 @@ public class DoctorDaoImpl implements DoctorDao {
 		
 		rs=pstmt.executeQuery();
 		
-		TreeSet<Doctor> doctorList=new TreeSet<Doctor>();
+		ArrayList<Doctor> doctorList=new ArrayList<Doctor>();
 		
-		Doctor doctor=new Doctor();
+		
 		while(rs.next())
 		{
+			Doctor doctor=new Doctor();
 			doctor.setDoctorId(rs.getInt("doctorId"));
 			doctor.setDepartmentId(rs.getInt("departmentId"));
 			doctor.setDoctorAddress(rs.getString("doctorAddress"));

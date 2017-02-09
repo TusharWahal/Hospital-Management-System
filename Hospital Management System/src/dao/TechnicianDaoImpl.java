@@ -8,7 +8,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.TreeSet;
+import java.util.ArrayList;
 
 import bean.Technician;
 
@@ -149,7 +149,7 @@ public class TechnicianDaoImpl implements TechnicianDao {
 	}
 
 	@Override
-	public TreeSet<Technician> displayAllTechnicians() throws ClassNotFoundException, SQLException , IOException{
+	public ArrayList<Technician> displayAllTechnicians() throws ClassNotFoundException, SQLException , IOException{
 		// TODO Auto-generated method stub
         con= openConnection();
 		
@@ -159,11 +159,12 @@ public class TechnicianDaoImpl implements TechnicianDao {
 		
 		rs=pstmt.executeQuery();
 		
-		TreeSet<Technician> technicianList=new TreeSet<Technician>();
+		ArrayList<Technician> technicianList=new ArrayList<Technician>();
 		
-		Technician technician=new Technician();
+		
 		while(rs.next())
 		{
+			Technician technician=new Technician();
 			technician.setTechnicianId(rs.getInt("technicianId"));
 			technician.setDepartmentId(rs.getInt("departmentId"));
 			technician.setTechnicianAddress(rs.getString("technicianAddress"));

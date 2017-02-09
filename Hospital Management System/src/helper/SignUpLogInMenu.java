@@ -74,7 +74,7 @@ public class SignUpLogInMenu {
 				  }
 				  if(flag==true)
 				  {
-				  PatientMenu pm = new PatientMenu();
+				  PatientMenu pm = new PatientMenu(personId);
 				  break;
 				  }
 				  else{

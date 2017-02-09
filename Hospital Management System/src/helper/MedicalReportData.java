@@ -12,29 +12,30 @@ public class MedicalReportData {
 	Scanner sc=new Scanner(System.in) ;
 	public MedicalReport insert()
 	{
+		medicalReport=new MedicalReport();
 		System.out.println("Enter Patient ID:\n");
-		medicalReport.setPatientId(sc.nextInt());
+		medicalReport.setPatientId(Integer.parseInt(sc.nextLine()));
 		
 		String visitDateString;
 		System.out.println("Enter visit Date:\n");
-		visitDateString=sc.next();
+		visitDateString=sc.nextLine();
 		Date visitDate = Date.valueOf(visitDateString);
 		medicalReport.setVisitDate(visitDate);//Date as Input.//Manage format
 		
 		System.out.println("Enter Diagnosis:\n");
-		medicalReport.setDiagnosis(sc.next());
+		medicalReport.setDiagnosis(sc.nextLine());
 		
 		System.out.println("Enter Investigations:\n");
-		medicalReport.setInvestigations(sc.next());
+		medicalReport.setInvestigations(sc.nextLine());
 		
 		System.out.println("Enter Tests:\n");
-		medicalReport.setTests(sc.next());
+		medicalReport.setTests(sc.nextLine());
 		
 		System.out.println("Enter Recommendations:\n");
-		medicalReport.setRecommendations(sc.next());
+		medicalReport.setRecommendations(sc.nextLine());
 		
 		System.out.println("Enter Technician ID:\n");
-		medicalReport.setTechnicianId(sc.nextInt());
+		medicalReport.setTechnicianId(Integer.parseInt(sc.nextLine()));
 		
 		return medicalReport;
 	}

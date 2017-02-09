@@ -2,7 +2,7 @@ package bean;
 
 import java.sql.Date;
 
-public class Reception implements Comparable<Reception> {
+public class Reception  {
 	int regNo;
 	String personId;
 	String purpose;
@@ -96,13 +96,5 @@ public class Reception implements Comparable<Reception> {
 			return false;
 		return true;
 	}
-	@Override
-	public int compareTo(Reception o) {
-//		if(this.getRegNo().comparo.getRegNo())
-//			return 0;
-//		else if(this.getRegNo()>o.getRegNo())
-//			return 1;
-//		else 
-			return -1;
-	}
+	
 }

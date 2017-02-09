@@ -9,7 +9,7 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.TreeSet;
+import java.util.ArrayList;
 
 import bean.DischargeSummary;
 import bean.ICU;
@@ -119,7 +119,7 @@ public class ICUDaoImpl implements ICUDao {
 	}
 
 	@Override
-	public TreeSet<ICU> displayAllICUs() throws ClassNotFoundException, SQLException, IOException {
+	public ArrayList<ICU> displayAllICUs() throws ClassNotFoundException, SQLException, IOException {
 
 		con= openConnection();
 		
@@ -127,7 +127,7 @@ public class ICUDaoImpl implements ICUDao {
 		
 		rs=pstmt.executeQuery();
 		
-		TreeSet<ICU> icuList=new TreeSet<ICU>();
+		ArrayList<ICU> icuList=new ArrayList<ICU>();
 		ICU icu = new ICU();
 		
 		while(rs.next())

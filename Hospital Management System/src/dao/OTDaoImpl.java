@@ -3,7 +3,7 @@ package dao;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.TreeSet;
+import java.util.ArrayList;
 import java.io.IOException;
 import java.sql.Connection;
 import static helper.ConnectToDb.*;
@@ -132,7 +132,7 @@ public class OTDaoImpl implements OTDao {
 	}
 
 	@Override
-	public TreeSet<OT> displayAllOTs() throws ClassNotFoundException, SQLException, IOException {
+	public ArrayList<OT> displayAllOTs() throws ClassNotFoundException, SQLException, IOException {
 		con= openConnection();
 		
 		
@@ -141,11 +141,12 @@ public class OTDaoImpl implements OTDao {
 		
 		rs=pstmt.executeQuery();
 		
-		TreeSet<OT> otList=new TreeSet<OT>();
+		ArrayList<OT> otList=new ArrayList<OT>();
 		
-		OT ot=new OT();
+		
 		while(rs.next())
 		{
+			OT ot=new OT();
 			ot.setOtId(rs.getInt("otId"));
 			ot.setDescription(rs.getString("description"));
 			ot.setEquipments(rs.getString("equipments"));

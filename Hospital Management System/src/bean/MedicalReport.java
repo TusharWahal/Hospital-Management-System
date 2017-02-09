@@ -3,14 +3,14 @@ package bean;
 import java.sql.Date;
 
 public class MedicalReport implements Comparable<MedicalReport> {
-	int patientId;
-	Date visitDate;
-	String diagnosis;
-	String investigations;
-	String tests;
-	String recommendations;
-	int doctorId;
-	int technicianId;
+	private int patientId;
+	private Date visitDate;
+	private String diagnosis;
+	private String investigations;
+	private String tests;
+	private String recommendations;
+	private int doctorId;
+	private int technicianId;
 	public int getDoctorId() {
 		return doctorId;
 	}

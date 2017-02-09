@@ -3,7 +3,7 @@ package ui;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Scanner;
-import java.util.TreeSet;
+import java.util.ArrayList;
 
 import bean.Bill;
 import bean.Department;
@@ -143,7 +143,7 @@ public class ReceptionistMenu {
 	public void listAppointment()
 	{
 		try {
-			TreeSet<Reception> appointmentList= abl.listReception();
+			ArrayList<Reception> appointmentList= abl.listReception();
 			
 			//System.out.println(appointmentList);
 			for(Reception r:appointmentList)
@@ -185,7 +185,7 @@ public class ReceptionistMenu {
 	public void listMedicalReport()
 	{
 		try {
-			TreeSet<MedicalReport> medicalList= abl.listMedicalReport();
+			ArrayList<MedicalReport> medicalList= abl.listMedicalReport();
 			
 			for(MedicalReport m:medicalList)
 			{
@@ -212,10 +212,13 @@ public void dischargeSummaryMenu(){
 			{
 			int choice;
 		Scanner sc = new Scanner(System.in);
+		System.out.println();
+		System.out.println("Discharge Summary");
 		System.out.println("\t\t\t\t1.Add Discharge Summary");
 		System.out.println("\t\t\t\t2.Remove Discharge Summary");
 		System.out.println("\t\t\t\t3.View Specific Discharge Summary");
 		System.out.println("\t\t\t\t4.List Discharge summaries");
+		System.out.println("5.Back");
 		System.out.print("\n\n\t\t\t\tEnter your choice : ");
 		choice=Integer.parseInt(sc.nextLine());
 			switch(choice)
@@ -312,7 +315,7 @@ public void listDischargeSummary()
 {
 	
 	try {
-		TreeSet<DischargeSummary> dsList= abl.listDischargeSummary();
+		ArrayList<DischargeSummary> dsList= abl.listDischargeSummary();
 		
 		for(DischargeSummary d:dsList)
 		{
@@ -337,10 +340,11 @@ public void listDischargeSummary()
 	public void billsMenu(){
 		int choice;
 		Scanner sc = new Scanner(System.in);
+		System.out.println("BILL MENU");
 		System.out.println("\t\t\t\t1.Add Bill");
 		//System.out.println("\t\t\t\t2.Remove Bill");
 		//System.out.println("\t\t\t\t3.Modify Bill");
-		System.out.println("\t\t\t\t2.List Bills");
+		System.out.println("\t\t\t\t2.Remove Bills");
 		System.out.println("3.Back");
 
 		System.out.print("\n\n\t\t\t\tEnter your choice : ");
@@ -376,7 +380,7 @@ public void listDischargeSummary()
 			return;
 		} catch (ClassNotFoundException | SQLException e) {
 			// TODO Auto-generated catch block
-			System.out.println(" Invalid Bill No Pleas Try Again");
+			System.out.println(e+" Invalid Bill No Please Try Again");
 			return;
 		} catch (IOException e) {
 			System.out.println(e);
@@ -419,8 +423,8 @@ public void listDischargeSummary()
 		switch(choice)
 		{
 		case 1:addDepartment(); break;
-		case 2:break;
-		case 3:break;
+		case 2:removeDepartment();break;
+		case 3:listDepartments();break;
 		case 4:return;
 		default:break;
 		}
@@ -469,7 +473,7 @@ public void listDischargeSummary()
 	{
 		
 		try {
-			TreeSet<Department> departmentList= abl.listDepartment();
+			ArrayList<Department> departmentList= abl.listDepartment();
 			
 			for(Department d:departmentList)
 			{

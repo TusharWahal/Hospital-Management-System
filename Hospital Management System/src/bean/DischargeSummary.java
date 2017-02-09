@@ -23,6 +23,14 @@ public class DischargeSummary implements Comparable<DischargeSummary>{
 		return result;
 	}
 	@Override
+	public String toString() {
+		return "DischargeSummary [serialNo=" + serialNo + ", admissionDate=" + admissionDate + ", dischargeDate="
+				+ dischargeDate + ", history=" + history + ", onExamination=" + onExamination + ", operationDone="
+				+ operationDone + ", operativeFindings=" + operativeFindings + ", treatmentGiven=" + treatmentGiven
+				+ ", recommendations=" + recommendations + ", patientId=" + patientId + ", otId=" + otId + ", doctorId="
+				+ doctorId + ", bedNo=" + bedNo + "]";
+	}
+	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
@@ -83,19 +91,19 @@ public class DischargeSummary implements Comparable<DischargeSummary>{
 			return false;
 		return true;
 	}
-	int serialNo;
-	Date admissionDate;
-	Date dischargeDate;
-	String history;
-	String onExamination;
-	String operationDone;
-	String operativeFindings;
-	String treatmentGiven;
-	String recommendations;
-	int patientId;
-	int otId;
-	int doctorId;
-	int bedNo;
+	private int serialNo;
+	private Date admissionDate;
+	private Date dischargeDate;
+	private String history;
+	private String onExamination;
+	private String operationDone;
+	private String operativeFindings;
+	private String treatmentGiven;
+	private String recommendations;
+	private int patientId;
+	private int otId;
+	private int doctorId;
+	private int bedNo;
 	
 	public int getSerialNo() {
 		return serialNo;
@@ -177,9 +185,9 @@ public class DischargeSummary implements Comparable<DischargeSummary>{
 	}
 	@Override
 	public int compareTo(DischargeSummary o) {
-		if(this.equals(o))
-		{return 0;
-		}
+//		if(this.equals(o))
+//		{return 0;
+//		}
 		
 		return 1;
 	}

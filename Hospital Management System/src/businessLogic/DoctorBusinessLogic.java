@@ -2,7 +2,7 @@ package businessLogic;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.TreeSet;
+import java.util.ArrayList;
 
 import bean.Doctor;
 import bean.MedicalReport;
@@ -24,6 +24,7 @@ public class DoctorBusinessLogic {
 	
 	public Doctor doctorLogin(int doctorId, String doctorPassword) throws ClassNotFoundException, SQLException, IOException
 	{
+		//System.out.println("aaaa");
 		Doctor doctor=new Doctor();
 		if(dd.displayDoctor(doctorId).getDoctorId()==0)
 		{
@@ -36,14 +37,15 @@ public class DoctorBusinessLogic {
 			{
 				return doctor;
 			}
-			else return null;
+			else 
+				return null;
 		}
 	}
-	public TreeSet<Reception> myAppointments(int doctorId) throws ClassNotFoundException, SQLException, IOException
+	public ArrayList<Reception> myAppointments(int doctorId) throws ClassNotFoundException, SQLException, IOException
 	{
-		TreeSet<Reception> receptionList=new TreeSet<Reception>();
+		ArrayList<Reception> receptionList=new ArrayList<Reception>();
 		receptionList=rd.displayAllReceptions();
-		TreeSet<Reception> doctorAppintments=new TreeSet<Reception>();
+		ArrayList<Reception> doctorAppintments=new ArrayList<Reception>();
 		for(Reception rl: receptionList){
 			if(rl.getDoctorId()==doctorId){
 				doctorAppintments.add(rl);
@@ -68,7 +70,7 @@ public class DoctorBusinessLogic {
 		return mrd.updateMedicalReport(patientId,newMedicalReport);
 	}
 
-	public TreeSet<MedicalReport> listMedicalReport() throws ClassNotFoundException, SQLException, IOException
+	public ArrayList<MedicalReport> listMedicalReport() throws ClassNotFoundException, SQLException, IOException
 	{
 		return mrd.displayAllMedicalReports();
 	}
@@ -93,7 +95,7 @@ public class DoctorBusinessLogic {
 		return md.updateMedicine(sNo,newMedicine);
 	}
 
-	public TreeSet<Medicine> listMedicine() throws ClassNotFoundException, SQLException, IOException
+	public ArrayList<Medicine> listMedicine() throws ClassNotFoundException, SQLException, IOException
 	{
 		return md.displayAllMedicines();
 	}

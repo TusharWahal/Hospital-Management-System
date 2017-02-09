@@ -2,11 +2,13 @@ package ui;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import bean.Doctor;
 import bean.MedicalReport;
 import bean.Medicine;
+import bean.Reception;
 import businessLogic.DoctorBusinessLogic;
 import helper.MedicalReportData;
 import helper.MedicineData;
@@ -45,12 +47,14 @@ public class DoctorMenu {
 	
 	
 	public void displayMenu(){
-		System.out.println(MENU_OPTIONS);
+		
 		choice();
 		
 	}
 	
-	public boolean choice() {
+	public void choice() {
+		while(true){
+			System.out.println(MENU_OPTIONS);
 		Scanner scanner = new Scanner(System.in);
 		
 		int choice=scanner.nextInt();
@@ -59,7 +63,11 @@ public class DoctorMenu {
 		case 1:
 			try {
 				
-				dbl.myAppointments(doctor.getDoctorId());
+				ArrayList<Reception> appList=dbl.myAppointments(doctor.getDoctorId());
+				for(Reception r:appList)
+				{
+					System.out.println(r);
+				}
 			} catch (ClassNotFoundException | SQLException |IOException e) {
 				System.out.println(APPOINTMENTS_DISPLAY_FAILED_MSG +
 						ERROR_DESC_PREFIX_MSG + ": " + e);
@@ -73,8 +81,11 @@ public class DoctorMenu {
 				medicalChoice();
 			
 			break;
+		case 3:return ;
+		default:break;
 		}
-		return true;
+		
+		}
 	}
 	public boolean medicalChoice() {
 		Scanner scanner = new Scanner(System.in);
@@ -150,8 +161,9 @@ public class DoctorMenu {
 			
 		case 5:
 			try {
-				dbl.listMedicalReport();
-				dbl.listMedicine();
+				System.out.println(dbl.listMedicalReport());
+				System.out.println("Medicines");
+				System.out.println(dbl.listMedicine());
 				
 			} catch (ClassNotFoundException | SQLException|IOException e) {
 				System.out.println(APPOINTMENTS_DISPLAY_FAILED_MSG +

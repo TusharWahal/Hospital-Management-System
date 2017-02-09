@@ -9,7 +9,7 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.TreeSet;
+import java.util.ArrayList;
 
 import bean.Bill;
 import bean.DischargeSummary;
@@ -27,12 +27,12 @@ public class DischargeSummaryDaoImpl implements DischargeSummaryDao {
 		con= openConnection();
 		
 		 int serialNo = newDischargeSummary.getSerialNo();
-		 int patientId = newDischargeSummary.getSerialNo();
-		 int otId = newDischargeSummary.getSerialNo();
-		 int bedNo = newDischargeSummary.getSerialNo();
+		 int patientId = newDischargeSummary.getPatientId();
+		 int otId = newDischargeSummary.getOtId();
+		 int bedNo = newDischargeSummary.getBedNo();
 		 Date admissionDate = newDischargeSummary.getAdmissionDate();
 		 Date dischargeDate = newDischargeSummary.getDischargeDate();
-		 int doctorId = newDischargeSummary.getSerialNo();
+		 int doctorId = newDischargeSummary.getDoctorId();
 		 String history = newDischargeSummary.getHistory();
 		 String onExamination = newDischargeSummary.getOnExamination();
 		 String operationDone = newDischargeSummary.getOperationDone();
@@ -160,7 +160,7 @@ public class DischargeSummaryDaoImpl implements DischargeSummaryDao {
 	}
 
 	@Override
-	public TreeSet<DischargeSummary> displayAllDischargeSummarys() throws ClassNotFoundException, SQLException, IOException {
+	public ArrayList<DischargeSummary> displayAllDischargeSummarys() throws ClassNotFoundException, SQLException, IOException {
 
 		con= openConnection();
 		
@@ -170,12 +170,13 @@ public class DischargeSummaryDaoImpl implements DischargeSummaryDao {
 		
 		rs=pstmt.executeQuery();
 		
-		TreeSet<DischargeSummary> dischargeSummaryList=new TreeSet<DischargeSummary>();
-		DischargeSummary dischargeSummary = new DischargeSummary();
+		ArrayList<DischargeSummary> dischargeSummaryList=new ArrayList<DischargeSummary>();
 		
 		
 		while(rs.next())
 		{
+			DischargeSummary dischargeSummary = new DischargeSummary();
+			
 			dischargeSummary.setSerialNo(rs.getInt("serialNo"));
 			 dischargeSummary.setPatientId(rs.getInt("patientId"));
 			 dischargeSummary.setOtId(rs.getInt("otId"));

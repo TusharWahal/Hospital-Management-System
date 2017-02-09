@@ -1,15 +1,20 @@
 package bean;
 
 public class Bill implements Comparable<Bill> {
-	int billNo;
-	int patientId;
-	int serialNo;
-	float doctorVisit;
-	float bedCharges;
-	float tests;
-	float medicines;
+	private int billNo;
+	private int patientId;
+	private int serialNo;
+	private float doctorVisit;
+	private float bedCharges;
+	private float tests;
+	private float medicines;
 	
 	
+	@Override
+	public String toString() {
+		return "Bill [billNo=" + billNo + ", patientId=" + patientId + ", serialNo=" + serialNo + ", doctorVisit="
+				+ doctorVisit + ", bedCharges=" + bedCharges + ", tests=" + tests + ", medicines=" + medicines + "]";
+	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;

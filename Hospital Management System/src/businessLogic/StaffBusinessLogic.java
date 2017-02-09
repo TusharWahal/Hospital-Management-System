@@ -2,7 +2,7 @@ package businessLogic;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.TreeSet;
+import java.util.ArrayList;
 
 import bean.Staff;
 import bean.Ward;
@@ -33,13 +33,13 @@ public class StaffBusinessLogic {
 		}
 	}
 	
-	public TreeSet<Ward> myWards(int staffId) throws ClassNotFoundException, SQLException, IOException
+	public ArrayList<Ward> myWards(int staffId) throws ClassNotFoundException, SQLException, IOException
 	{
-		TreeSet<Ward> wardList=new TreeSet<Ward>();
+		ArrayList<Ward> wardList=new ArrayList<Ward>();
 		
 		wardList=wd.displayAllWards();
 		
-		TreeSet<Ward> myWards=new TreeSet<Ward>();
+		ArrayList<Ward> myWards=new ArrayList<Ward>();
 		
 		for(Ward wl: wardList)
 		{
@@ -53,9 +53,9 @@ public class StaffBusinessLogic {
 		
 	}
 	
-	public TreeSet<Ward> allWards() throws ClassNotFoundException, SQLException, IOException
+	public ArrayList<Ward> allWards() throws ClassNotFoundException, SQLException, IOException
 	{
-		TreeSet<Ward> wardList=new TreeSet<Ward>();
+		ArrayList<Ward> wardList=new ArrayList<Ward>();
 		
 		wardList=wd.displayAllWards();
 
@@ -63,9 +63,9 @@ public class StaffBusinessLogic {
 		
 	}
 	
-//	public TreeSet<OT> allOTs() throws ClassNotFoundException, SQLException
+//	public ArrayList<OT> allOTs() throws ClassNotFoundException, SQLException
 //	{
-//		TreeSet<OT> otList=new TreeSet<OT>();
+//		ArrayList<OT> otList=new ArrayList<OT>();
 //		
 //		otList=od.displayAllOTs();
 //		

@@ -41,7 +41,7 @@ public class DischargeSummaryData {
 			e.printStackTrace();
 		}
 		
-		System.out.println(mr);
+		//System.out.println(mr);
 		int doctorId=mr.getDoctorId();
 		Date admissionDate=mr.getVisitDate();
 		
@@ -65,8 +65,6 @@ public class DischargeSummaryData {
 		String ot=sc.nextLine();
 		int otId=Integer.parseInt(ot);
 		
-		
-		
 		String recommedation=mr.getRecommendations();
 		
 		
@@ -84,5 +82,6 @@ public class DischargeSummaryData {
 		ds.setRecommendations(recommedation);
 		ds.setSerialNo(serialNo);
 		ds.setTreatmentGiven(treatmentGiven);
+		//System.out.println(ds);
 	}
 }

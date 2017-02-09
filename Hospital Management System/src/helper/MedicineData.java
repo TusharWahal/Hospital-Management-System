@@ -13,10 +13,10 @@ public class MedicineData {
 		Medicine medicine = new Medicine();
 		
 		System.out.println("Enter Serial Number:\n");
-		medicine.setsNo(sc.nextInt());
+		medicine.setsNo(Integer.parseInt(sc.nextLine()));
 		
 		System.out.println("Enter Medicine Name:\n");
-		medicine.setMedicineName(sc.next());
+		medicine.setMedicineName(sc.nextLine());
 		
 		String strQuantity;
 		int quantity;
@@ -34,7 +34,7 @@ public class MedicineData {
 		medicine.setQuantity(quantity);
 		
 		System.out.println("Enter Dosage:\n");
-		medicine.setDosage(sc.next());
+		medicine.setDosage(sc.nextLine());
 		
 		String strPrice;
 		float price;
@@ -52,7 +52,7 @@ public class MedicineData {
 		medicine.setPrice(price);
 		
 		System.out.println("Enter Bill Number:\n");
-		medicine.setBillNo(sc.nextInt());
+		medicine.setBillNo(Integer.parseInt(sc.nextLine()));
 		
 		return medicine;
 		

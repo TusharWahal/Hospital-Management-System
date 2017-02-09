@@ -9,7 +9,7 @@ import helper.ConnectToDb.*;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.TreeSet;
+import java.util.ArrayList;
 
 import bean.Department;
 import bean.Doctor;
@@ -143,19 +143,20 @@ public class DepartmentDaoImpl implements DepartmentDao {
 	}
 
 	@Override
-	public TreeSet<Department> displayAllDepartments() throws ClassNotFoundException, SQLException, IOException {
+	public ArrayList<Department> displayAllDepartments() throws ClassNotFoundException, SQLException, IOException {
 		
 		con= openConnection();
 		
 		
 		pstmt=con.prepareStatement("select * from department ");
 		
-		TreeSet<Department> departmentList=new TreeSet<Department>();
+		ArrayList<Department> departmentList=new ArrayList<Department>();
 		rs=pstmt.executeQuery();
 		
-		Department department=new Department();
+		
 		while(rs.next())
 		{
+			Department department=new Department();
 			department.setDepartmentId(rs.getInt("departmentId"));
 			department.setDepartmentLocation(rs.getString("departmentLocation"));
 			department.setDepartmentName(rs.getString("departmentName"));

@@ -9,7 +9,7 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.TreeSet;
+import java.util.ArrayList;
 
 import bean.MedicalReport;
 import bean.Medicine;
@@ -137,7 +137,7 @@ public class MedicineDaoimpl implements MedicineDao {
 	}
 
 	@Override
-	public TreeSet<Medicine> displayAllMedicines() throws ClassNotFoundException, SQLException , IOException{
+	public ArrayList<Medicine> displayAllMedicines() throws ClassNotFoundException, SQLException , IOException{
 		con= openConnection();
 		
 		
@@ -146,11 +146,12 @@ public class MedicineDaoimpl implements MedicineDao {
 		
 		rs=pstmt.executeQuery();
 		
-		TreeSet<Medicine> medicineList=new TreeSet<Medicine>();
+		ArrayList<Medicine> medicineList=new ArrayList<Medicine>();
 		
-		Medicine medicine = new Medicine();
-		while(rs.next())
+			while(rs.next())
 		{
+				Medicine medicine = new Medicine();
+				
 			medicine.setsNo(rs.getInt("sNo"));
 			medicine.setMedicineName(rs.getString("medicineName"));
 			medicine.setQuantity(rs.getInt("quantity"));

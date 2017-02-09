@@ -75,15 +75,15 @@ public class Person implements Comparable<Person>{
 			return false;
 		return true;
 	}
-	String personId;
-	String personIdType;
-	String personName;
-	Date personDateOfBirth;
-	int personAge;
-	String personGender;
-	String personAddress;
-	long personPhoneNo;
-	String personPassword;
+	private String personId;
+	private String personIdType;
+	private String personName;
+	private Date personDateOfBirth;
+	private int personAge;
+	private String personGender;
+	private String personAddress;
+	private long personPhoneNo;
+	private String personPassword;
 	public String getPersonId() {
 		return personId;
 	}

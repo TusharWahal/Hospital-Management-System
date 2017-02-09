@@ -9,7 +9,7 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.TreeSet;
+import java.util.ArrayList;
 
 import bean.Reception;
 
@@ -130,6 +130,7 @@ con= openConnection();
 			reception.setPayment(rs.getFloat("payment"));
 			reception.setDoctorId(rs.getInt("doctorId"));
 			reception.setAppointmentDate(rs.getDate("regDate"));
+			
 		}
 		
 		closeConnection(con);
@@ -137,7 +138,7 @@ con= openConnection();
 	}
 
 	@Override
-	public TreeSet<Reception> displayAllReceptions() throws ClassNotFoundException,SQLException, IOException {
+	public ArrayList<Reception> displayAllReceptions() throws ClassNotFoundException,SQLException, IOException {
 		// TODO Auto-generated method stub
 		 con= openConnection();
 			
@@ -147,11 +148,12 @@ con= openConnection();
 			
 			rs=pstmt.executeQuery();
 			
-			TreeSet<Reception> receptionList=new TreeSet<Reception>();
+			ArrayList<Reception> receptionList=new ArrayList<Reception>();
 			
-			Reception reception=new Reception();
+			
 			while(rs.next())
 			{
+				Reception reception=new Reception();
 				reception.setRegNo(rs.getInt("regNo"));
 				reception.setPersonId(rs.getString("personId"));
 				reception.setPurpose(rs.getString("purpose"));
@@ -160,11 +162,16 @@ con= openConnection();
 				reception.setAppointmentDate(rs.getDate("regDate"));
 				
 				//System.out.println(reception);
+				
+				//System.out.println(reception);
 				receptionList.add(reception);
 			}
 			
 		//	System.out.println(receptionList);
 			closeConnection(con);
+			//System.out.println(receptionList);
+			//System.out.println();
+			//System.out.println();
 
 			return receptionList;
 	}

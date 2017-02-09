@@ -9,7 +9,7 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.TreeSet;
+import java.util.ArrayList;
 
 import bean.Doctor;
 import bean.Person;
@@ -145,7 +145,7 @@ public class PersonDaoImpl implements PersonDao {
 	}
 
 	@Override
-	public TreeSet<Person> displayAllPersons() throws ClassNotFoundException, SQLException , IOException{
+	public ArrayList<Person> displayAllPersons() throws ClassNotFoundException, SQLException , IOException{
 
 		con= openConnection();
 		
@@ -155,11 +155,12 @@ public class PersonDaoImpl implements PersonDao {
 		
 		rs=pstmt.executeQuery();
 		
-		TreeSet<Person> personList=new TreeSet<Person>();
-		Person person = new Person();
+		ArrayList<Person> personList=new ArrayList<Person>();
 		
 		while(rs.next())
 		{
+			Person person = new Person();
+			
 			person.setPersonId(rs.getString("personId"));
 			person.setPersonIdType(rs.getString("personIdType"));
 			person.setPersonName(rs.getString("personName"));
@@ -172,7 +173,9 @@ public class PersonDaoImpl implements PersonDao {
 			personList.add(person);
 			
 		}
-		
+		//System.out.println(personList);
+		//System.out.println();
+		//System.out.println();
 		closeConnection(con);
 		return personList;
 	}

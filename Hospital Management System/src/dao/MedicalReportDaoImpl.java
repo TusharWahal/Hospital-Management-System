@@ -4,7 +4,7 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.TreeSet;
+import java.util.ArrayList;
 import java.io.IOException;
 import java.sql.Connection;
 import static helper.ConnectToDb.*;
@@ -137,7 +137,7 @@ public class MedicalReportDaoImpl implements MedicalReportDao {
 	}
 
 	@Override
-	public TreeSet<MedicalReport> displayAllMedicalReports() throws ClassNotFoundException, SQLException, IOException {
+	public ArrayList<MedicalReport> displayAllMedicalReports() throws ClassNotFoundException, SQLException, IOException {
 		con= openConnection();
 		
 		
@@ -146,11 +146,12 @@ public class MedicalReportDaoImpl implements MedicalReportDao {
 		
 		rs=pstmt.executeQuery();
 		
-		TreeSet<MedicalReport> medicalReportList=new TreeSet<MedicalReport>();
+		ArrayList<MedicalReport> medicalReportList=new ArrayList<MedicalReport>();
 		
-		MedicalReport medicalreport=new MedicalReport();
-		while(rs.next())
+			while(rs.next())
 		{
+				MedicalReport medicalreport=new MedicalReport();
+				
 			medicalreport.setPatientId(rs.getInt("patientId"));
 			medicalreport.setVisitDate(rs.getDate("visitDate"));
 			medicalreport.setDiagnosis(rs.getString("diagnosis"));

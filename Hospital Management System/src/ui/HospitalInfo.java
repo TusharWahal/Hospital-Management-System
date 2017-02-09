@@ -3,7 +3,7 @@ package ui;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Scanner;
-import java.util.TreeSet;
+import java.util.ArrayList;
 
 import bean.Department;
 import bean.Doctor;
@@ -19,7 +19,7 @@ public class HospitalInfo {
 		
 		while(true){
 			
-			TreeSet<Department> departmentList = db.listDepartment();
+			ArrayList<Department> departmentList = db.listDepartment();
 			for(Department d : departmentList){
 				System.out.println(d);
 			}
@@ -37,19 +37,19 @@ public class HospitalInfo {
 			
 			switch(choice){
 				
-				case 1 :  TreeSet<Doctor> doctorList = db.departmentDoctors(departmentId);
+				case 1 :  ArrayList<Doctor> doctorList = db.departmentDoctors(departmentId);
 						  for(Doctor d : doctorList){
 							  System.out.println(d);
 						  }
 						  break;
 						  
-				case 2 :  TreeSet<Staff> staffList = db.departmentStaffs(departmentId);
+				case 2 :  ArrayList<Staff> staffList = db.departmentStaffs(departmentId);
 				  		  for(Staff s : staffList){
 				  			  System.out.println(s);
 				  		  }
 				  		  break;
 				  
-				case 3 :  TreeSet<Technician> technicianList = db.departmentTechnicians(departmentId);
+				case 3 :  ArrayList<Technician> technicianList = db.departmentTechnicians(departmentId);
 				  		  for(Technician t : technicianList){
 				  			  System.out.println(t);
 				  		  }

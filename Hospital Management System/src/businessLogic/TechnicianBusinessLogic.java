@@ -2,7 +2,7 @@ package businessLogic;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.TreeSet;
+import java.util.ArrayList;
 
 import bean.MedicalReport;
 import bean.Technician;
@@ -40,7 +40,7 @@ public class TechnicianBusinessLogic {
 	{
 		return mrd.updateMedicalReport(patientId,newMedicalReport);
 	}
-	public TreeSet<MedicalReport> listMedicalReport() throws ClassNotFoundException, SQLException, IOException
+	public ArrayList<MedicalReport> listMedicalReport() throws ClassNotFoundException, SQLException, IOException
 	{
 		return mrd.displayAllMedicalReports();
 	}

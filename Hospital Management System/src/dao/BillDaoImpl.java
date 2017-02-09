@@ -8,7 +8,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.TreeSet;
+import java.util.ArrayList;
 
 import bean.Bill;
 
@@ -31,7 +31,7 @@ public class BillDaoImpl implements BillDao {
 		float tests = newBill.getTests();
 		float medicines = newBill.getMedicines();
 		
-		pstmt=con.prepareStatement("insert into Bill (billNo,patientId,serialNo,doctorVisit,bedCharges,tests,medicines" +
+		pstmt=con.prepareStatement("insert into BillingSection (billNo,patientId,serialNo,doctorVisit,bedCharges,tests,medicines" +
 				") values (?,?,?,?,?,?,?)");
 		
 		pstmt.setInt(1,billNo);
@@ -60,7 +60,7 @@ public class BillDaoImpl implements BillDao {
 		con= openConnection();
 		
 		
-		pstmt=con.prepareStatement("delete from Bill where billNo = ?");
+		pstmt=con.prepareStatement("delete from BillingSection where billNo = ?");
 		
 		pstmt.setInt(1,billId);
 		
@@ -81,7 +81,7 @@ public class BillDaoImpl implements BillDao {
 		con= openConnection();
 		
 		
-		pstmt=con.prepareStatement("update Bill set patientId=?,serialNo=?,doctorVisit=?,bedCharges=?," +
+		pstmt=con.prepareStatement("update Billingsection set patientId=?,serialNo=?,doctorVisit=?,bedCharges=?," +
 				"tests=?,medicines=? where billNo=?");
 		
 
@@ -112,7 +112,7 @@ public class BillDaoImpl implements BillDao {
 		con= openConnection();
 		
 		
-		pstmt=con.prepareStatement("select * from Bill where billNo = ?");
+		pstmt=con.prepareStatement("select * from Billingsection where billNo = ?");
 		pstmt.setInt(1,billId);
 		
 		rs=pstmt.executeQuery();
@@ -136,22 +136,23 @@ public class BillDaoImpl implements BillDao {
 	}
 
 	@Override
-	public TreeSet<Bill> displayAllBills() throws ClassNotFoundException, SQLException, IOException {
+	public ArrayList<Bill> displayAllBills() throws ClassNotFoundException, SQLException, IOException {
 
 		con= openConnection();
 		
 		
-		pstmt=con.prepareStatement("select * from Bill");
+		pstmt=con.prepareStatement("select * from Billingsection");
 		
 		
 		rs=pstmt.executeQuery();
 		
-		TreeSet<Bill> billList=new TreeSet<Bill>();
-		Bill bill = new Bill();
+		ArrayList<Bill> billList=new ArrayList<Bill>();
+		
 		
 		
 		while(rs.next())
 		{
+			Bill bill = new Bill();
 			bill.setBillNo(rs.getInt("billNo"));
 			bill.setPatientId(rs.getInt("patientId"));
 			bill.setSerialNo(rs.getInt("serialNo"));

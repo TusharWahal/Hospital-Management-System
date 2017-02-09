@@ -2,7 +2,7 @@ package businessLogic;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.TreeSet;
+import java.util.ArrayList;
 
 import bean.Department;
 import bean.Doctor;
@@ -22,16 +22,16 @@ public class DepartmentBusinessLogic {
 	StaffDaoImpl sd=new StaffDaoImpl();
 	TechnicianDaoImpl td=new TechnicianDaoImpl();
 	
-	public TreeSet<Department> listDepartment() throws ClassNotFoundException, SQLException, IOException
+	public ArrayList<Department> listDepartment() throws ClassNotFoundException, SQLException, IOException
 	{
 		return dd.displayAllDepartments();
 	}
 	
-	public TreeSet<Doctor> departmentDoctors(int departmentId) throws ClassNotFoundException, SQLException, IOException
+	public ArrayList<Doctor> departmentDoctors(int departmentId) throws ClassNotFoundException, SQLException, IOException
 	{
-		TreeSet<Doctor> doctorList=new TreeSet<Doctor>();
+		ArrayList<Doctor> doctorList=new ArrayList<Doctor>();
 		doctorList=dod.displayAllDoctors();
-		TreeSet<Doctor> departmentDoctorList=new TreeSet<Doctor>();
+		ArrayList<Doctor> departmentDoctorList=new ArrayList<Doctor>();
 		for(Doctor dl: doctorList){
 			if(dl.getDepartmentId()==departmentId){
 				departmentDoctorList.add(dl);
@@ -40,11 +40,11 @@ public class DepartmentBusinessLogic {
 		return departmentDoctorList;
 	}
 	
-	public TreeSet<Staff> departmentStaffs(int departmentId) throws ClassNotFoundException, SQLException, IOException
+	public ArrayList<Staff> departmentStaffs(int departmentId) throws ClassNotFoundException, SQLException, IOException
 	{
-		TreeSet<Staff> staffList=new TreeSet<Staff>();
+		ArrayList<Staff> staffList=new ArrayList<Staff>();
 		staffList=sd.displayAllStaffs();
-		TreeSet<Staff> departmentStaffList=new TreeSet<Staff>();
+		ArrayList<Staff> departmentStaffList=new ArrayList<Staff>();
 		for(Staff sl: staffList){
 			if(sl.getDepartmentId()==departmentId){
 				departmentStaffList.add(sl);
@@ -53,11 +53,11 @@ public class DepartmentBusinessLogic {
 		return departmentStaffList;
 	}
 	
-	public TreeSet<Technician> departmentTechnicians(int departmentId) throws ClassNotFoundException, SQLException, IOException
+	public ArrayList<Technician> departmentTechnicians(int departmentId) throws ClassNotFoundException, SQLException, IOException
 	{
-		TreeSet<Technician> technicianList=new TreeSet<Technician>();
+		ArrayList<Technician> technicianList=new ArrayList<Technician>();
 		technicianList=td.displayAllTechnicians();
-		TreeSet<Technician> departmentTechnicianList=new TreeSet<Technician>();
+		ArrayList<Technician> departmentTechnicianList=new ArrayList<Technician>();
 		for(Technician tl: technicianList){
 			if(tl.getDepartmentId()==departmentId){
 				departmentTechnicianList.add(tl);
@@ -71,7 +71,7 @@ public class DepartmentBusinessLogic {
 //	}
 //	
 //	
-//	public TreeSet<Doctor> listDoctor() throws ClassNotFoundException, SQLException
+//	public ArrayList<Doctor> listDoctor() throws ClassNotFoundException, SQLException
 //	{
 //		return dod.displayAllDoctors();
 //	}
@@ -81,7 +81,7 @@ public class DepartmentBusinessLogic {
 //	}
 //
 //	
-//	public TreeSet<Staff> listStaff() throws ClassNotFoundException, SQLException
+//	public ArrayList<Staff> listStaff() throws ClassNotFoundException, SQLException
 //	{
 //		return sd.displayAllStaffs();
 //	}
@@ -91,7 +91,7 @@ public class DepartmentBusinessLogic {
 //	}
 //	
 //	
-//	public TreeSet<Technician> listTechnician() throws ClassNotFoundException, SQLException
+//	public ArrayList<Technician> listTechnician() throws ClassNotFoundException, SQLException
 //	{
 //		return td.displayAllTechnicians();
 //	}

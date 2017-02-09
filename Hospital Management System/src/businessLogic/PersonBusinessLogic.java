@@ -2,7 +2,7 @@ package businessLogic;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.TreeSet;
+import java.util.ArrayList;
 
 import bean.Bill;
 import bean.DischargeSummary;
@@ -27,7 +27,7 @@ public class PersonBusinessLogic {
 	ReceptionDaoImpl rd = new ReceptionDaoImpl();
 	MedicineDaoimpl md = new MedicineDaoimpl();
 		
-	public TreeSet<Reception> listReception() throws ClassNotFoundException, SQLException, IOException
+	public ArrayList<Reception> listReception() throws ClassNotFoundException, SQLException, IOException
 	{
 		return rd.displayAllReceptions();
 	}
@@ -56,11 +56,11 @@ public class PersonBusinessLogic {
 //		return pd.updatePerson(personId,newPerson);
 //	}
 	
-	public TreeSet<Medicine> myMedicines(int patientId) throws ClassNotFoundException, SQLException, IOException
+	public ArrayList<Medicine> myMedicines(int patientId) throws ClassNotFoundException, SQLException, IOException
 	{
-		TreeSet<Medicine> medicineList=new TreeSet<Medicine>();
+		ArrayList<Medicine> medicineList=new ArrayList<Medicine>();
 		medicineList=md.displayAllMedicines();
-		TreeSet<Medicine> patientMedicines=new TreeSet<Medicine>();
+		ArrayList<Medicine> patientMedicines=new ArrayList<Medicine>();
 		for(Medicine ml: medicineList){
 			if(ml.getPatientId()==patientId){
 				patientMedicines.add(ml);
@@ -92,6 +92,19 @@ public class PersonBusinessLogic {
 			}
 			else return null;
 		}
+	}
+	public ArrayList<Reception> myAppointments(String personId) throws ClassNotFoundException, SQLException, IOException
+	{
+		ArrayList<Reception> receptionList=new ArrayList<Reception>();
+		receptionList=rd.displayAllReceptions();
+		//System.out.println(receptionList);
+		ArrayList<Reception> doctorAppintments=new ArrayList<Reception>();
+		for(Reception rl: receptionList){
+			if(rl.getPersonId().equals(personId)){
+				doctorAppintments.add(rl);
+			}
+		}
+		return doctorAppintments;
 	}
 
 }

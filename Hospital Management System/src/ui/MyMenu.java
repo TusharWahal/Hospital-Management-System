@@ -31,8 +31,9 @@ public class MyMenu {
 						receptionMenu.ReceptionistMainDisplay();
 						break;
 						
-				case 3: //HospitalEmployeeMenu hospitalEmployeeMenu = new HospitalEmployeeMenu();
-						//break;
+				case 3://System.out.println("Under Construction"); 
+					HospitalEmployeeMenu hospitalEmployeeMenu = new HospitalEmployeeMenu();
+						break;
 						
 				case 4: HospitalInfo hospitalinfo = new HospitalInfo();
 						break;

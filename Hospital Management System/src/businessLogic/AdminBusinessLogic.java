@@ -2,7 +2,7 @@ package businessLogic;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.TreeSet;
+import java.util.ArrayList;
 
 import bean.Bill;
 import bean.Department;
@@ -69,7 +69,7 @@ public class AdminBusinessLogic {
 	{
 		return rd.updateReception(regNo,newReception);
 	}
-	public TreeSet<Reception> listReception() throws ClassNotFoundException, SQLException, IOException
+	public ArrayList<Reception> listReception() throws ClassNotFoundException, SQLException, IOException
 	{
 		return rd.displayAllReceptions();
 	}
@@ -93,7 +93,7 @@ public class AdminBusinessLogic {
 	{
 		return mrd.updateMedicalReport(patientId,newMedicalReport);
 	}
-	public TreeSet<MedicalReport> listMedicalReport() throws ClassNotFoundException, SQLException, IOException
+	public ArrayList<MedicalReport> listMedicalReport() throws ClassNotFoundException, SQLException, IOException
 	{
 		return mrd.displayAllMedicalReports();
 	}
@@ -116,7 +116,7 @@ public class AdminBusinessLogic {
 	{
 		return dsd.updateDischargeSummary(serialNo,newDischargeSummary);
 	}
-	public TreeSet<DischargeSummary> listDischargeSummary() throws ClassNotFoundException, SQLException, IOException
+	public ArrayList<DischargeSummary> listDischargeSummary() throws ClassNotFoundException, SQLException, IOException
 	{
 		return dsd.displayAllDischargeSummarys();
 	}
@@ -139,7 +139,7 @@ public class AdminBusinessLogic {
 	{
 		return bd.updateBill(number,newBill);
 	}
-	public TreeSet<Bill> listBill() throws ClassNotFoundException, SQLException, IOException
+	public ArrayList<Bill> listBill() throws ClassNotFoundException, SQLException, IOException
 	{
 		return bd.displayAllBills();
 	}
@@ -167,7 +167,7 @@ public class AdminBusinessLogic {
 	{
 		return dd.updateDepartment(departmentId,newDepartment);
 	}
-	public TreeSet<Department> listDepartment() throws ClassNotFoundException, SQLException, IOException
+	public ArrayList<Department> listDepartment() throws ClassNotFoundException, SQLException, IOException
 	{
 		return dd.displayAllDepartments();
 	}
@@ -190,7 +190,7 @@ public class AdminBusinessLogic {
 	{
 		return dod.updateDoctor(doctorId,newDoctor);
 	}
-	public TreeSet<Doctor> listDoctor() throws ClassNotFoundException, SQLException, IOException
+	public ArrayList<Doctor> listDoctor() throws ClassNotFoundException, SQLException, IOException
 	{
 		return dod.displayAllDoctors();
 	}
@@ -212,7 +212,7 @@ public class AdminBusinessLogic {
 	{
 		return sd.updateStaff(staffId,newStaff);
 	}
-	public TreeSet<Staff> listStaff() throws ClassNotFoundException, SQLException, IOException
+	public ArrayList<Staff> listStaff() throws ClassNotFoundException, SQLException, IOException
 	{
 		return sd.displayAllStaffs();
 	}
@@ -234,7 +234,7 @@ public class AdminBusinessLogic {
 	{
 		return td.updateTechnician(technicianId,newTechnician);
 	}
-	public TreeSet<Technician> listTechnician() throws ClassNotFoundException, SQLException, IOException
+	public ArrayList<Technician> listTechnician() throws ClassNotFoundException, SQLException, IOException
 	{
 		return td.displayAllTechnicians();
 	}
@@ -248,7 +248,7 @@ public class AdminBusinessLogic {
 	{
 		return pd.deletePerson(personId);
 	}
-	public TreeSet<Person> listPerson() throws ClassNotFoundException, SQLException, IOException
+	public ArrayList<Person> listPerson() throws ClassNotFoundException, SQLException, IOException
 	{
 		return pd.displayAllPersons();
 	}

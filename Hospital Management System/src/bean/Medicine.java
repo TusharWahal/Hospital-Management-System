@@ -1,15 +1,20 @@
 package bean;
 
 public class Medicine implements Comparable<Medicine> {
-	int sNo;
-	String medicineName;
-	int quantity;
-	String dosage;
-	float price;
-	int patientId;
-	int billNo;
+	private int sNo;
+	private String medicineName;
+	private int quantity;
+	private String dosage;
+	private float price;
+	private int patientId;
+	private int billNo;
 	public int getsNo() {
 		return sNo;
+	}
+	@Override
+	public String toString() {
+		return "Medicine [sNo=" + sNo + ", medicineName=" + medicineName + ", quantity=" + quantity + ", dosage="
+				+ dosage + ", price=" + price + ", patientId=" + patientId + ", billNo=" + billNo + "]";
 	}
 	public void setsNo(int sNo) {
 		this.sNo = sNo;
