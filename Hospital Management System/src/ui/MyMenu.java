@@ -25,11 +25,12 @@ public class MyMenu {
 				case 1: SignUpLogInMenu sulim = new SignUpLogInMenu();
 						break;
 				
-//				case 2: ReceptionMenu receptionMenu = new ReceptionMenu();
-//						break;
+				case 2: ReceptionistMenu receptionMenu = new ReceptionistMenu();
+						receptionMenu.ReceptionistMainDisplay();
+						break;
 						
-//				case 3: HospitalEmployeeMenu hospitalEmployeeMenu = new HospitalEmployeeMenu();
-//						break;
+				case 3: //HospitalEmployeeMenu hospitalEmployeeMenu = new HospitalEmployeeMenu();
+						//break;
 						
 				case 4: HospitalInfo hospitalinfo = new HospitalInfo();
 						break;

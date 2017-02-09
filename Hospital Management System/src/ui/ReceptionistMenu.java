@@ -6,12 +6,14 @@ import java.util.Scanner;
 import java.util.TreeSet;
 
 import bean.Bill;
+import bean.Department;
 import bean.DischargeSummary;
 import bean.MedicalReport;
 import bean.Reception;
 import businessLogic.AdminBusinessLogic;
 import helper.AppointmentInput;
 import helper.BillData;
+import helper.DepartmentInput;
 import helper.DischargeSummaryData;
 
 public class ReceptionistMenu {
@@ -30,7 +32,7 @@ public class ReceptionistMenu {
 			System.out.println("\t\t\t\t4.Bills");
 			System.out.println("\t\t\t\t5.Department");
 			//System.out.println("\t\t\t\t6.Patient");
-			System.out.println("\t\t\t\t\t7.Log Out");
+			System.out.println("\t\t\t\t\t\t\t7.Log Out");
 			System.out.print("\n\n\t\t\t\tEnter your choice : ");
 			choice=sc.nextInt();
 			switch(choice)
@@ -407,7 +409,7 @@ public void listDischargeSummary()
 		choice=sc.nextInt();
 		switch(choice)
 		{
-		case 1:break;
+		case 1:addDepartment(); break;
 		case 2:break;
 		case 3:break;
 		case 4:return;
@@ -416,8 +418,71 @@ public void listDischargeSummary()
 		}
 		
 	}
+	public void addDepartment()
+	{
+		Department department=new Department();
+		DepartmentInput di=new DepartmentInput();
+		
+		di.input();
+		
+		department=di.getDepartment();
+		
+		try {
+			abl.addDepartment(department);
+		} catch (ClassNotFoundException | SQLException | IOException e) {
+			
+			System.out.println("Invalid Department Id!! Please Try Again!!");
+			return;
+		}
+		return;
+		
+	}
+	
+	public void removeDepartment()
+	{
+		Scanner sc=new Scanner(System.in);
+		System.out.println("Enter Department Id");
+		int deptId=Integer.parseInt(sc.nextLine());
+		try {
+			abl.removeDepartment(deptId);
+			return;
+		} catch (ClassNotFoundException | SQLException e) {
+			// TODO Auto-generated catch block
+			System.out.println("No Such Department Exist");
+			return;
+		} catch (IOException e) {
+			System.out.println(e);
+			return;
+		}
+	}
+	
+	public void listDepartments()
+	{
+		
+		try {
+			TreeSet<Department> departmentList= abl.listDepartment();
+			
+			for(Department d:departmentList)
+			{
+				System.out.println(d);
+			}
+			//Option to Select medical report
+		} catch (ClassNotFoundException | SQLException e) {
+			// TODO Auto-generated catch block
+			System.out.println("No Departments");
+			return;
+		} catch (IOException e) {
+			System.out.println(e);
+		}
+		return;
+		
+	}
+
+	
 	
 	public void addRemovePatientMenu(){
+		
+		//for future
 		int choice;
 		Scanner sc = new Scanner(System.in);
 		System.out.println("\t\t\t\t1.Remove Department");

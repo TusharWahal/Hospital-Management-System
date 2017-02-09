@@ -10,6 +10,7 @@ public class MyMain {
 	public static void main(String[] args) {
 		try {
 			MyMenu menu=new MyMenu();
+			
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

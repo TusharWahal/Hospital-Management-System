@@ -15,7 +15,7 @@ public class ConnectToDb {
 
 	public static Connection openConnection() throws SQLException, ClassNotFoundException, IOException{
 		
-		FileInputStream fis=new FileInputStream("MyProp.prop");
+		FileInputStream fis=new FileInputStream("MyProp.properties");
 		
 		Properties p = new Properties();
 		
