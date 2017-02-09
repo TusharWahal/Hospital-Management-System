@@ -26,6 +26,8 @@ public class MyMenu {
 						break;
 				
 				case 2: ReceptionistMenu receptionMenu = new ReceptionistMenu();
+				
+						
 						receptionMenu.ReceptionistMainDisplay();
 						break;
 						
