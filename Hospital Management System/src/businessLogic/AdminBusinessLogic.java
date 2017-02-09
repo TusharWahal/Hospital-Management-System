@@ -8,6 +8,7 @@ import bean.Department;
 import bean.DischargeSummary;
 import bean.Doctor;
 import bean.MedicalReport;
+import bean.Person;
 import bean.Reception;
 import bean.Staff;
 import bean.Technician;
@@ -15,6 +16,7 @@ import dao.BillDaoImpl;
 import dao.DepartmentDaoImpl;
 import dao.DischargeSummaryDaoImpl;
 import dao.MedicalReportDaoImpl;
+import dao.PersonDaoImpl;
 import dao.ReceptionDaoImpl;
 import dao.DoctorDaoImpl;
 import dao.StaffDaoImpl;
@@ -30,6 +32,7 @@ public class AdminBusinessLogic {
 	DoctorDaoImpl dod=new DoctorDaoImpl();
 	StaffDaoImpl sd=new StaffDaoImpl();
 	TechnicianDaoImpl td=new TechnicianDaoImpl();
+	PersonDaoImpl pd=new PersonDaoImpl();
 
 	public boolean adminLogin(String username, String password) throws ClassNotFoundException, SQLException
 	{
@@ -236,5 +239,19 @@ public class AdminBusinessLogic {
 	public Technician viewTechnician(int technicianId) throws ClassNotFoundException, SQLException
 	{
 		return td.displayTechnician(technicianId);
+	}
+	
+	/*******************************************Person**********************************************/
+	public boolean removePerson(String personId) throws ClassNotFoundException, SQLException
+	{
+		return pd.deletePerson(personId);
+	}
+	public TreeSet<Person> listPerson() throws ClassNotFoundException, SQLException
+	{
+		return pd.displayAllPersons();
+	}
+	public Person viewPerson(String personId) throws ClassNotFoundException, SQLException
+	{
+		return pd.displayPerson(personId);
 	}
 }

@@ -1,66 +1,42 @@
 package ui;
 
+import java.sql.SQLException;
 import java.util.Scanner;
 
-public class MyMenu {
+import helper.SignUpLogInMenu;
 
-	public void homeMenu(){
-		int choice;
-		Scanner sc = new Scanner(System.in);
-		System.out.println("\t\t\t\tWelcome to Sapient Hospital");
-		System.out.println("\n\n\n\t\t\t\t1.Patient");
-		System.out.println("\t\t\t\t2.Receptionist");
-		System.out.println("\t\t\t\t3.Hospital Employee");
-		System.out.println("\t\t\t\t4.Hospital Information");
-		System.out.println("\n\n\nEnter your choice : ");
-		choice=sc.nextInt();
+public class MyMenu {
+	
+	public MyMenu() throws ClassNotFoundException, SQLException{
+		while(true){
 		
-		if(choice==1){
-			signUpLogInMenu();
-		}
-		else if(choice==2){
-			logInMenu();
-		}
-		else if(choice==3){
-			hospitalEmployeeMenu();
-		}
-		else{
-			System.out.println("Invalid choice!!!");
-		}
-	}
-	
-	public void signUpLogInMenu(){
-		int choice;
-		Scanner sc = new Scanner(System.in);
-		System.out.println("\t\t\t\tWelcome to Sapient Hospital");
-		System.out.println("\n\n0.Back");
-		System.out.println("\n\n\t\t\t\t1.Sign Up");
-		System.out.println("\t\t\t\t2.Log In");
-		System.out.println("\n\n\nEnter your choice : ");
-		choice=sc.nextInt();
+			int choice;
+			Scanner sc = new Scanner(System.in);
+			System.out.println("\t\t\t\tWelcome to Sapient Hospital");
+			System.out.println("\n\n\n\t\t\t\t1.Patient");
+			System.out.println("\t\t\t\t2.Receptionist");
+			System.out.println("\t\t\t\t3.Hospital Employee");
+			System.out.println("\t\t\t\t4.Hospital Information");
+			System.out.println("\n\n\nEnter your choice : ");
+			choice=sc.nextInt();
+			switch(choice){
 		
-		if(choice==1){
-			//To do
-		}
-		else if(choice==2){
-			logInMenu();
+				case 1: SignUpLogInMenu sulim = new SignUpLogInMenu();
+						break;
+				
+//				case 2: ReceptionMenu receptionMenu = new ReceptionMenu();
+//						break;
+						
+//				case 3: HospitalEmployeeMenu hospitalEmployeeMenu = new HospitalEmployeeMenu();
+//						break;
+						
+				case 4: HospitalInfo hospitalinfo = new HospitalInfo();
+						break;
+				
+				default: System.out.println("Invalid choice!!!");
+						break;
+			}
 		}
 	}
 	
-	public void logInMenu(){
-		String userName;
-		String password;
-		Scanner sc = new Scanner(System.in);
-		System.out.println("\t\t\t\tWelcome to Sapient Hospital");
-		System.out.print("\n\n\n\t\t\t\tEnter User Name : ");
-		userName=sc.next();
-		System.out.print("\t\t\t\tEnter Password : ");
-		password=sc.next();
-	}
-	
-	public void hospitalEmployeeMenu(){
-		System.out.println("\t\t\t\tDoctor");
-		System.out.println("\t\t\t\tStaff");
-		System.out.println("\t\t\t\tTechnician");
-	}
 }
