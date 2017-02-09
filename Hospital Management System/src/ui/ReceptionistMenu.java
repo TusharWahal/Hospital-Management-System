@@ -393,14 +393,28 @@ public void listDischargeSummary()
 	}
 	
 	public void departmentMenu(){
+		
+		while(true)
+		{
 		int choice;
 		Scanner sc = new Scanner(System.in);
 		System.out.println("\t\t\t\t1.Add Department");
 		System.out.println("\t\t\t\t2.Remove Department");
-		System.out.println("\t\t\t\t3.Modify Department");
-		System.out.println("\t\t\t\t4.List Departments");
+		//System.out.println("\t\t\t\t3.Modify Department");
+		System.out.println("\t\t\t\t3.List Departments");
+		System.out.println("4.Back");
 		System.out.print("\n\n\t\t\t\tEnter your choice : ");
 		choice=sc.nextInt();
+		switch(choice)
+		{
+		case 1:break;
+		case 2:break;
+		case 3:break;
+		case 4:return;
+		default:break;
+		}
+		}
+		
 	}
 	
 	public void addRemovePatientMenu(){
