@@ -22,7 +22,7 @@ public class HospitalInfo {
 			ArrayList<Department> departmentList = db.listDepartment();
 			for(Department d : departmentList){
 				System.out.println(d);
-			}
+			} 
 			
 			int choice,departmentId;
 			Scanner sc = new Scanner(System.in);
@@ -33,13 +33,17 @@ public class HospitalInfo {
 			System.out.println("\t\t\t\t4. Back");
 			System.out.print("\n\n\nEnter your choice : ");
 			choice=sc.nextInt();
-			System.out.print("Enter departmentId : ");
-			departmentId=sc.nextInt();
-			System.out.println();
+//			System.out.print("Enter departmentId : ");
+//			departmentId=sc.nextInt();
+//			System.out.println();
 			
 			switch(choice){
 				
-				case 1 :  ArrayList<Doctor> doctorList = db.departmentDoctors(departmentId);
+				case 1 :System.out.print("Enter departmentId : ");
+						departmentId=sc.nextInt();
+						System.out.println();
+ 
+						ArrayList<Doctor> doctorList = db.departmentDoctors(departmentId);
 						  for(Doctor d : doctorList){
 							  System.out.println(d);
 						  }
@@ -52,7 +56,12 @@ public class HospitalInfo {
 				}
 						  break;
 						  
-				case 2 :  ArrayList<Staff> staffList = db.departmentStaffs(departmentId);
+				case 2 :
+					System.out.print("Enter departmentId : ");
+					departmentId=sc.nextInt();
+					System.out.println();
+
+					ArrayList<Staff> staffList = db.departmentStaffs(departmentId);
 				  		  for(Staff s : staffList){
 				  			  System.out.println(s);
 				  		  }
@@ -65,7 +74,12 @@ public class HospitalInfo {
 				}
 				  		  break;
 				  
-				case 3 :  ArrayList<Technician> technicianList = db.departmentTechnicians(departmentId);
+				case 3 :
+					System.out.print("Enter departmentId : ");
+					departmentId=sc.nextInt();
+					System.out.println();
+
+					ArrayList<Technician> technicianList = db.departmentTechnicians(departmentId);
 				  		  for(Technician t : technicianList){
 				  			  System.out.println(t);
 				  		  }

@@ -18,13 +18,14 @@ public class StaffBusinessLogic {
 	public Staff staffLogin(int staffId, String staffPassword) throws ClassNotFoundException, SQLException, IOException
 	{
 		Staff staff;
-		if(sd.displayStaff(staffId).getStaffId()==0)
+		if(sd.displayStaff(staffId).getStaffPhoneNo()==0)
 		{
-			return null;
+			return null; 
 		}
 		else
 		{
 			staff=sd.displayStaff(staffId);
+			//System.out.println(staff);
 			if(staff.getStaffPassword().equals(staffPassword))
 			{
 				return staff;

@@ -22,7 +22,7 @@ public class StaffDaoImpl implements StaffDao {
 	@Override
 	public boolean insertStaff(Staff newStaff) throws ClassNotFoundException, SQLException, IOException {		
 		con= openConnection();
-	
+	 
 	int staffId=newStaff.getStaffId();
 	String staffName=newStaff.getStaffName();
 	String staffAddress=newStaff.getStaffAddress();
@@ -147,6 +147,7 @@ public class StaffDaoImpl implements StaffDao {
 			staff.setSpecialization(rs.getString("specialization"));
 			staff.setTiming(rs.getString("timing"));
 			staff.setStaffPassword(rs.getString("Password"));
+			
 		}
 		
 		closeConnection(con);

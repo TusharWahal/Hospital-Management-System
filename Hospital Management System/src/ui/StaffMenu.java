@@ -13,7 +13,7 @@ import dao.WardDaoImpl;
 public class StaffMenu {
 	private int staffId;
 	public boolean logInMenu(){
-		int staffId;
+		int staffId; 
 		String staffPassword;
 		Scanner sc = new Scanner(System.in);
 		StaffBusinessLogic sb = new StaffBusinessLogic();
@@ -29,6 +29,7 @@ public class StaffMenu {
 		try {
 			
 			st=sb.staffLogin(staffId, staffPassword);
+			//System.out.println(st);
 		} catch (ClassNotFoundException | SQLException | IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

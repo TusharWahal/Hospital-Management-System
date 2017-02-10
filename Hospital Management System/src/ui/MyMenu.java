@@ -13,8 +13,25 @@ public class MyMenu {
 			
 
 		
-			int choice;
+			int choice; 
 			Scanner sc = new Scanner(System.in);
+			System.out.println(" \t\t\t\t\t\t\t  _______");
+			System.out.println("\t\t\t\t\t\t\t |       |");
+			System.out.println("\t\t\t\t\t\t\t |       |");
+			System.out.println("\t\t\t\t\t\t\t |_______|");
+			System.out.println("\t\t\t\t\t\t _______//");
+			System.out.println("\t\t\t\t\t\t|       |");
+			System.out.println("\t\t\t\t\t\t|       |");
+			System.out.println("\t\t\t\t\t\t|_______|");
+			System.out.println("\t\t\t\t\t\t\t\\\\_______");
+			System.out.println("\t\t\t\t\t\t\t |       |");
+			System.out.println("\t\t\t\t\t\t\t |       |");
+			System.out.println("\t\t\t\t\t\t\t |_______|");
+			System.out.println("\t\t\t\t\t\t _______//");
+			System.out.println("\t\t\t\t\t\t|       |");
+			System.out.println("\t\t\t\t\t\t|       |");
+			System.out.println("\t\t\t\t\t\t|_______|");
+			System.out.println("\n\t\t\t\t\t\tSAPIENT HOSPITAL");
 			System.out.println("\n\n\t\t\t\tWelcome to Sapient Hospital");
 			System.out.println("\n\n\n\t\t\t\t1.Patient");
 			System.out.println("\t\t\t\t2.Receptionist");
