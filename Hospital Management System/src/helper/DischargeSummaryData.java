@@ -5,6 +5,7 @@ import java.sql.Date;
 import java.sql.SQLException;
 import java.util.Calendar;
 import java.util.Scanner;
+import java.util.regex.Pattern;
 
 import bean.DischargeSummary;
 import bean.MedicalReport;
@@ -24,13 +25,29 @@ public class DischargeSummaryData {
 		AdminBusinessLogic abl=new AdminBusinessLogic();
 		Scanner sc=new Scanner(System.in);
 		MedicalReport mr=new MedicalReport();
-		System.out.println("Enter Serial No for the Discharge Summary");
-		String sn=sc.nextLine();
-		int serialNo=Integer.parseInt(sn);
-		System.out.println("Enter the Patient Appointment ID ");
-		String pId=sc.nextLine();
-		int patientId=Integer.parseInt(pId);
+		//System.out.println("Enter Serial No for the Discharge Summary");
+		//String sn=sc.nextLine();
 		
+		Date currentDate = new Date(Calendar.getInstance().getTime().getTime());
+		int serialNo= Math.abs((int) currentDate.getTime());
+		
+		//int serialNo=Integer.parseInt(sn);
+		String strPatientId;
+		int patientId;
+//		System.out.println("Enter the Patient Appointment ID ");
+//		String pId=sc.nextLine();
+//		int patientId=Integer.parseInt(pId);
+		while(true){
+			System.out.println("Enter the Patient Appointment ID : "); 
+			strPatientId=sc.nextLine();
+			if(Pattern.matches("[0-9]+",strPatientId)){
+				patientId=Integer.parseInt(strPatientId);
+				break;
+			}
+			else{
+				System.out.println("Invalid patient Id!!!");
+				}
+		}
 		try {
 			mr=abl.viewMedicalReports(patientId);
 		} catch (ClassNotFoundException | SQLException e) {
@@ -42,9 +59,10 @@ public class DischargeSummaryData {
 		}
 		
 		//System.out.println(mr);
+		
 		int doctorId=mr.getDoctorId();
 		Date admissionDate=mr.getVisitDate();
-		
+	
 		Date dischargeDate=new Date(Calendar.getInstance().getTime().getTime());
 		
 		String treatmentGiven=mr.getTests();

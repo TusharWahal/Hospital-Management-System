@@ -13,8 +13,8 @@ public class Department implements Comparable<Department> {
 	}
 	@Override
 	public String toString() {
-		return "Department [departmentId=" + departmentId + ", departmentName=" + departmentName
-				+ ", departmentLocation=" + departmentLocation + ", description=" + description + "]";
+		return "Department list departmentId :" + departmentId + " \n departmentName :" + departmentName
+				+ "\n departmentLocation :" + departmentLocation + "\n description:" + description + "\n";
 	}
 	public String getDepartmentName() {
 		return departmentName;

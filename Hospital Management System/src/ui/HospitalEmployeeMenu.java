@@ -36,7 +36,7 @@ public class HospitalEmployeeMenu {
 			
 			
 		}
-		public void doctorLogin()
+		public final void doctorLogin()
 		{
 			int doctorId;
 			String doctorPassword;
@@ -64,7 +64,7 @@ public class HospitalEmployeeMenu {
 //			}
 			//sc.close();
 			try {
-				if(!db.doctorLogin(doctorId, doctorPassword).equals(null))
+				if(db.doctorLogin(doctorId, doctorPassword)!=null)
 				{
 				doc=db.doctorLogin(doctorId, doctorPassword);
 				flag=true;
@@ -88,7 +88,7 @@ public class HospitalEmployeeMenu {
 			}
 			}			
 		}
-		public void staffLogin()
+		public final void staffLogin()
 		{
 			StaffMenu sm=new StaffMenu();
 			boolean flag=sm.logInMenu();

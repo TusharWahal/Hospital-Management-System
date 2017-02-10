@@ -8,8 +8,8 @@ import bean.ICU;
 
 public interface ICUDao {
 	public boolean insertICU(ICU newICU) throws ClassNotFoundException, SQLException, IOException;
-	public boolean deleteICU(int ICUId) throws ClassNotFoundException, SQLException, IOException;
-	public boolean updateICU(int ICUId, ICU renewICU) throws ClassNotFoundException, SQLException, IOException;
-	public ICU displayICU(int ICUId) throws ClassNotFoundException, SQLException, IOException;
+	public boolean deleteICU(int icuId) throws ClassNotFoundException, SQLException, IOException;
+	public boolean updateICU(int icuId, ICU renewICU) throws ClassNotFoundException, SQLException, IOException;
+	public ICU displayICU(int icuId) throws ClassNotFoundException, SQLException, IOException;
 	public ArrayList<ICU> displayAllICUs() throws ClassNotFoundException, SQLException, IOException;
 }

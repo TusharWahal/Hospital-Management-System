@@ -14,7 +14,13 @@ public class Doctor implements Comparable<Doctor>{
 		this.departmentId = departmentId;
 	}
 	String doctorPassword;
-    int departmentId;
+    @Override
+	public String toString() {
+		return "Doctor [doctorId=" + doctorId + ", doctorName=" + doctorName + ", specialization=" + specialization
+				+ ", timing=" + timing + ", doctorAddress=" + doctorAddress + ", doctorPhoneNo=" + doctorPhoneNo
+				+ ", doctorPassword=" + doctorPassword + ", departmentId=" + departmentId + "]";
+	}
+	int departmentId;
 	public int getDoctorId() {
 		return doctorId;
 	}

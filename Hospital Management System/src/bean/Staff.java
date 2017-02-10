@@ -17,6 +17,12 @@ public class Staff implements Comparable<Staff> {
 	{
 		this.departmentId = departmentId;
 	}
+	@Override
+	public String toString() {
+		return "Staff [staffId=" + staffId + ", staffName=" + staffName + ", specialization=" + specialization
+				+ ", timing=" + timing + ", staffAddress=" + staffAddress + ", staffPhoneNo=" + staffPhoneNo
+				+ ", staffPassword=" + staffPassword + ", departmentId=" + departmentId + "]";
+	}
 	public int getStaffId() {
 		return staffId;
 	}

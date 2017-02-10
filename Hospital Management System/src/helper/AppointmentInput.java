@@ -18,15 +18,15 @@ public class AppointmentInput {
 		Scanner sc=new Scanner(System.in);
 		recep=new Reception();
 		String personId;
-		System.out.println("Enter Person ID");
-		personId=(sc.nextLine());
-		System.out.println("Enter Doctor ID ");
-		int doctorId=(Integer.parseInt(sc.nextLine()));
-		System.out.println("Enter Purpose For Appointment");
+		System.out.print("Enter Person ID : ");
+		personId=sc.nextLine();
+		System.out.print("Enter Doctor ID : ");
+		int doctorId=Integer.parseInt(sc.nextLine());
+		System.out.println("Enter Purpose For Appointment : ");
 		String purpose=sc.nextLine();
 		int fee;
 		while(true){
-			System.out.println("Enter Appointment Registration Fee");
+			System.out.println("Enter Appointment Registration Fee : ");
 			String strFee;
 			strFee=sc.nextLine();
 			if(Pattern.matches("[0-9]{2}",strFee)){
@@ -41,8 +41,8 @@ public class AppointmentInput {
 			}
 		}
 		//System.out.println(fee);
-		String str="2017-02-09";
-		Date currentDate = new java.sql.Date(Calendar.getInstance().getTime().getTime());
+		//String str="2017-02-09";
+		Date currentDate = new Date(Calendar.getInstance().getTime().getTime());
 		//System.out.println(currentDate);
 		
 		

@@ -35,9 +35,9 @@ public class OTDaoImplTest {
 		ot.setOtId(0);
 		ot.setDescription("abc");
 		ot.setEquipments("def");
-		ot.setPatientId(123);
-		ot.setStaffId(456);
-		ot.setDoctorId(789);
+		ot.setPatientId(0);
+		ot.setStaffId(0);
+		ot.setDoctorId(0);
 		assertTrue(otd.insertOT(ot));
 	}
 
@@ -48,9 +48,9 @@ public class OTDaoImplTest {
 		ot.setOtId(0);
 		ot.setDescription("abc");
 		ot.setEquipments("def");
-		ot.setPatientId(123);
-		ot.setStaffId(456);
-		ot.setDoctorId(789);
+		ot.setPatientId(0);
+		ot.setStaffId(0);
+		ot.setDoctorId(0);
 		
 		assertFalse(otd.insertOT(ot));
 	}	
@@ -62,9 +62,9 @@ public class OTDaoImplTest {
 		ot.setOtId(0);
 		ot.setDescription("abc");
 		ot.setEquipments("def");
-		ot.setPatientId(123);
-		ot.setStaffId(456);
-		ot.setDoctorId(789);
+		ot.setPatientId(0);
+		ot.setStaffId(0);
+		ot.setDoctorId(0);
 		otd.insertOT(ot);
 		assertTrue(otd.deleteOT(0));
 	}
@@ -81,16 +81,16 @@ public class OTDaoImplTest {
 		ot.setOtId(0);
 		ot.setDescription("abc");
 		ot.setEquipments("def");
-		ot.setPatientId(123);
-		ot.setStaffId(456);
-		ot.setDoctorId(789);
+		ot.setPatientId(0);
+		ot.setStaffId(0);
+		ot.setDoctorId(0);
 		otd.insertOT(ot);
 	    OT newot = new OT();
 	    newot.setDescription("abc");
 		newot.setEquipments("def");
-		newot.setPatientId(123);
-		newot.setStaffId(456);
-		newot.setDoctorId(789);
+		newot.setPatientId(0);
+		newot.setStaffId(0);
+		newot.setDoctorId(0);
 		assertTrue(otd.updateOT(0,newot));
 	}
 	
@@ -101,9 +101,9 @@ public class OTDaoImplTest {
 		OT newot = new OT();
 	    newot.setDescription("abc");
 		newot.setEquipments("def");
-		newot.setPatientId(123);
-		newot.setStaffId(456);
-		newot.setDoctorId(789);
+		newot.setPatientId(0);
+		newot.setStaffId(0);
+		newot.setDoctorId(0);
 		
 		assertFalse(otd.updateOT(2343, newot));
 	}
@@ -116,12 +116,12 @@ public class OTDaoImplTest {
 		ot.setOtId(0);
 		ot.setDescription("abc");
 		ot.setEquipments("def");
-		ot.setPatientId(123);
-		ot.setStaffId(456);
-		ot.setDoctorId(789);
+		ot.setPatientId(0);
+		ot.setStaffId(0);
+		ot.setDoctorId(0);
 		otd.insertOT(ot);
 		
-		assertEquals(ot, otd.displayOT(0));
+		assertEquals(ot.getPatientId(), otd.displayOT(0).getPatientId());
 	}
 
 	@Test

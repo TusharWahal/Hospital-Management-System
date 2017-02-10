@@ -76,7 +76,7 @@ public class BillDaoImpl implements BillDao {
 	}
 
 	@Override
-	public boolean updateBill(int BillId, Bill renewBill) throws ClassNotFoundException, SQLException, IOException {
+	public boolean updateBill(int billId, Bill renewBill) throws ClassNotFoundException, SQLException, IOException {
 
 		con= openConnection();
 		
@@ -91,7 +91,7 @@ public class BillDaoImpl implements BillDao {
 		pstmt.setFloat(4, renewBill.getBedCharges());
 		pstmt.setFloat(5, renewBill.getTests());
 		pstmt.setFloat(6, renewBill.getMedicines());
-		pstmt.setInt(7, renewBill.getBillNo());
+		pstmt.setInt(7,billId);
 		
 		
 		int rows=pstmt.executeUpdate();

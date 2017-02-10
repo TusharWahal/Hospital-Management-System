@@ -100,7 +100,7 @@ public class Bill implements Comparable<Bill> {
 		if(this.equals(o))
 		{return 0;
 		}
-		
+		else
 		return 1;
 	}
 }

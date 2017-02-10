@@ -19,7 +19,7 @@ public class DoctorBusinessLogic {
 	
 	DoctorDaoImpl dd=new DoctorDaoImpl();
 	ReceptionDaoImpl rd=new ReceptionDaoImpl();
-	MedicalReportDaoImpl mrd=new MedicalReportDaoImpl();
+	MedicalReportDaoImpl mrd=new MedicalReportDaoImpl(); 
 	MedicineDaoimpl md=new MedicineDaoimpl();
 	
 	public Doctor doctorLogin(int doctorId, String doctorPassword) throws ClassNotFoundException, SQLException, IOException

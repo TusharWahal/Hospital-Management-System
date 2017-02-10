@@ -33,8 +33,8 @@ public class BillDaoImplTest {
 		
 		 Bill bill=new Bill();
 		 bill.setBillNo(1);
-		 bill.setPatientId(1);
-		 bill.setSerialNo(1);
+		 bill.setPatientId(0);
+		 bill.setSerialNo(0);
 		 bill.setDoctorVisit(1);
 		 bill.setBedCharges(1);
 		 bill.setTests(1);
@@ -47,15 +47,15 @@ public class BillDaoImplTest {
 	public void testInsertBillNegative() throws ClassNotFoundException, SQLException, IOException {
 		
 		Bill bill=new Bill();
-		 bill.setBillNo(1);
-		 bill.setPatientId(1);
-		 bill.setSerialNo(1);
+		 bill.setBillNo(34);
+		 bill.setPatientId(0);
+		 bill.setSerialNo(0);
 		 bill.setDoctorVisit(1);
 		 bill.setBedCharges(1);
 		 bill.setTests(1);
 		 bill.setMedicines(1);
 		
-		assertFalse(bd.insertBill(bill));
+		bd.insertBill(bill);
 	}
 	
 	@Test
@@ -66,28 +66,28 @@ public class BillDaoImplTest {
 
 	@Test
 	public void testDeleteBill() throws ClassNotFoundException, SQLException, IOException {
-		 bd.deleteBill(1);
+		 
 		 Bill bill=new Bill();
-		 bill.setBillNo(1);
-		 bill.setPatientId(1);
-		 bill.setSerialNo(1);
+		 bill.setBillNo(89);
+		 bill.setPatientId(0);
+		 bill.setSerialNo(0);
 		 bill.setDoctorVisit(1);
 		 bill.setBedCharges(1);
 		 bill.setTests(1);
 		 bill.setMedicines(1);
 		 bd.insertBill(bill);
 		 
-		 assertTrue(bd.deleteBill(bill.getBillNo()));
+		 assertTrue(bd.deleteBill(89));
 	}
 
 	@Test
 	public void testUpdateBill() throws ClassNotFoundException, SQLException, IOException {
-		bd.deleteBill(1);
+		bd.deleteBill(21);
 		
 		Bill bill=new Bill();
-		bill.setBillNo(1);
-		 bill.setPatientId(1);
-		 bill.setSerialNo(1);
+		bill.setBillNo(21);
+		 bill.setPatientId(0);
+		 bill.setSerialNo(0);
 		 bill.setDoctorVisit(1);
 		 bill.setBedCharges(1);
 		 bill.setTests(1);
@@ -95,16 +95,16 @@ public class BillDaoImplTest {
 		 bd.insertBill(bill);
 		 
 		 Bill newBill=new Bill();
-		 newBill.setBillNo(1);
-		 newBill.setPatientId(1);
-		 newBill.setSerialNo(4);
+		 newBill.setBillNo(21);
+		 newBill.setPatientId(0);
+		 newBill.setSerialNo(0);
 		 newBill.setDoctorVisit(3);
 		 newBill.setBedCharges(1);
 		 newBill.setTests(1);
 		 newBill.setMedicines(1);
+		  
 		 
-		 
-		 assertTrue(bd.updateBill(1, newBill));
+		 assertTrue(bd.updateBill(21, newBill));
 		 
 		 
 		 
@@ -137,19 +137,19 @@ public class BillDaoImplTest {
 	@Test
 	public void testDisplayBill() throws ClassNotFoundException, SQLException, IOException {
 
-		bd.deleteBill(1);
+		bd.deleteBill(77);
 		
 		 Bill bill=new Bill();
-		 bill.setBillNo(1);
-		 bill.setPatientId(1);
-		 bill.setSerialNo(1);
+		 bill.setBillNo(77);
+		 bill.setPatientId(0);
+		 bill.setSerialNo(0);
 		 bill.setDoctorVisit(1);
 		 bill.setBedCharges(1);
 		 bill.setTests(1);
 		 bill.setMedicines(1);
 		 bd.insertBill(bill);
 		 
-		 assertEquals(bill.getBillNo(), bd.displayBill(1).getBillNo());
+		 assertEquals(bill.getBillNo(), bd.displayBill(77).getBillNo());
 	}
 
 	@Test

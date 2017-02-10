@@ -15,10 +15,10 @@ public class MedicalReportData {
 	{
 		medicalReport=new MedicalReport();
 		System.out.println("Enter Patient ID:\n");
-		medicalReport.setPatientId(Integer.parseInt(sc.nextLine()));
+		medicalReport.setPatientId(Integer.parseInt(sc.nextLine())); 
 		
 		
-		Date visitDate = new java.sql.Date(Calendar.getInstance().getTime().getTime());
+		Date visitDate = new Date(Calendar.getInstance().getTime().getTime());
 		medicalReport.setVisitDate(visitDate);//Date as Input.//Manage format
 		
 		System.out.println("Enter Diagnosis:\n");

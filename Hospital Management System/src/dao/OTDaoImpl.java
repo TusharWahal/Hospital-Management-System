@@ -33,9 +33,9 @@ public class OTDaoImpl implements OTDao {
 		pstmt.setInt(1,otId);
 		pstmt.setString(2, description);
 		pstmt.setString(3, equipments);
-		pstmt.setInt(1,patientId);
-		pstmt.setInt(1,staffId);
-		pstmt.setInt(1,doctorId);
+		pstmt.setInt(4,patientId);
+		pstmt.setInt(5,staffId);
+		pstmt.setInt(6,doctorId);
 		
 		int rows=pstmt.executeUpdate();
 		
@@ -52,13 +52,13 @@ public class OTDaoImpl implements OTDao {
 	}
 
 	@Override
-	public boolean deleteOT(int OTId) throws ClassNotFoundException, SQLException, IOException {
+	public boolean deleteOT(int otId) throws ClassNotFoundException, SQLException, IOException {
 		con= openConnection();
 		
 		
 		pstmt=con.prepareStatement("delete from ot where otId = ?");
 		
-		pstmt.setInt(1,OTId);
+		pstmt.setInt(1,otId);
 		
 		int rows=pstmt.executeUpdate();
 		
@@ -75,7 +75,7 @@ public class OTDaoImpl implements OTDao {
 	}
 
 	@Override
-	public boolean updateOT(int OTId, OT renewOT) throws ClassNotFoundException, SQLException, IOException {
+	public boolean updateOT(int otId, OT renewOT) throws ClassNotFoundException, SQLException, IOException {
 		con= openConnection();
 		
 		
@@ -85,9 +85,9 @@ public class OTDaoImpl implements OTDao {
 				+ "where otId = ?");
 		
 
-		pstmt.setInt(1,renewOT.getOtId());
-		pstmt.setString(2,renewOT.getDescription());
-		pstmt.setString(3, renewOT.getEquipments());
+		pstmt.setInt(6,otId);
+		pstmt.setString(1,renewOT.getDescription());
+		pstmt.setString(2, renewOT.getEquipments());
 		pstmt.setInt(3, renewOT.getPatientId());
 		pstmt.setInt(4, renewOT.getStaffId());
 		pstmt.setInt(5, renewOT.getDoctorId());
@@ -107,12 +107,12 @@ public class OTDaoImpl implements OTDao {
 	}
 
 	@Override
-	public OT displayOT(int OTId) throws ClassNotFoundException, SQLException, IOException {
+	public OT displayOT(int otId) throws ClassNotFoundException, SQLException, IOException {
 		con= openConnection();
 		
 		
 		pstmt=con.prepareStatement("select * from ot where otId = ?");
-		pstmt.setInt(1,OTId);
+		pstmt.setInt(1,otId);
 		
 		rs=pstmt.executeQuery();
 		

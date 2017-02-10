@@ -26,9 +26,11 @@ public class HospitalInfo {
 			
 			int choice,departmentId;
 			Scanner sc = new Scanner(System.in);
-			System.out.println("\t\t\t\tDoctor");
-			System.out.println("\t\t\t\tStaff");
-			System.out.println("\t\t\t\tTechnician");
+			System.out.println();
+			System.out.println("\t\t\t\t1. Doctor");
+			System.out.println("\t\t\t\t2. Staff");
+			System.out.println("\t\t\t\t3. Technician");
+			System.out.println("\t\t\t\t4. Back");
 			System.out.print("\n\n\nEnter your choice : ");
 			choice=sc.nextInt();
 			System.out.print("Enter departmentId : ");
@@ -41,21 +43,44 @@ public class HospitalInfo {
 						  for(Doctor d : doctorList){
 							  System.out.println(d);
 						  }
+						  System.out.println();
+				try {
+					Thread.sleep(3000);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					System.out.println("Thread Error"+e);
+				}
 						  break;
 						  
 				case 2 :  ArrayList<Staff> staffList = db.departmentStaffs(departmentId);
 				  		  for(Staff s : staffList){
 				  			  System.out.println(s);
 				  		  }
+				  		  System.out.println();
+				try {
+					Thread.sleep(3000);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					System.out.println(e);
+				}
 				  		  break;
 				  
 				case 3 :  ArrayList<Technician> technicianList = db.departmentTechnicians(departmentId);
 				  		  for(Technician t : technicianList){
 				  			  System.out.println(t);
 				  		  }
+				  		  System.out.println();
+				try {
+					Thread.sleep(3000);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					System.out.println(e);
+				}
 				  		  break;
+				case 4: return;
 				  		  
 				default : System.out.println("Invalid choice!!!");
+				System.out.println();
 						  break;
 			}
 		}

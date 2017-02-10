@@ -21,8 +21,9 @@ public class BillData {
 		Scanner sc=new Scanner(System.in);
 		bill=new Bill();
 		
-		System.out.println("Enter Bill Number");
-		int billNo=Integer.parseInt(sc.nextLine());
+//		System.out.println("Enter Bill Number");
+		Date currentDate = new Date(Calendar.getInstance().getTime().getTime());
+		int billNo= Math.abs((int) currentDate.getTime());
 		System.out.println("Enter Patient ID");
 		int patientId=Integer.parseInt((sc.nextLine()));
 		System.out.println("Enter Doctor ID ");
@@ -40,10 +41,10 @@ public class BillData {
 		System.out.println("Enter Medicine Charges");
 		int medicines=Integer.parseInt(sc.nextLine());
 		
-		Date currentDate=new Date(Calendar.getInstance().getTime().getTime());
+//		Date currentDate=new Date(Calendar.getInstance().getTime().getTime());
 		
 	
-		int regNo= Math.abs((int) currentDate.getTime());
+//		int regNo= Math.abs((int) currentDate.getTime());
 		
 		//check values for validation
 		

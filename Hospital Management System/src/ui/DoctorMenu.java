@@ -20,7 +20,7 @@ public class DoctorMenu {
 	private MedicalReportData mr = new MedicalReportData();
 	private MedicineData md = new MedicineData();
 	private MedicalReport medicalReport = new MedicalReport();
-	private Medicine medicine = new Medicine();
+	private Medicine medicine = new Medicine(); 
 	
 	private static final String MENU_OPTIONS ="\t\t\t\t1.View Appointments\n" +
 												"\t\t\t\t2.Medical Report\n" +
@@ -71,7 +71,7 @@ public class DoctorMenu {
 			} catch (ClassNotFoundException | SQLException |IOException e) {
 				System.out.println(APPOINTMENTS_DISPLAY_FAILED_MSG +
 						ERROR_DESC_PREFIX_MSG + ": " + e);
-				e.printStackTrace();
+				//e.printStackTrace();
 			} 
 			
 			break;
@@ -95,7 +95,7 @@ public class DoctorMenu {
 		switch(choice){
 		case 1:
 			try {
-				
+				 
 				medicalReport=mr.insert();
 				medicalReport.setDoctorId(doctor.getDoctorId());
 				dbl.addMedicalReport(medicalReport);
@@ -107,7 +107,7 @@ public class DoctorMenu {
 			} catch (ClassNotFoundException | SQLException|IOException e) {
 				System.out.println(ADDING_MEDICAL_REPORT_FAILED_MSG +
 						ERROR_DESC_PREFIX_MSG + ": " + e);
-				e.printStackTrace();
+				//e.printStackTrace();
 			} 
 			break;
 		case 2:
@@ -120,7 +120,7 @@ public class DoctorMenu {
 			} catch (ClassNotFoundException | SQLException|IOException e) {
 				System.out.println(APPOINTMENTS_DISPLAY_FAILED_MSG +
 						ERROR_DESC_PREFIX_MSG + ": " + e);
-				e.printStackTrace();
+				//e.printStackTrace();
 			} 
 			break;
 			
@@ -138,7 +138,7 @@ public class DoctorMenu {
 			} catch (ClassNotFoundException | SQLException|IOException e) {
 				System.out.println(APPOINTMENTS_DISPLAY_FAILED_MSG +
 						ERROR_DESC_PREFIX_MSG + ": " + e);
-				e.printStackTrace();
+				//e.printStackTrace();
 			} 
 			break;
 			
@@ -155,7 +155,7 @@ public class DoctorMenu {
 			} catch (ClassNotFoundException | SQLException|IOException e) {
 				System.out.println(APPOINTMENTS_DISPLAY_FAILED_MSG +
 						ERROR_DESC_PREFIX_MSG + ": " + e);
-				e.printStackTrace();
+				//e.printStackTrace();
 			} 
 			break;
 			
@@ -168,7 +168,7 @@ public class DoctorMenu {
 			} catch (ClassNotFoundException | SQLException|IOException e) {
 				System.out.println(APPOINTMENTS_DISPLAY_FAILED_MSG +
 						ERROR_DESC_PREFIX_MSG + ": " + e);
-				e.printStackTrace();
+				//e.printStackTrace();
 			} 
 			break;
 			

@@ -74,7 +74,7 @@ public class PatientMenu {
 					break;
 				
 			case 3: int serialNo;
-					System.out.println("Enter serial No of discharge summary : ");
+					System.out.print("Enter serial No of discharge summary : ");
 					serialNo=sc.nextInt();
 				try {
 					if(pb.viewDischargeSummary(serialNo).getPatientId()!=0)
@@ -91,7 +91,7 @@ public class PatientMenu {
 					break;
 			
 			case 4: int billNo;
-					System.out.println("Enter bill No :");
+					System.out.print("Enter bill No :");
 					billNo=sc.nextInt();
 				try {
 					if(pb.viewBill(billNo).getPatientId()==0)
@@ -110,7 +110,7 @@ public class PatientMenu {
 					break;
 					
 			case 5: int pId;
-					System.out.println("Enter Patient Id :");
+					System.out.print("Enter Patient Id :");
 					pId=sc.nextInt();
 				try {
 					ArrayList<Medicine> medicineList=new ArrayList<Medicine>();

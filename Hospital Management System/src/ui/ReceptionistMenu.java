@@ -20,12 +20,12 @@ public class ReceptionistMenu {
 	
 	AdminBusinessLogic abl=new AdminBusinessLogic();
 	
-	public void ReceptionistMainDisplay()
+	public void receptionistMainDisplay()
 	{
 		while(true)
 		{
 			int choice;
-			Scanner sc = new Scanner(System.in);
+			Scanner sc = new Scanner(System.in); 
 			System.out.println("\t\t\t\t1.Appointments");
 			System.out.println("\t\t\t\t2.Medical Reports");
 			System.out.println("\t\t\t\t3.Discharge Summary");
@@ -34,7 +34,7 @@ public class ReceptionistMenu {
 			//System.out.println("\t\t\t\t6.Patient");
 			System.out.println("\t\t\t\t\t\t\t7.Log Out");
 			System.out.print("\n\n\t\t\t\tEnter your choice : ");
-			choice=sc.nextInt();
+			choice=sc.nextInt(); 
 			switch(choice)
 			{
 			case 1:appointmentMenu();
@@ -63,25 +63,25 @@ public class ReceptionistMenu {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("\t\t\t\t1.Add Appointment");
 		System.out.println("\t\t\t\t2.Remove Appointment");
-		System.out.println("\t\t\t\t3.Modify Appointment");
-		System.out.println("\t\t\t\t4.List Appointments");
-		System.out.print("\n\n5.Back");
+//		System.out.println("\t\t\t\t5.Modify Appointment");
+		System.out.println("\t\t\t\t3.List Appointments");
+		System.out.print("\n\n4.Back");
 		System.out.print("\t\t\t\tEnter your choice : ");
-		try {
-			System.out.println(System.in.available());
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			System.out.println(e);
-		}
+//		try {
+//			System.out.println(System.in.available()); 
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			System.out.println(e);
+//		}
 		choice=sc.nextInt();
 		
 		switch(choice)
 		{
 		case 1:addAppointment();break;
 		case 2:removeAppintment(); break;
-		case 3:System.out.println("Functionality not implemented yet!! SORRY!!");break;//change to list appointments by functionality
-		case 4:listAppointment(); break;
-		case 5:return;
+//		case 5:System.out.println("Functionality not implemented yet!! SORRY!!");break;//change to list appointments by functionality
+		case 3:listAppointment(); break;
+		case 4:return;
 		default:System.out.println("Invalid Option");
 		break;
 		}
@@ -153,7 +153,7 @@ public class ReceptionistMenu {
 			//Option to Select appointment and list appointments for patients
 		} catch (ClassNotFoundException | SQLException e) {
 			// TODO Auto-generated catch block
-			System.out.println("No Appintments");
+			System.out.println("No Appointments");
 			return;
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -243,10 +243,10 @@ public void viewSpecificDischargeSummary()
 	Scanner sc=new Scanner(System.in);
 	System.out.println("Enter Serial Number");
 	String sn=sc.nextLine();
-	int SerialNo=Integer.parseInt(sn);
+	int serialNo=Integer.parseInt(sn);
 	
 	try {
-		System.out.println(abl.viewDischargeSummary(SerialNo));
+		System.out.println(abl.viewDischargeSummary(serialNo));
 	} catch (ClassNotFoundException | SQLException e) {
 		// TODO Auto-generated catch block
 		System.out.println("Discharge Summary Does Not Exist");
@@ -272,7 +272,7 @@ public void addDischargeSummary()
 		try {
 			abl.addDischargeSummary(discharge);
 		} catch (ClassNotFoundException | SQLException e) {
-			System.out.println(e+"Medical Report does not exist for the given patient ID");
+			System.out.println("Medical Report does not exist for the given patient ID");
 		} catch (IOException e) {
 			System.out.println(e);
 		}

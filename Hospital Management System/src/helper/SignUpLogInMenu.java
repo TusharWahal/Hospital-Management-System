@@ -19,7 +19,7 @@ public class SignUpLogInMenu {
 		System.out.println("\n\n0.Back");
 		System.out.println("\n\n\t\t\t\t1.Sign Up");
 		System.out.println("\t\t\t\t2.Log In");
-		System.out.println("\n\n\nEnter your choice : ");
+		System.out.print("\n\n\nEnter your choice : ");
 		choice=sc.nextInt();
 		
 		switch(choice){
@@ -58,8 +58,8 @@ public class SignUpLogInMenu {
 				  try {
 				  Person person=pb.personLogin(personId, personPassword);
 				  
-					  if(person.equals(null))
-					  {
+					  if(person==null)
+					  { 
 						  flag=false;
 					  }
 					  else{ 

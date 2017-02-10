@@ -21,7 +21,7 @@ public class MedicineData {
 		String strQuantity;
 		int quantity;
 		while(true){
-			System.out.println("Enter Quantity:\n");
+			System.out.println("Enter Quantity:\n"); 
 			strQuantity=sc.nextLine();
 			if(Pattern.matches("[0-9]+",strQuantity)){
 				quantity=Integer.parseInt(strQuantity);
@@ -33,20 +33,20 @@ public class MedicineData {
 		}
 		medicine.setQuantity(quantity);
 		
-		System.out.println("Enter Dosage:\n");
+		System.out.println("Enter Dosage:\n"); 
 		medicine.setDosage(sc.nextLine());
 		
 		String strPrice;
 		float price;
 		while(true){
-			System.out.println("Enter Price:\n");
+			System.out.println("Enter Price : \n");
 			strPrice=sc.nextLine();
-			if(Pattern.matches("\\d+\\.\\d+",strQuantity)){
+			if(Pattern.matches("[0-9]",strQuantity)){
 				price=Float.parseFloat(strPrice);
 				break;
 			}
 			else{
-				System.out.println("The quantity contains characters!!!");
+				System.out.println("The price should be in decimal form!!!");
 			}
 		}
 		medicine.setPrice(price);

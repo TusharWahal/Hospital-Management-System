@@ -21,7 +21,7 @@ public class MedicalReportDaoImpl implements MedicalReportDao {
 	public boolean insertMedicalReport(MedicalReport newMedicalReport) throws SQLException, ClassNotFoundException, IOException {
 		con= openConnection(); 
 		
-		int patientId = newMedicalReport.getPatientId();
+		int patientId = newMedicalReport.getPatientId(); 
 		Date visitDate = newMedicalReport.getVisitDate();
 		String diagnosis=newMedicalReport.getDiagnosis();
 		String investigations=newMedicalReport.getInvestigations();
@@ -77,10 +77,10 @@ public class MedicalReportDaoImpl implements MedicalReportDao {
 			closeConnection(con);
 			return false;
 		}
-	}
+	} 
 
 	@Override
-	public boolean updateMedicalReport(int MedicalReportId, MedicalReport renewMedicalReport) throws ClassNotFoundException, SQLException, IOException {
+	public boolean updateMedicalReport(int medicalReportId, MedicalReport renewMedicalReport) throws ClassNotFoundException, SQLException, IOException {
 		con= openConnection();
 		
 		
@@ -95,7 +95,7 @@ public class MedicalReportDaoImpl implements MedicalReportDao {
 		pstmt.setString(3, renewMedicalReport.getInvestigations());
 		pstmt.setString(4, renewMedicalReport.getTests());
 		pstmt.setString(5, renewMedicalReport.getRecommendations());
-		pstmt.setInt(6, MedicalReportId);
+		pstmt.setInt(6, medicalReportId);
 		
 		int rows=pstmt.executeUpdate();
 		
@@ -130,6 +130,9 @@ public class MedicalReportDaoImpl implements MedicalReportDao {
 			medicalreport.setRecommendations(rs.getString("recommendations"));
 			medicalreport.setInvestigations(rs.getString("investigations"));
 			medicalreport.setTests(rs.getString("tests"));
+			medicalreport.setTechnicianId(rs.getInt("TECHNICIANID"));
+			medicalreport.setDoctorId(rs.getInt("DoctorID"));
+			
 		}
 		
 		closeConnection(con);
@@ -158,6 +161,9 @@ public class MedicalReportDaoImpl implements MedicalReportDao {
 			medicalreport.setInvestigations(rs.getString("investigations"));
 			medicalreport.setTests(rs.getString("tests"));
 			medicalreport.setRecommendations(rs.getString("recommendations"));
+
+			medicalreport.setTechnicianId(rs.getInt("TECHNICIANID"));
+			medicalreport.setDoctorId(rs.getInt("DoctorID"));
 			medicalReportList.add(medicalreport);
 		}
 		

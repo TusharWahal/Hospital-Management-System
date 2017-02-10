@@ -10,15 +10,17 @@ public class MyMenu {
 	
 	public MyMenu() throws ClassNotFoundException, SQLException, IOException{
 		while(true){
+			
+
 		
 			int choice;
 			Scanner sc = new Scanner(System.in);
-			System.out.println("\t\t\t\tWelcome to Sapient Hospital");
+			System.out.println("\n\n\t\t\t\tWelcome to Sapient Hospital");
 			System.out.println("\n\n\n\t\t\t\t1.Patient");
 			System.out.println("\t\t\t\t2.Receptionist");
 			System.out.println("\t\t\t\t3.Hospital Employee");
 			System.out.println("\t\t\t\t4.Hospital Information");
-			System.out.println("\n\n\nEnter your choice : ");
+			System.out.print("\n\n\nEnter your choice : ");
 			choice=sc.nextInt();
 			switch(choice){
 		
@@ -28,7 +30,7 @@ public class MyMenu {
 				case 2: ReceptionistMenu receptionMenu = new ReceptionistMenu();
 				
 						
-						receptionMenu.ReceptionistMainDisplay();
+						receptionMenu.receptionistMainDisplay();
 						break;
 						
 				case 3://System.out.println("Under Construction"); 

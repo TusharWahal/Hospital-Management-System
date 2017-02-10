@@ -15,23 +15,23 @@ public class PersonInput {
 	public boolean input(){
 		Scanner sc=new Scanner(System.in);
 		person = new Person();
-		String id;
-		System.out.println("Eneter Id : ");
+		String id; 
+		System.out.print("Eneter Id : ");
 		id=sc.nextLine();
 		String idType;
-		System.out.println("Enter Id type : ");
+		System.out.print("Enter Id type : ");
 		idType=sc.nextLine();
 		String name;
-		System.out.println("Enter Name : ");
+		System.out.print("Enter Name : ");
 		name=sc.nextLine();
 		String dateOfBirth;
-		System.out.println("Enter  Date of Birth : ");
+		System.out.print("Enter  Date of Birth (yyyy-mm-dd) : ");
 		dateOfBirth=sc.nextLine(); 
-	    Date DOB=Date.valueOf(dateOfBirth);
+	    Date doB=Date.valueOf(dateOfBirth);
 	    String strAge;
-		int age;
+		int age; 
 		while(true){
-			System.out.println("Enter Age : ");
+			System.out.print("Enter Age : ");
 			strAge=sc.nextLine();
 			if(Pattern.matches("[0-9]{2}",strAge)){
 				
@@ -50,7 +50,7 @@ public class PersonInput {
 		}
 		String gender;
 		while(true){
-			System.out.println("Enter Gender : ");
+			System.out.print("Enter Gender : ");
 			gender=sc.nextLine();
 			if((gender.toLowerCase()).equals("male")||(gender.toLowerCase()).equals("female")){
 				break;
@@ -61,12 +61,12 @@ public class PersonInput {
 		}
 		
 		String address;
-		System.out.println("Enter Address : ");
+		System.out.print("Enter Address : ");
 		address=sc.nextLine();
 		String strPhoneNo;
 		long phoneNo;
 		while(true){
-			System.out.println("Enter Phone No. : ");
+			System.out.print("Enter Phone No. : ");
 			strPhoneNo=sc.nextLine();
 			if(Pattern.matches("[0-9]{10}",strPhoneNo)){
 				phoneNo=Long.parseLong(strPhoneNo);
@@ -77,13 +77,13 @@ public class PersonInput {
 				}
 		}
 		String password;
-		System.out.println("Enter Password : ");
+		System.out.print("Enter Password : ");
 		password=sc.nextLine();
 		
 		person.setPersonId(id);
 		person.setPersonIdType(idType);
 		person.setPersonName(name);
-		person.setPersonDateOfBirth(DOB);
+		person.setPersonDateOfBirth(doB);
 		person.setPersonAge(age);
 		person.setPersonGender(gender);
 		person.setPersonAddress(address);

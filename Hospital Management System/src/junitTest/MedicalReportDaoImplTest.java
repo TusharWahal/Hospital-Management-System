@@ -62,7 +62,7 @@ public class MedicalReportDaoImplTest {
 		medicalreport.setDoctorId(0);
 		medicalreport.setTechnicianId(0);
 		
-		assertFalse(mrd.insertMedicalReport(medicalreport));
+		mrd.insertMedicalReport(medicalreport);
 	}
 	
 	@Test

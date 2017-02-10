@@ -31,19 +31,19 @@ public class DischargeSummaryDaoImplTest {
 
 	@Test
 	public void testInsertDischargeSummary() throws ClassNotFoundException, SQLException, IOException {
-		 dsd.deleteDischargeSummary(1);
+		 dsd.deleteDischargeSummary(0);
 		
 		 DischargeSummary dischargeSummary = new DischargeSummary();
 		 
-		 dischargeSummary.setSerialNo(1);
-		 dischargeSummary.setPatientId(1);
-		 dischargeSummary.setOtId(1);
-		 dischargeSummary.setBedNo(1);
+		 dischargeSummary.setSerialNo(0);
+		 dischargeSummary.setPatientId(0);
+		 dischargeSummary.setOtId(0);
+		 dischargeSummary.setBedNo(0);
 		 String str="1994-12-12";
 		 Date date=Date.valueOf(str);
 		 dischargeSummary.setAdmissionDate(date);
 		 dischargeSummary.setDischargeDate(date);
-		 dischargeSummary.setDoctorId(1);
+		 dischargeSummary.setDoctorId(4);
 		 dischargeSummary.setHistory("Eye Patient");
 		 dischargeSummary.setOnExamination("Check Up Successful");
 		 dischargeSummary.setOperationDone("Eye CheckUp");
@@ -60,15 +60,15 @@ public class DischargeSummaryDaoImplTest {
 
 		DischargeSummary dischargeSummary = new DischargeSummary();
 		 
-		dischargeSummary.setSerialNo(2);
-		 dischargeSummary.setPatientId(1);
-		 dischargeSummary.setOtId(1);
-		 dischargeSummary.setBedNo(1);
+		dischargeSummary.setSerialNo(1);
+		 dischargeSummary.setPatientId(0);
+		 dischargeSummary.setOtId(0);
+		 dischargeSummary.setBedNo(0);
 		 String str="1994-12-12";
 		 Date date=Date.valueOf(str);
 		 dischargeSummary.setAdmissionDate(date);
 		 dischargeSummary.setDischargeDate(date);
-		 dischargeSummary.setDoctorId(1);
+		 dischargeSummary.setDoctorId(0);
 		 dischargeSummary.setHistory("Eye Patient");
 		 dischargeSummary.setOnExamination("Check Up Successful");
 		 dischargeSummary.setOperationDone("Eye CheckUp");
@@ -76,7 +76,7 @@ public class DischargeSummaryDaoImplTest {
 		 dischargeSummary.setTreatmentGiven("Eye Drop");
 		 dischargeSummary.setRecommendations("Regular CheckUp");
 		
-		assertFalse(dsd.insertDischargeSummary(dischargeSummary));
+		dsd.insertDischargeSummary(dischargeSummary);
 	}
 
 	@Test
@@ -91,14 +91,14 @@ public class DischargeSummaryDaoImplTest {
 		DischargeSummary dischargeSummary = new DischargeSummary();
 		 
 		dischargeSummary.setSerialNo(5);
-		 dischargeSummary.setPatientId(1);
-		 dischargeSummary.setOtId(1);
-		 dischargeSummary.setBedNo(1);
+		 dischargeSummary.setPatientId(0);
+		 dischargeSummary.setOtId(0);
+		 dischargeSummary.setBedNo(0);
 		 String str="1994-12-12";
 		 Date date=Date.valueOf(str);
 		 dischargeSummary.setAdmissionDate(date);
 		 dischargeSummary.setDischargeDate(date);
-		 dischargeSummary.setDoctorId(1);
+		 dischargeSummary.setDoctorId(0);
 		 dischargeSummary.setHistory("Eye Patient");
 		 dischargeSummary.setOnExamination("Check Up Successful");
 		 dischargeSummary.setOperationDone("Eye CheckUp");
@@ -114,19 +114,19 @@ public class DischargeSummaryDaoImplTest {
 	@Test
 	public void testUpdateDischargeSummary() throws ClassNotFoundException, SQLException, IOException {
 		
-		dsd.deleteDischargeSummary(1);
+		dsd.deleteDischargeSummary(8);
 		
 		 DischargeSummary dischargeSummary = new DischargeSummary();
 		 
 		 dischargeSummary.setSerialNo(8);
-		 dischargeSummary.setPatientId(1);
-		 dischargeSummary.setOtId(1);
-		 dischargeSummary.setBedNo(1);
+		 dischargeSummary.setPatientId(0);
+		 dischargeSummary.setOtId(0);
+		 dischargeSummary.setBedNo(0);
 		 String str="1994-12-12";
 		 Date date=Date.valueOf(str);
 		 dischargeSummary.setAdmissionDate(date);
 		 dischargeSummary.setDischargeDate(date);
-		 dischargeSummary.setDoctorId(1);
+		 dischargeSummary.setDoctorId(0);
 		 dischargeSummary.setHistory("Eye Patient");
 		 dischargeSummary.setOnExamination("Check Up Successful");
 		 dischargeSummary.setOperationDone("Eye CheckUp");
@@ -137,13 +137,13 @@ public class DischargeSummaryDaoImplTest {
 			
 		 DischargeSummary newDischargeSummary = new DischargeSummary();
 		 
-		 newDischargeSummary.setSerialNo(1);
-		 newDischargeSummary.setPatientId(1);
-		 newDischargeSummary.setOtId(1);
-		 newDischargeSummary.setBedNo(1);
+		 newDischargeSummary.setSerialNo(8);
+		 newDischargeSummary.setPatientId(0);
+		 newDischargeSummary.setOtId(0);
+		 newDischargeSummary.setBedNo(0);
 		 newDischargeSummary.setAdmissionDate(date);
 		 newDischargeSummary.setDischargeDate(date);
-		 newDischargeSummary.setDoctorId(1);
+		 newDischargeSummary.setDoctorId(0);
 		 newDischargeSummary.setHistory("Leg Patient");
 		 newDischargeSummary.setOnExamination("Check Up Successful");
 		 newDischargeSummary.setOperationDone("Leg CheckUp");
@@ -152,22 +152,22 @@ public class DischargeSummaryDaoImplTest {
 		 newDischargeSummary.setRecommendations("Regular CheckUp");
 		 
 		 
-		 assertTrue(dsd.updateDischargeSummary(3, newDischargeSummary));
+		 assertTrue(dsd.updateDischargeSummary(8, newDischargeSummary));
 	}
 	@Test
 	public void testUpdateDischargeSummaryNegative() throws ClassNotFoundException, SQLException, IOException
 	{
 		DischargeSummary dischargeSummary = new DischargeSummary();
 		 
-		 dischargeSummary.setSerialNo(1);
-		 dischargeSummary.setPatientId(1);
-		 dischargeSummary.setOtId(1);
-		 dischargeSummary.setBedNo(1);
+		 dischargeSummary.setSerialNo(9);
+		 dischargeSummary.setPatientId(0);
+		 dischargeSummary.setOtId(0);
+		 dischargeSummary.setBedNo(0);
 		 String str="1994-12-12";
 		 Date date=Date.valueOf(str);
 		 dischargeSummary.setAdmissionDate(date);
 		 dischargeSummary.setDischargeDate(date);
-		 dischargeSummary.setDoctorId(1);
+		 dischargeSummary.setDoctorId(0);
 		 dischargeSummary.setHistory("Eye Patient");
 		 dischargeSummary.setOnExamination("Check Up Successful");
 		 dischargeSummary.setOperationDone("Eye CheckUp");
@@ -182,19 +182,19 @@ public class DischargeSummaryDaoImplTest {
 	@Test
 	public void testDisplayDischargeSummary() throws ClassNotFoundException, SQLException, IOException {
 		 
-		 //dsd.deleteDischargeSummary(1);
+		 dsd.deleteDischargeSummary(56);
 		
 		 DischargeSummary dischargeSummary = new DischargeSummary();
 		 
-		 dischargeSummary.setSerialNo(1);
-		 dischargeSummary.setPatientId(1);
-		 dischargeSummary.setOtId(1);
-		 dischargeSummary.setBedNo(1);
+		 dischargeSummary.setSerialNo(56);
+		 dischargeSummary.setPatientId(0);
+		 dischargeSummary.setOtId(0);
+		 dischargeSummary.setBedNo(0);
 		 String str="1994-12-12";
 		 Date date=Date.valueOf(str);
 		 dischargeSummary.setAdmissionDate(date);
 		 dischargeSummary.setDischargeDate(date);
-		 dischargeSummary.setDoctorId(1);
+		 dischargeSummary.setDoctorId(0);
 		 dischargeSummary.setHistory("Eye Patient");
 		 dischargeSummary.setOnExamination("Check Up Successful");
 		 dischargeSummary.setOperationDone("Eye CheckUp");
@@ -203,7 +203,7 @@ public class DischargeSummaryDaoImplTest {
 		 dischargeSummary.setRecommendations("Regular CheckUp");
 		 dsd.insertDischargeSummary(dischargeSummary);
 		 
-		 assertEquals(dischargeSummary.getOperationDone(), dsd.displayDischargeSummary(1).getOperationDone());
+		 assertEquals(dischargeSummary.getOperationDone(), dsd.displayDischargeSummary(56).getOperationDone());
 	}
 	
 	@Test

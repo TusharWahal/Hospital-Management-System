@@ -37,7 +37,7 @@ public class MedicineDaoImplTest {
 		medicine.setDosage("def");
 		medicine.setPrice(0);
 		medicine.setPatientId(0);
-		medicine.setBillNo(0);
+	//	medicine.setBillNo(0);
 		assertTrue(md.insertMedicine(medicine));
 	}
 

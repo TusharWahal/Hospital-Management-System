@@ -56,7 +56,7 @@ public class DischargeSummaryDaoImpl implements DischargeSummaryDao {
 		pstmt.setString(11, operationFindings);
 		pstmt.setString(12, treatmentGiven);
 		pstmt.setString(13, recommendations);
-		
+		 
 		int rows=pstmt.executeUpdate();
 		
 		if(rows>0)

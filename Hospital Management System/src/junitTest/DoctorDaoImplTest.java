@@ -49,6 +49,7 @@ public class DoctorDaoImplTest {
 	@Test(expected=SQLException.class)
 	public void testInsertDoctorNegative() throws ClassNotFoundException, SQLException, IOException {
 		
+		
 		Doctor doctor=new Doctor();
 		doctor.setDoctorId(0);
 		doctor.setDoctorAddress("Gurgaon");
@@ -58,8 +59,7 @@ public class DoctorDaoImplTest {
 		doctor.setTiming("5-6");
 		doctor.setDepartmentId(0);
 		doctor.setDoctorPassword("pass");
-		
-		assertFalse(dd.insertDoctor(doctor));
+		dd.insertDoctor(doctor);
 	}
 	
 
